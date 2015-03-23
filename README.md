@@ -16,9 +16,9 @@ Let's split the HTML file into separate CSS and JS files (use `rdmty_compact_dps
 * `lib` - JS library files
 
 ### Naming
-Give your `HTML` files a descriptive name, i.e. <your tag>_<description>.html
+Give your `HTML` files a descriptive name, i.e. **your tag**_**description**.html
 Use a single CSS and JS file for all of your similar themes.
-`CSS` - <your tag>.css
-`JS` - <your tag>.js
+`CSS` - **your tag**.css
+`JS` - **your tag**.js
 
 The user currently has only one interface to customize the layout from ACT (without modifying any files): selecting the HTML file.  Make the HTML file as descriptive as possible and try to not modify much code in the HTML file (besides customization variables and CSS/JS file names).  This way, if we were to get support for more customization options in ACT plugin, it would be easier to modify the themes for this.
