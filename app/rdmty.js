@@ -43,7 +43,7 @@ var CombatantCompact = React.createClass({
 		return (
 			this.props.data.dps === '---' ? null :
 			React.createElement('li', {
-					className: 'row ' + this.props.data.Job + (this.props.isSelf ? ' self' : ''),
+					className: 'row ' + this.props.data.Job.toLowerCase() + (this.props.isSelf ? ' self' : ''),
 					onClick: this.props.onClick
 				},
 				React.createElement('div', {className: 'bar', style: {width: width}}),
@@ -125,7 +125,7 @@ var Combatants = React.createClass({
 
 	render: function() {
 		var rows = [];
-		var maxRows = 10;
+		var maxRows = 12;
 		var dataArray = Object.keys(this.props.data);
 		var limit = Math.max(dataArray.length, maxRows);
 		var names = dataArray.slice(0, maxRows-1);
@@ -164,24 +164,34 @@ var Combatants = React.createClass({
 });
 
 var DamageMeter = React.createClass({
-	handleCombatRowClick: function(e) {
-		console.log('Row clicked');
-	},
+    getDefaultProps: function() {
+        return {
+            parseData: {},
+            noJobColors: false
+        };
+    },
 
-	handleClick: function(e) {
-		console.log('cliocked');
-	},
+    handleCombatRowClick: function(e) {
+        console.log('Row clicked');
+    },
 
-	render: function() {
-		return (
-			React.createElement('div', {onClick: this.handleClick, className: 'damage-meter' + (!this.props.isActive ? 'inactive' : '')},
-				React.createElement(Encounter, this.props.Encounter),
-				React.createElement(Combatants, {
-					onClick: this.handleCombatRowClick,
-					data: this.props.Combatant,
-					encounterDamage: this.props.Encounter.damage
-				})
-			)
-		);
-	}
+    handleClick: function(e) {
+        console.log('clicked');
+    },
+
+    render: function() {
+        return (
+            React.createElement('div', {
+                onClick: this.handleClick,
+                className: 'damage-meter' + (!this.props.parseData.isActive ? ' inactive' : '') + (!this.props.noJobColors ? ' show-job-colors' : '')
+            },
+                React.createElement(Encounter, this.props.parseData.Encounter),
+                React.createElement(Combatants, {
+                    onClick: this.handleCombatRowClick,
+                    data: this.props.parseData.Combatant,
+                    encounterDamage: this.props.parseData.Encounter.damage
+                })
+            )
+        );
+    }
 });
