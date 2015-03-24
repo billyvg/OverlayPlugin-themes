@@ -3,12 +3,12 @@
 var IMAGE_PATH = 'images';
 
 var Combatant = React.createClass({
-	render: function() {
-		return (
-			React.createElement('li', {className: 'row' + (this.props.isSelf ? ' self' : '')},
-				React.createElement('span', {className: 'dps'},
-					this.props.data.dps
-				),
+    render: function() {
+        return (
+            React.createElement('li', {className: 'row' + (this.props.isSelf ? ' self' : '')},
+                React.createElement('span', {className: 'dps'},
+                    this.props.data.dps
+               ),
 				React.createElement('div', {className: 'detail'},
 					React.createElement('span', {className: 'title'},
 						React.createElement('span', {className: 'label-left'},
@@ -33,7 +33,11 @@ var CombatantCompact = React.createClass({
 	},
 
 	jobImage: function(job) {
-		return IMAGE_PATH + '/jobs/' + job + '_white.png';
+        if (window.JSFIDDLE) {
+            return window.GLOW_ICONS[job.toLowerCase()];
+        }
+
+		return IMAGE_PATH + '/jobs/' + job + '_glow.png';
 	},
 
 	render: function() {
