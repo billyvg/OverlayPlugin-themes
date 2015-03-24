@@ -6,7 +6,7 @@ var IMAGE_PATH = 'images';
 var React = window.React;
 
 var formatNumber = (number) => {
-    number = parseInt(number, 10);
+    number = parseFloat(number, 10);
 
     if (number >= 1000) {
         return (number / 1000).toFixed(2) + 'K';
@@ -15,7 +15,7 @@ var formatNumber = (number) => {
         return (number / 1000000).toFixed(2) + 'K';
     }
 
-    return number;
+    return number.toFixed(2);
 };
 
 class CombatantCompact extends React.Component {

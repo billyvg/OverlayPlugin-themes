@@ -6,16 +6,16 @@ var IMAGE_PATH = 'images';
 var React = window.React;
 
 var formatNumber = function(number)  {
-    number = parseInt(number, 10);
+    number = parseFloat(number, 10);
 
     if (number >= 1000) {
-        return (number / 1000).toFixed(1) + 'K';
+        return (number / 1000).toFixed(2) + 'K';
     }
     else if (number >= 1000000) {
-        return (number / 1000000).toFixed(1) + 'K';
+        return (number / 1000000).toFixed(2) + 'K';
     }
 
-    return number;
+    return number.toFixed(2);
 };
 
 var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){CombatantCompact[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____Class0);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____Class0;function CombatantCompact(){"use strict";if(____Class0!==null){____Class0.apply(this,arguments);}}
