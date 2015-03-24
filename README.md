@@ -13,7 +13,7 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 ![rdmty with single color for bars](/screenshots/rdmty_no_job_colors.png?raw=true "rdmty with single color for bars")
 
 ### xephero.html
-![xephero](/screenshots/xephero?raw=true "xephero")
+![xephero](/screenshots/xephero.png?raw=true "xephero")
 
 ### elizar2006
 ![elizar2006](/screenshots/elizar2006_miniparse.jpg?raw=true "elizar2006")
