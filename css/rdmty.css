@@ -34,10 +34,14 @@ ul {
 .encounter-header {
     font-size: 12px;
     padding: 6px;
+    overflow: hidden;
+}
+.target-name {
+    font-weight: bold;
+    margin-right: 6px;
 }
 
 .duration {
-    float: right;
 }
 
 li {
@@ -58,6 +62,12 @@ li:last-child {
 
 .damage-stats {
     float: right;
+}
+.damage {
+    margin-right: 4px;
+}
+.dps {
+    margin-right: 4px;
 }
 
 .bar {
@@ -142,4 +152,13 @@ li:last-child {
 
 .inactive .bar {
     background-color: #d8dadb;
+}
+
+
+.chart-view-switcher {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #000;
+    cursor: pointer;
+    float: right;
+    padding: 2px 4px;
 }
