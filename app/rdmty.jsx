@@ -5,6 +5,19 @@ var IMAGE_PATH = 'images';
 
 var React = window.React;
 
+var formatNumber = (number) => {
+    number = parseInt(number, 10);
+
+    if (number >= 1000) {
+        return Math.round(number / 1000) + 'K';
+    }
+    else if (number >= 1000000) {
+        return Math.round(number / 1000000) + 'K';
+    }
+
+    return number;
+};
+
 class CombatantCompact extends React.Component {
     jobImage(job) {
         if (window.JSFIDDLE) {
@@ -31,7 +44,7 @@ class CombatantCompact extends React.Component {
                             <img src={this.jobImage(this.props.job.toLowerCase())} />
                         </span>
                         <span className="rank">
-                            {`${this.props.rank}. `}
+                            {this.props.rank}.
                         </span>
                         <span className="character-name">
                             {this.props.characterName}
@@ -41,11 +54,11 @@ class CombatantCompact extends React.Component {
                         </span>
                         <div className="damage-stats">
                             <span className="damage">
-                                {this.props.total}
+                                {formatNumber(this.props.total)}
                             </span>
                             (
                             <span className="dps">
-                                {this.props.perSecond},
+                                {formatNumber(this.props.perSecond)},
                             </span>
 
                             <span className="damage-percent">
@@ -73,8 +86,7 @@ class ChartView extends React.Component {
 
 class Header extends React.Component {
     render() {
-        let encounter = this.props.encounter;
-        var dps = encounter.encdps.length <= 7 ? encounter.encdps : encounter.ENCDPS;
+        var encounter = this.props.encounter;
         var rdps = parseFloat(encounter.encdps);
         var rdps_max = 0;
 
@@ -82,15 +94,16 @@ class Header extends React.Component {
             rdps_max = Math.max(rdps_max, rdps);
         }
 
-        var width = (rdps / rdps_max) * 100;
-
         return (
             <div className="encounter-header">
                 <span className="target-name">
                     {encounter.title}
                 </span>
+                <span className="dps">
+                    Dmg: {formatNumber(encounter.damage)} ({formatNumber(encounter.encdps)} dps)
+                </span>
                 <span className="duration">
-                    ({encounter.duration})
+                    - {encounter.duration}
                 </span>
 
                 <div
@@ -101,12 +114,12 @@ class Header extends React.Component {
             </div>
         );
     }
-};
+}
 
 Header.defaultProps = {
     encounter: {},
     onViewChange() {}
-}
+};
 
 
 class Combatants extends React.Component {
