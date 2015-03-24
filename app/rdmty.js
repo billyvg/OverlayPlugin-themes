@@ -9,10 +9,10 @@ var formatNumber = function(number)  {
     number = parseInt(number, 10);
 
     if (number >= 1000) {
-        return Math.round(number / 1000) + 'K';
+        return (number / 1000).toFixed(1) + 'K';
     }
     else if (number >= 1000000) {
-        return Math.round(number / 1000000) + 'K';
+        return (number / 1000000).toFixed(1) + 'K';
     }
 
     return number;
@@ -58,7 +58,7 @@ var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____C
                             ), 
                             "(", 
                             React.createElement("span", {className: "dps"}, 
-                                this.props.perSecond, ","
+                                formatNumber(this.props.perSecond), ","
                             ), 
 
                             React.createElement("span", {className: "damage-percent"}, 

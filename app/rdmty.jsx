@@ -9,10 +9,10 @@ var formatNumber = (number) => {
     number = parseInt(number, 10);
 
     if (number >= 1000) {
-        return Math.round(number / 1000) + 'K';
+        return (number / 1000).toFixed(2) + 'K';
     }
     else if (number >= 1000000) {
-        return Math.round(number / 1000000) + 'K';
+        return (number / 1000000).toFixed(2) + 'K';
     }
 
     return number;
