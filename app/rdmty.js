@@ -2,29 +2,6 @@
 
 var IMAGE_PATH = 'images';
 
-var Combatant = React.createClass({
-    render: function() {
-        return (
-            React.createElement('li', {className: 'row' + (this.props.isSelf ? ' self' : '')},
-                React.createElement('span', {className: 'dps'},
-                    this.props.data.dps
-               ),
-				React.createElement('div', {className: 'detail'},
-					React.createElement('span', {className: 'title'},
-						React.createElement('span', {className: 'label-left'},
-							this.props.data.name
-						),
-						React.createElement('span', {className: 'label-right'},
-							this.props.data.damage
-						)
-					),
-					React.createElement('span', {className: 'bar'})
-				)
-			)
-		);
-	}
-});
-
 var CombatantCompact = React.createClass({
 	getDefaultProps: function() {
 		return {
