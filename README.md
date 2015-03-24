@@ -10,7 +10,7 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 ![rdmty Default](/screenshots/rdmty_default.png?raw=true "rdmty Default")
 
 ### rdmty_no_job_colors.html
-![rdmty with single color for bars](/screenshots/rdmty_default.png?raw=true "rdmty with single color for bars")
+![rdmty with single color for bars](/screenshots/rdmty_no_job_colors.png?raw=true "rdmty with single color for bars")
 
 ## Contributing Your Own Layouts
 In order to make it easier to maintain, as well as customize, let's try to standardize the layouts.
