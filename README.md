@@ -15,6 +15,15 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 ### xephero.html
 ![xephero](/screenshots/xephero?raw=true "xephero")
 
+### elizar2006
+![elizar2006](/screenshots/elizar2006_miniparse.jpg?raw=true "elizar2006")
+
+### momokotomoko
+![momokotomoko](/screenshots/momokotomoko_miniparse.jpg?raw=true "momokotomoko")
+
+### tristoune
+![tristoune](/screenshots/tristoune_miniparse.jpg?raw=true "tristoune")
+
 ## Contributing Your Own Layouts
 
 ### Naming
