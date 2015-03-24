@@ -83,88 +83,90 @@ var CombatantCompact = React.createClass({
 });
 
 var Encounter = React.createClass({
-	shouldComponentUpdate: function(nextProps) {
-	},
+    shouldComponentUpdate: function(nextProps) {
+    },
 
-	render: function() {
-		var dps = this.props.encdps.length <= 7 ? this.props.encdps : this.props.ENCDPS;
-		var rdps = parseFloat(this.props.encdps);
-		var rdps_max = 0;
+    render: function() {
+        var dps = this.props.encdps.length <= 7 ? this.props.encdps : this.props.ENCDPS;
+        var rdps = parseFloat(this.props.encdps);
+        var rdps_max = 0;
 
-		if (!isNaN(rdps) && rdps != Infinity) {
-			rdps_max = Math.max(rdps_max, rdps);
-		}
+        if (!isNaN(rdps) && rdps != Infinity) {
+            rdps_max = Math.max(rdps_max, rdps);
+        }
 
-		var width = (rdps / rdps_max) * 100;
+        var width = (rdps / rdps_max) * 100;
 
-		return (
-			React.createElement('div', {className: 'encounter-header'},
-				React.createElement('span', {className: 'target-name'},
-					this.props.title
-				),
-				React.createElement('span', {className: 'duration'},
-					this.props.duration
-				)
-			)
-		);
-	}
+        return (
+            React.createElement('div', {className: 'encounter-header'},
+                React.createElement('span', {className: 'target-name'},
+                    this.props.title
+                ),
+                React.createElement('span', {className: 'duration'},
+                    this.props.duration
+                )
+            )
+        );
+    }
 });
 
 
 var Combatants = React.createClass({
-	getDefaultProps: function() {
-		return {
-			onClick: function() {}
-		};
-	},
+    getDefaultProps: function() {
+        return {
+            onClick: function() {}
+        };
+    },
 
-	shouldComponentUpdate: function(nextProps) {
-		// if data is empty then don't re-render
-		if (Object.getOwnPropertyNames(nextProps.data).length === 0) {
-			return false;
-		}
+    shouldComponentUpdate: function(nextProps) {
+        // if data is empty then don't re-render
+        if (Object.getOwnPropertyNames(nextProps.data).length === 0) {
+            return false;
+        }
 
-		return true;
-	},
+        return true;
+    },
 
-	render: function() {
-		var rows = [];
-		var maxRows = 12;
-		var dataArray = Object.keys(this.props.data);
-		var limit = Math.max(dataArray.length, maxRows);
-		var names = dataArray.slice(0, maxRows-1);
-		var maxdps = false;
-		var combatant;
-		var row;
-		var isSelf;
+    render: function() {
+        var rows = [];
+        var maxRows = 12;
+        var dataArray = Object.keys(this.props.data);
+        var limit = Math.max(dataArray.length, maxRows);
+        var names = dataArray.slice(0, maxRows-1);
+        var maxdps = false;
+        var combatant;
+        var row;
+        var isSelf;
+        var rank = 1;
 
-		for (var i = 0; i < names.length; i++) {
-			combatant = this.props.data[names[i]];
+        for (var i = 0; i < names.length; i++) {
+            combatant = this.props.data[names[i]];
 
-			if (!maxdps) {
-				maxdps = parseFloat(combatant.damage);
-			}
+            if (!maxdps) {
+                maxdps = parseFloat(combatant.damage);
+            }
 
-			isSelf = combatant.name === 'YOU' || combatant.name === 'You';
+            isSelf = combatant.name === 'YOU' || combatant.name === 'You';
 
-			if (combatant.Job !== "") {
-				rows.push(
-					React.createElement(CombatantCompact, {
-						onClick: this.props.onClick,
-						encounterDamage: this.props.encounterDamage,
-						rank: i + 1,
-						data: combatant,
-						isSelf: isSelf,
-						key: names[i],
-						maxdps: maxdps
-					})
-				);
-			}
+            if (combatant.Job !== "") {
+                rows.push(
+                    React.createElement(CombatantCompact, {
+                    onClick: this.props.onClick,
+                    encounterDamage: this.props.encounterDamage,
+                    rank: rank,
+                    data: combatant,
+                    isSelf: isSelf,
+                    key: names[i],
+                    maxdps: maxdps
+                })
+                );
+                rank++;
+            }
 
-		}
+        }
 
-		return React.createElement('ul', {className: 'combatants'}, rows);
-	}
+        return React.createElement('ul', {className: 'combatants'}, rows);
+    }
 });
 
 var DamageMeter = React.createClass({
