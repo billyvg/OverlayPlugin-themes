@@ -5,6 +5,13 @@
 
 In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder where you extracted the ZIP and then select the HTML file of your choice.
 
+## Screenshots
+### rdmty_compact_dps.html
+<img src="https://photos-2.dropbox.com/t/2/AABWoG8R_9HLUrCZ1hZSFUCmseeXcAYja2Ge3E5APkB2mg/12/9236753/png/32x32/3/_/1/2/Screenshot%202015-03-24%2008.26.18.png/CJHiswQgASACIAMoASgC/T6uXBwcq9Ogh1kyr0O80PrDzClarCza4-RRIhEGM6_Y?size=1280x960" />
+
+### rdmty_compact_dps_job_colors.html
+<img src="https://photos-3.dropbox.com/t/2/AAC4bSRZeOmPedq-79aJrr-0NS4CTQTJroWRKT3vzPbXKw/12/9236753/png/32x32/3/_/1/2/Screenshot%202015-03-24%2008.23.47.png/CJHiswQgASACIAMoASgC/y3LISFl3cfznRyOX8MDPiR_3Er9ZMkl8cG_gy_J_glk?size=1280x960" />
+
 ## Contributing Your Own Layouts
 In order to make it easier to maintain, as well as customize, let's try to standardize the layouts.
 Let's split the HTML file into separate CSS and JS files (use `rdmty_compact_dps.html` as an example for now).  In In the future, `React` will probably be dropped in favor of something a bit more familiar (probably just templates using `handlebars`).
