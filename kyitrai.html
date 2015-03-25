@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--
+    *** Kyitrai's Graphing Overlay for Rainbow Mage's ACT Overlay Plugin ***
+    Author: Kyitrai Iarnvind @ Cactuar
+    Inspired by Xephero's layout.
+
+
+    There's not a great deal of configurable options for this, sorry.
+    Jobs/Players are color coded per their job type. Everything else will show up gray.
+    I have not written any handling for NPCs such as SMN/SCH pets or Chocobos.
+
+    As currently written, it displays in order:
+    JobIcon Name Last10DPS [Graph] EncounterDPS Crit% Acc%
+
+    From what I understand, the Last10DPS is a property provided by the FFXIV ACT plugin itself,
+    captured and passed into the event object by the Overlay Plugin. This layout uses the Last10DPS
+    property to draw the blue area, and the encdps property to draw the white line.
+
+    I don't know how much of a load the graph rendering will create on other systems. Mine's pretty
+    beefy, so it doesn't even sweat during full alliance parsing in something like WoD. However,
+    the Encounter's DPS graph tends to stop updating because the Last10DPS property becomes
+    unparseable, and I'm not sure what circumstances cause this (I think it's somewhere up the
+    chain before the Overlay plugin gets the frame data.)
+
+    Your mileage may vary.
+
+
+    See the miniparse-kyitrai.js file for a couple options to set.
+
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        html {
+            background-image: url(images/handle.png);
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            height: 100%;
+
+            font-family: "Meiryo";
+            font-size: 9pt;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+            height: 100%;
+            /* If you would like a semi-transparent overlay, change the 1.0
+                here to something around 0.5 to 0.6. */
+            background-color: rgba(0, 0, 0, 1.0);
+            border-radius: 6px;
+        }
+
+        div.template {
+            display: none;
+        }
+
+        #overlay {
+            color: #FFF8B0;
+            white-space: nowrap;
+        }
+
+        div.encounter,
+        div.combatant {
+            position: relative;
+            margin: 1px 0px 0px 0px;
+            border-radius: 5px;
+            border-left: 1px solid transparent;
+            border-top: 1px solid transparent;
+        }
+
+        div.encounter { /* Encounter bar, default/inactive state */
+            padding: 1px 0px 3px 0px;
+            border-color: rgba(255, 248, 176, 0.5);
+            background: linear-gradient(to bottom,
+                rgba(255, 248, 176, 0.35),
+                rgba(255, 255, 255, 0.35) 15%,
+                rgba(255, 248, 176, 0.35) 30%,
+                rgba(255, 248, 176, 0.35) 85%,
+                rgba(120, 120, 120, 0.35)
+            );
+
+            color: #FFFFFF;
+            text-shadow: 0 0 3px #000000;
+        }
+        div.encounter.active { /* While combat is active. */
+            border-color: rgba(120, 191, 230, 0.5);
+            color: hsl(120, 100%, 50%);
+        }
+        div.combatants {
+            padding-bottom: 1px;
+        }
+        div.graph {
+            display: inline-block;
+            vertical-align: middle;
+            width: 60px;
+            height: 17px;
+            margin: 0;
+            padding: 0;
+            opacity: 0.6;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        svg .line {
+            shape-rendering: crispEdges;
+            stroke: #FFF;
+            fill: none;
+        }
+        svg .area {
+            shape-rendering: crispEdges;
+            stroke: rgb(64, 128, 255);
+            fill: rgba(64, 128, 255, 0.5);
+        }
+
+        span {
+            z-index: 1;
+            position: relative;
+            display: inline-block;
+            text-overflow: ellipsis;
+        }
+        span.name {
+            padding-left: 20px;
+            width: 150px;
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            background-size: 18px 18px;
+        }
+        span.dps, span.last10, span.time, span.crit, span.acc {
+            text-align: right;
+            width: 45px;
+        }
+        span.last10 {
+            width: 30px;
+            font-size: 7pt;
+            font-weight: bold;
+        }
+
+        div.combatant {
+            position: relative;
+            margin: 0px 0px 1px 0px;
+        }
+        div.bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 18px;
+            border-radius: 6px;
+            border-bottom: 1px solid hsla(0, 0%, 50%, 0.75);
+            background: linear-gradient(to left, hsla(0, 0%, 50%, 0.75), hsla(0, 0%, 35%, 0.5) 25px);
+        }
+        .job-Drg div.bar,    .job-Mnk div.bar,    .job-Nin div.bar,    .job-Blm div.bar,    .job-Brd div.bar,    .job-Smn div.bar,
+        .job-Lnc div.bar,    .job-Pgl div.bar,    .job-Rog div.bar,    .job-Thm div.bar,    .job-Arc div.bar,    .job-Acn div.bar
+        {
+            border-bottom: 1px solid hsla(0, 100%, 50%, 0.75);
+            background: linear-gradient(to left, hsla(0, 100%, 50%, 0.75), hsla(0, 100%, 25%, 0.5) 25px);
+        }
+        .job-Pld div.bar,    .job-War div.bar,
+        .job-Gld div.bar,    .job-Mrd div.bar {
+            border-bottom: 1px solid hsla(240, 100%, 50%, 0.75);
+            background: linear-gradient(to left, hsla(240, 100%, 50%, 0.75), hsla(240, 100%, 35%, 0.5) 25px);
+        }
+        .job-Whm div.bar,    .job-Sch div.bar,
+        .job-Cnj div.bar {
+            border-bottom: 1px solid hsla(120, 100%, 50%, 0.75);
+            background: linear-gradient(to left, hsla(120, 100%, 50%, 0.75), hsla(120, 100%, 25%, 0.5) 25px);
+        }
+        .self {
+            color: #FFFFFF;
+            text-shadow: 0 0 3px #78BFE6;
+        }
+        .self div.bar {
+            background-color: rgba(255, 208, 32, 0.6);
+        }
+        div.job-Drg span.name { background-image: url(images/glow/drg.png); }
+        div.job-Mnk span.name { background-image: url(images/glow/mnk.png); }
+        div.job-Nin span.name { background-image: url(images/glow/nin.png); }
+        div.job-Blm span.name { background-image: url(images/glow/blm.png); }
+        div.job-Brd span.name { background-image: url(images/glow/brd.png); }
+        div.job-Smn span.name { background-image: url(images/glow/smn.png); }
+        div.job-Lnc span.name { background-image: url(images/glow/lnc.png); }
+        div.job-Pgl span.name { background-image: url(images/glow/pgl.png); }
+        div.job-Rog span.name { background-image: url(images/glow/rog.png); }
+        div.job-Thm span.name { background-image: url(images/glow/thm.png); }
+        div.job-Arc span.name { background-image: url(images/glow/arc.png); }
+        div.job-Acn span.name { background-image: url(images/glow/acn.png); }
+        div.job-Pld span.name { background-image: url(images/glow/pld.png); }
+        div.job-Gld span.name { background-image: url(images/glow/gld.png); }
+        div.job-War span.name { background-image: url(images/glow/war.png); }
+        div.job-Mrd span.name { background-image: url(images/glow/mrd.png); }
+        div.job-Whm span.name { background-image: url(images/glow/whm.png); }
+        div.job-Cnj span.name { background-image: url(images/glow/cnj.png); }
+        div.job-Sch span.name { background-image: url(images/glow/sch.png); }
+
+    </style>
+    <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="lib/d3.min.js"></script>
+    <script type="text/javascript" src="app/kyitrai.js"></script>
+</head>
+<body>
+    <div class="encounter template">
+        <span class="name"></span>
+        <span class="last10"></span>
+        <div class="graph"></div>
+        <span class="dps"></span>
+        <span class="time"></span>
+    </div>
+    <div class="combatant template">
+        <div class="bar">&nbsp;</div>
+        <div style="z-index: 1000000;">
+            <span class="name"></span>
+            <span class="last10"></span>
+            <div class="graph"></div>
+            <span class="dps"></span>
+            <span class="crit"></span>
+            <span class="acc"></span>
+        </div>
+    </div>
+    <div id="overlay"><span style="margin: 2px; padding-left: 5px;">Awaiting combat data ...</span></div>
+</body>
+</html>

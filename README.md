@@ -12,6 +12,12 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 ### rdmty_no_job_colors.html
 ![rdmty with single color for bars](/screenshots/rdmty_no_job_colors.png?raw=true "rdmty with single color for bars")
 
+### kyitrai
+![kyitrai](/screenshots/kyitrai.jpg?raw=true "kyitrai")
+
+### Immutable
+![Immutable](/screenshots/immutable.jpg?raw=true "Immutable")
+
 ### xephero.html
 ![xephero](/screenshots/xephero.png?raw=true "xephero")
 
@@ -23,9 +29,6 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 
 ### tristoune
 ![tristoune](/screenshots/tristoune_miniparse.jpg?raw=true "tristoune")
-
-### Immutable
-![Immutable](/screenshots/immutable.jpg?raw=true "Immutable")
 
 ## Contributing Your Own Layouts
 
