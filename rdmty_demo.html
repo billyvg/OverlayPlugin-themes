@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/billyvg/OverlayPlugin-themes/master/css/rdmty.css">
+    <script src="https://rawgit.com/billyvg/OverlayPlugin-themes/master/lib/react-0.13.1.min.js"></script>
+    <script src="https://rawgit.com/billyvg/OverlayPlugin-themes/master/lib/lodash.min.js"></script>
+    <script src="https://rawgit.com/billyvg/OverlayPlugin-themes/master/app/rdmty.js"></script>
+    <script>
+        window.JSFIDDLE = true;
+        window.GLOW_ICONS = {
+            brd: 'http://ffxiv.gamerescape.com/w/images/0/05/Bard_Icon_1.png',
+             pld: 'http://ffxiv.gamerescape.com/w/images/d/d6/Paladin_Icon_7.png',
+             drg: 'http://ffxiv.gamerescape.com/w/images/1/12/Dragoon_Icon_1.png',
+             war: 'http://ffxiv.gamerescape.com/w/images/d/d0/Warrior_Icon_1.png',
+             mnk: 'http://ffxiv.gamerescape.com/w/images/5/54/Monk_Icon_1.png',
+             nin: 'http://ffxiv.gamerescape.com/w/images/b/bb/Ninja_Icon_1.png',
+             whm: 'http://ffxiv.gamerescape.com/w/images/0/08/White_Mage_Icon_1.png',
+             blm: 'http://ffxiv.gamerescape.com/w/images/c/c2/Black_Mage_Icon_1.png',
+             smn: 'http://ffxiv.gamerescape.com/w/images/5/5f/Summoner_Icon_1.png',
+             sch: 'http://ffxiv.gamerescape.com/w/images/5/51/Scholar_Icon_1.png'
+        };
+        document.addEventListener('onOverlayDataUpdate', function(e) {
+            var start = new Date().getTime();
+            var details = e.detail;
+            React.render(
+                React.createElement(DamageMeter, {
+                    parseData: e.detail
+                }),
+                document.getElementById('container')
+            );
+            //console.log('rendered in ' + (+new Date() - start) + 'ms');
+        });
+    </script>
+</head>
+<body style="background-color: #000;">
+    <div id="container">
+        <h3>Awaiting data.</h3>
+    </div>
+    <script src="https://rawgit.com/billyvg/OverlayPlugin-themes/master/testing.js"></script>
+</body>
+</html>
