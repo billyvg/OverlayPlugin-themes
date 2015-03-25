@@ -162,13 +162,16 @@ li:last-child {
     overflow: hidden;
     white-space: nowrap;
 }
-.stats {
+.row .stats {
     float: right;
 }
-.damage {
+.row .additional {
     margin-right: 4px;
 }
-.dps {
+.row .total {
+    margin-right: 4px;
+}
+.row .ps {
     margin-right: 4px;
 }
 

@@ -55,15 +55,22 @@ class CombatantCompact extends React.Component {
                             </span>
                         </div>
                         <div className="stats">
-                            <span className="damage">
+                            <span className="total">
                                 {formatNumber(this.props.total)}
                             </span>
+
+                            {this.props.additional ?
+                            <span className="additional">
+                                [{this.props.additional}]
+                            </span> : null }
+
+
                             (
-                            <span className="dps">
+                            <span className="ps">
                                 {formatNumber(this.props.perSecond)},
                             </span>
 
-                            <span className="damage-percent">
+                            <span className="percent">
                                 {this.props.percentage}
                             </span>
                             )
@@ -251,6 +258,7 @@ class Combatants extends React.Component {
                             characterName: combatant.name,
                             total: combatant.healed,
                             perSecond: combatant.enchps,
+                            additional: combatant['OverHealPct'],
                             percentage: combatant['healed%']
                         }
                     }
