@@ -18,7 +18,7 @@ var formatNumber = function(number)  {
     return number.toFixed(2);
 };
 
-var ____ClassJ=React.Component;for(var ____ClassJ____Key in ____ClassJ){if(____ClassJ.hasOwnProperty(____ClassJ____Key)){CombatantCompact[____ClassJ____Key]=____ClassJ[____ClassJ____Key];}}var ____SuperProtoOf____ClassJ=____ClassJ===null?null:____ClassJ.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____ClassJ);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____ClassJ;function CombatantCompact(){"use strict";if(____ClassJ!==null){____ClassJ.apply(this,arguments);}}
+var ____Class1W=React.Component;for(var ____Class1W____Key in ____Class1W){if(____Class1W.hasOwnProperty(____Class1W____Key)){CombatantCompact[____Class1W____Key]=____Class1W[____Class1W____Key];}}var ____SuperProtoOf____Class1W=____Class1W===null?null:____Class1W.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____Class1W);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____Class1W;function CombatantCompact(){"use strict";if(____Class1W!==null){____Class1W.apply(this,arguments);}}
     Object.defineProperty(CombatantCompact.prototype,"jobImage",{writable:true,configurable:true,value:function(job) {"use strict";
         if (window.JSFIDDLE) {
             return window.GLOW_ICONS[job.toLowerCase()];
@@ -56,7 +56,7 @@ var ____ClassJ=React.Component;for(var ____ClassJ____Key in ____ClassJ){if(____C
                         ), 
                         React.createElement("div", {className: "stats"}, 
                             React.createElement("span", {className: "total"}, 
-                                formatNumber(this.props.total)
+                                this.props.totalFormatted
                             ), 
 
                             this.props.additional ?
@@ -67,7 +67,7 @@ var ____ClassJ=React.Component;for(var ____ClassJ____Key in ____ClassJ){if(____C
 
                             "(", 
                             React.createElement("span", {className: "ps"}, 
-                                formatNumber(this.props.perSecond), ","
+                                this.props.perSecond, ","
                             ), 
 
                             React.createElement("span", {className: "percent"}, 
@@ -84,7 +84,7 @@ CombatantCompact.defaultProps = {
     onClick:function() {}
 };
 
-var ____ClassK=React.Component;for(var ____ClassK____Key in ____ClassK){if(____ClassK.hasOwnProperty(____ClassK____Key)){ChartView[____ClassK____Key]=____ClassK[____ClassK____Key];}}var ____SuperProtoOf____ClassK=____ClassK===null?null:____ClassK.prototype;ChartView.prototype=Object.create(____SuperProtoOf____ClassK);ChartView.prototype.constructor=ChartView;ChartView.__superConstructor__=____ClassK;function ChartView(){"use strict";if(____ClassK!==null){____ClassK.apply(this,arguments);}}
+var ____Class1X=React.Component;for(var ____Class1X____Key in ____Class1X){if(____Class1X.hasOwnProperty(____Class1X____Key)){ChartView[____Class1X____Key]=____Class1X[____Class1X____Key];}}var ____SuperProtoOf____Class1X=____Class1X===null?null:____Class1X.prototype;ChartView.prototype=Object.create(____SuperProtoOf____Class1X);ChartView.prototype.constructor=ChartView;ChartView.__superConstructor__=____Class1X;function ChartView(){"use strict";if(____Class1X!==null){____Class1X.apply(this,arguments);}}
     Object.defineProperty(ChartView.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
         return (
             React.createElement("div", {className: "chart-view"}
@@ -93,9 +93,9 @@ var ____ClassK=React.Component;for(var ____ClassK____Key in ____ClassK){if(____C
     }});
 
 
-var ____ClassL=React.Component;for(var ____ClassL____Key in ____ClassL){if(____ClassL.hasOwnProperty(____ClassL____Key)){Header[____ClassL____Key]=____ClassL[____ClassL____Key];}}var ____SuperProtoOf____ClassL=____ClassL===null?null:____ClassL.prototype;Header.prototype=Object.create(____SuperProtoOf____ClassL);Header.prototype.constructor=Header;Header.__superConstructor__=____ClassL;
+var ____Class1Y=React.Component;for(var ____Class1Y____Key in ____Class1Y){if(____Class1Y.hasOwnProperty(____Class1Y____Key)){Header[____Class1Y____Key]=____Class1Y[____Class1Y____Key];}}var ____SuperProtoOf____Class1Y=____Class1Y===null?null:____Class1Y.prototype;Header.prototype=Object.create(____SuperProtoOf____Class1Y);Header.prototype.constructor=Header;Header.__superConstructor__=____Class1Y;
     function Header(props) {"use strict";
-        ____ClassL.call(this,props);
+        ____Class1Y.call(this,props);
         this.state = {
             expanded: false
         };
@@ -217,7 +217,7 @@ Header.defaultProps = {
 };
 
 
-var ____ClassM=React.Component;for(var ____ClassM____Key in ____ClassM){if(____ClassM.hasOwnProperty(____ClassM____Key)){Combatants[____ClassM____Key]=____ClassM[____ClassM____Key];}}var ____SuperProtoOf____ClassM=____ClassM===null?null:____ClassM.prototype;Combatants.prototype=Object.create(____SuperProtoOf____ClassM);Combatants.prototype.constructor=Combatants;Combatants.__superConstructor__=____ClassM;function Combatants(){"use strict";if(____ClassM!==null){____ClassM.apply(this,arguments);}}
+var ____Class1Z=React.Component;for(var ____Class1Z____Key in ____Class1Z){if(____Class1Z.hasOwnProperty(____Class1Z____Key)){Combatants[____Class1Z____Key]=____Class1Z[____Class1Z____Key];}}var ____SuperProtoOf____Class1Z=____Class1Z===null?null:____Class1Z.prototype;Combatants.prototype=Object.create(____SuperProtoOf____Class1Z);Combatants.prototype.constructor=Combatants;Combatants.__superConstructor__=____Class1Z;function Combatants(){"use strict";if(____Class1Z!==null){____Class1Z.apply(this,arguments);}}
     Object.defineProperty(Combatants.prototype,"shouldComponentUpdate",{writable:true,configurable:true,value:function(nextProps) {"use strict";
         // if data is empty then don't re-render
         if (Object.getOwnPropertyNames(nextProps.data).length === 0) {
@@ -248,6 +248,7 @@ var ____ClassM=React.Component;for(var ____ClassM____Key in ____ClassM){if(____C
             isSelf = combatant.name === 'YOU' || combatant.name === 'You';
 
             if (combatant.Job !== "") {
+                // should probably fix this
                 if (this.props.currentView === 'Healing') {
                     if (parseInt(combatant.healed, 10) > 0) {
                         if (!maxdps) {
@@ -257,9 +258,25 @@ var ____ClassM=React.Component;for(var ____ClassM____Key in ____ClassM){if(____C
                             job: combatant.Job || '',
                             characterName: combatant.name,
                             total: combatant.healed,
-                            perSecond: combatant.enchps,
+                            totalFormatted: formatNumber(combatant.healed),
+                            perSecond: formatNumber(combatant.enchps),
                             additional: combatant['OverHealPct'],
                             percentage: combatant['healed%']
+                        }
+                    }
+                }
+                else if (this.props.currentView === 'Tanking') {
+                    if (parseInt(combatant.damagetaken, 10) > 0) {
+                        if (!maxdps) {
+                            maxdps = parseFloat(combatant.damagetaken);
+                        }
+                        stats = {
+                            job: combatant.Job || '',
+                            characterName: combatant.name,
+                            total: combatant.damagetaken,
+                            totalFormatted: formatNumber(combatant.damagetaken),
+                            perSecond: combatant.ParryPct,
+                            percentage: combatant.BlockPct
                         }
                     }
                 }
@@ -271,7 +288,8 @@ var ____ClassM=React.Component;for(var ____ClassM____Key in ____ClassM){if(____C
                         job: combatant.Job || '',
                         characterName: combatant.name,
                         total: combatant.damage,
-                        perSecond: combatant.dps,
+                        totalFormatted: formatNumber(combatant.damage),
+                        perSecond: formatNumber(combatant.dps),
                         percentage: combatant['damage%']
                     }
                 }
@@ -307,9 +325,9 @@ Combatants.defaultProps = {
     onClick:function() {}
 };
 
-var ____ClassN=React.Component;for(var ____ClassN____Key in ____ClassN){if(____ClassN.hasOwnProperty(____ClassN____Key)){DamageMeter[____ClassN____Key]=____ClassN[____ClassN____Key];}}var ____SuperProtoOf____ClassN=____ClassN===null?null:____ClassN.prototype;DamageMeter.prototype=Object.create(____SuperProtoOf____ClassN);DamageMeter.prototype.constructor=DamageMeter;DamageMeter.__superConstructor__=____ClassN;
+var ____Class20=React.Component;for(var ____Class20____Key in ____Class20){if(____Class20.hasOwnProperty(____Class20____Key)){DamageMeter[____Class20____Key]=____Class20[____Class20____Key];}}var ____SuperProtoOf____Class20=____Class20===null?null:____Class20.prototype;DamageMeter.prototype=Object.create(____SuperProtoOf____Class20);DamageMeter.prototype.constructor=DamageMeter;DamageMeter.__superConstructor__=____Class20;
     function DamageMeter(props) {"use strict";
-        ____ClassN.call(this,props);
+        ____Class20.call(this,props);
         this.state = {
             currentViewIndex: 0
         };
@@ -344,6 +362,7 @@ var ____ClassN=React.Component;for(var ____ClassN____Key in ____ClassN){if(____C
     Object.defineProperty(DamageMeter.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
         var data = this.props.parseData.Combatant;
 
+        // Healing
         // need to resort data if currentView is not damage
         if (this.state.currentViewIndex === 1) {
             data = _.sortBy(_.filter(data, function(d)  {
@@ -351,6 +370,16 @@ var ____ClassN=React.Component;for(var ____ClassN____Key in ____ClassN){if(____C
             }), function(d)  {
                 if (this.state.currentViewIndex === 1) {
                     return -parseInt(d.healed, 10);
+                }
+            }.bind(this));
+        }
+        // Tanking
+        else if (this.state.currentViewIndex === 2) {
+            data = _.sortBy(_.filter(data, function(d)  {
+                return parseInt(d.damagetaken, 10) > 0;
+            }), function(d)  {
+                if (this.state.currentViewIndex === 2) {
+                    return -parseInt(d.damagetaken, 10);
                 }
             }.bind(this));
         }
@@ -378,7 +407,8 @@ var ____ClassN=React.Component;for(var ____ClassN____Key in ____ClassN){if(____C
 DamageMeter.defaultProps = {
     chartViews: [
         'Damage',
-        'Healing'
+        'Healing',
+        'Tanking'
     ],
     parseData: {},
     noJobColors: false

@@ -56,7 +56,7 @@ class CombatantCompact extends React.Component {
                         </div>
                         <div className="stats">
                             <span className="total">
-                                {formatNumber(this.props.total)}
+                                {this.props.totalFormatted}
                             </span>
 
                             {this.props.additional ?
@@ -67,7 +67,7 @@ class CombatantCompact extends React.Component {
 
                             (
                             <span className="ps">
-                                {formatNumber(this.props.perSecond)},
+                                {this.props.perSecond},
                             </span>
 
                             <span className="percent">
@@ -248,6 +248,7 @@ class Combatants extends React.Component {
             isSelf = combatant.name === 'YOU' || combatant.name === 'You';
 
             if (combatant.Job !== "") {
+                // should probably fix this
                 if (this.props.currentView === 'Healing') {
                     if (parseInt(combatant.healed, 10) > 0) {
                         if (!maxdps) {
@@ -257,9 +258,25 @@ class Combatants extends React.Component {
                             job: combatant.Job || '',
                             characterName: combatant.name,
                             total: combatant.healed,
-                            perSecond: combatant.enchps,
+                            totalFormatted: formatNumber(combatant.healed),
+                            perSecond: formatNumber(combatant.enchps),
                             additional: combatant['OverHealPct'],
                             percentage: combatant['healed%']
+                        }
+                    }
+                }
+                else if (this.props.currentView === 'Tanking') {
+                    if (parseInt(combatant.damagetaken, 10) > 0) {
+                        if (!maxdps) {
+                            maxdps = parseFloat(combatant.damagetaken);
+                        }
+                        stats = {
+                            job: combatant.Job || '',
+                            characterName: combatant.name,
+                            total: combatant.damagetaken,
+                            totalFormatted: formatNumber(combatant.damagetaken),
+                            perSecond: combatant.ParryPct,
+                            percentage: combatant.BlockPct
                         }
                     }
                 }
@@ -271,7 +288,8 @@ class Combatants extends React.Component {
                         job: combatant.Job || '',
                         characterName: combatant.name,
                         total: combatant.damage,
-                        perSecond: combatant.dps,
+                        totalFormatted: formatNumber(combatant.damage),
+                        perSecond: formatNumber(combatant.dps),
                         percentage: combatant['damage%']
                     }
                 }
@@ -344,6 +362,7 @@ class DamageMeter extends React.Component {
     render() {
         var data = this.props.parseData.Combatant;
 
+        // Healing
         // need to resort data if currentView is not damage
         if (this.state.currentViewIndex === 1) {
             data = _.sortBy(_.filter(data, (d) => {
@@ -351,6 +370,16 @@ class DamageMeter extends React.Component {
             }), (d) => {
                 if (this.state.currentViewIndex === 1) {
                     return -parseInt(d.healed, 10);
+                }
+            });
+        }
+        // Tanking
+        else if (this.state.currentViewIndex === 2) {
+            data = _.sortBy(_.filter(data, (d) => {
+                return parseInt(d.damagetaken, 10) > 0;
+            }), (d) => {
+                if (this.state.currentViewIndex === 2) {
+                    return -parseInt(d.damagetaken, 10);
                 }
             });
         }
@@ -378,7 +407,8 @@ class DamageMeter extends React.Component {
 DamageMeter.defaultProps = {
     chartViews: [
         'Damage',
-        'Healing'
+        'Healing',
+        'Tanking'
     ],
     parseData: {},
     noJobColors: false
