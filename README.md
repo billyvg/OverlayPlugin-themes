@@ -16,7 +16,7 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 ![kyitrai](/screenshots/kyitrai.png?raw=true "kyitrai")
 
 ### Immutable
-![Immutable](/screenshots/immutable.jpg?raw=true "Immutable")
+![Immutable](/screenshots/immutable.png?raw=true "Immutable")
 
 ### xephero.html
 ![xephero](/screenshots/xephero.png?raw=true "xephero")
