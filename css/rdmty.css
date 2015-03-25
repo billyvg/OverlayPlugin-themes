@@ -28,17 +28,27 @@ ul {
     margin: 0;
     padding: 0;
 }
+.ff-header {
+    color: #DED7BE;
+    text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+}
+.ff-text {
+    color: #E2EBF5;
+    text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+}
 
 .combatants {
     padding: 0 6px 6px;
 }
 
+.header {
+}
 .encounter-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 6px;
+    padding: 6px 6px 1px 6px;
     font-size: 12px;
     overflow: hidden;
 }
@@ -48,6 +58,27 @@ ul {
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+.extra-details {
+    padding: 2px 6px 6px;
+}
+.collapsed .extra-details {
+    display: none;
+}
+.extra-row {
+    display: flex;
+    justify-content: flex-start;
+}
+.extra-details .cell {
+    margin-right: 4px;
+}
+.extra-details .label {
+    font-weight: 400;
+    margin-right: 4px;
+}
+.extra-details .value {
+    font-weight: 200;
+    margin-right: 4px;
 }
 
 .chart-view-switcher {
@@ -86,8 +117,8 @@ ul {
 }
 
 .target-name {
-    font-weight: bold;
-    margin-right: 6px;
+    font-weight: 400;
+    margin-right: 4px;
 }
 
 .duration {
@@ -211,4 +242,30 @@ li:last-child {
     background-color: #d8dadb;
 }
 
+.arrow {
+    cursor: pointer;
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+}
 
+.arrow:after {
+    clear: both;
+    display: block;
+    position: relative;
+    top: 12px;
+    left: 7px;
+    content: "";
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: -4px;
+    border:4px solid transparent;
+}
+.arrow.down:after {
+    border-top-color: #fff;
+}
+.arrow.up:after {
+    top: 8px;
+    border-bottom-color: #fff;
+}

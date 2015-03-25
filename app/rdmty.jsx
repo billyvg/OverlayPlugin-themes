@@ -87,12 +87,27 @@ class ChartView extends React.Component {
 }
 
 class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            expanded: true
+        };
+    }
+
     shouldComponentUpdate(nextProps) {
         if (nextProps.encounter.encdps === '---') {
             return false;
         }
 
         return true;
+    }
+
+    handleExtraDetails(e) {
+        this.props.onExtraDetailsClick(e);
+
+        this.setState({
+            expanded: !this.state.expanded
+        });
     }
 
     render() {
@@ -105,24 +120,83 @@ class Header extends React.Component {
         }
 
         return (
-            <div className="encounter-header">
-                <div
-                    className="encounter-data">
-                    <span className="target-name">
-                        {encounter.title}
-                    </span>
-                    <span className="dps">
-                        Dmg: {formatNumber(encounter.damage)} ({formatNumber(encounter.encdps)} dps)
-                    </span>
-                    <span className="duration">
-                        - {encounter.duration}
-                    </span>
-                </div>
+            <div className={`header ${this.state.expanded ? '' : 'collapsed'}`}>
+                <div className="encounter-header">
+                    <div className="encounter-data ff-header">
+                        <span className="target-name">
+                            {encounter.title}
+                        </span>
+                        <span className="duration">
+                            ({encounter.duration})
+                        </span>
+                        <span className={`arrow ${this.state.expanded ? 'up' : 'down'}`} onClick={this.handleExtraDetails.bind(this)} />
+                    </div>
 
-                <div
-                    className="chart-view-switcher"
-                    onClick={this.props.onViewChange}>
-                    {this.props.currentView}
+                    <div
+                        className="chart-view-switcher"
+                        onClick={this.props.onViewChange}>
+                        {this.props.currentView}
+                    </div>
+                </div>
+                <div className="extra-details">
+                    <div className="extra-row damage">
+                        <div className="cell">
+                            <span className="label ff-header">Damage</span>
+                            <span className="value ff-text">
+                                {formatNumber(encounter.damage)}
+                            </span>
+                        </div>
+                        <div className="cell">
+                            <span className="label ff-header">DPS</span>
+                            <span className="value ff-text">
+                                {formatNumber(encounter.encdps)}
+                            </span>
+                        </div>
+                        <div className="cell">
+                            <span className="label ff-header">Crits</span>
+                            <span className="value ff-text">
+                                {encounter['crithit%']}
+                            </span>
+                        </div>
+                        <div className="cell">
+                            <span className="label ff-header">Miss</span>
+                            <span className="value ff-text">
+                                {encounter['misses']}
+                            </span>
+                        </div>
+                        <div className="cell">
+                            <span className="label ff-header">Max</span>
+                            <span className="value ff-text">
+                                {encounter.maxhit}
+                            </span>
+                        </div>
+                    </div>
+                    <div className="extra-row healing">
+                        <div className="cell">
+                            <span className="label ff-header">Heals</span>
+                            <span className="value ff-text">
+                                {formatNumber(encounter.healed)}
+                            </span>
+                        </div>
+                        <div className="cell">
+                            <span className="label ff-header">HPS</span>
+                            <span className="value ff-text">
+                                {formatNumber(encounter.enchps)}
+                            </span>
+                        </div>
+                        <div className="cell">
+                            <span className="label ff-header">Crits</span>
+                            <span className="value ff-text">
+                                {encounter['critheal%']}
+                            </span>
+                        </div>
+                        <div className="cell">
+                            <span className="label ff-header">Max</span>
+                            <span className="value ff-text">
+                                {encounter.maxheal}
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -131,7 +205,8 @@ class Header extends React.Component {
 
 Header.defaultProps = {
     encounter: {},
-    onViewChange() {}
+    onViewChange() {},
+    onExtraDetailsClick() {}
 };
 
 
