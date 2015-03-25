@@ -40,19 +40,21 @@ class CombatantCompact extends React.Component {
                     className='bar'
                     style={{width: width}} />
                     <div className="text-overlay">
-                        <span className='job-icon'>
-                            <img src={this.jobImage(this.props.job.toLowerCase())} />
-                        </span>
-                        <span className="rank">
-                            {this.props.rank}.
-                        </span>
-                        <span className="character-name">
-                            {this.props.characterName}
-                        </span>
-                        <span className="character-job">
-                            {this.props.job}
-                        </span>
-                        <div className="damage-stats">
+                        <div className="info">
+                            <span className='job-icon'>
+                                <img src={this.jobImage(this.props.job.toLowerCase())} />
+                            </span>
+                            <span className="rank">
+                                {this.props.rank}.
+                            </span>
+                            <span className="character-name">
+                                {this.props.characterName}
+                            </span>
+                            <span className="character-job">
+                                {this.props.job}
+                            </span>
+                        </div>
+                        <div className="stats">
                             <span className="damage">
                                 {formatNumber(this.props.total)}
                             </span>
@@ -104,15 +106,18 @@ class Header extends React.Component {
 
         return (
             <div className="encounter-header">
-                <span className="target-name">
-                    {encounter.title}
-                </span>
-                <span className="dps">
-                    Dmg: {formatNumber(encounter.damage)} ({formatNumber(encounter.encdps)} dps)
-                </span>
-                <span className="duration">
-                    - {encounter.duration}
-                </span>
+                <div
+                    className="encounter-data">
+                    <span className="target-name">
+                        {encounter.title}
+                    </span>
+                    <span className="dps">
+                        Dmg: {formatNumber(encounter.damage)} ({formatNumber(encounter.encdps)} dps)
+                    </span>
+                    <span className="duration">
+                        - {encounter.duration}
+                    </span>
+                </div>
 
                 <div
                     className="chart-view-switcher"

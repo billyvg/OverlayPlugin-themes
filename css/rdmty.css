@@ -31,11 +31,34 @@ ul {
 .combatants {
     padding: 0 6px 6px;
 }
+
 .encounter-header {
-    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     padding: 6px;
+    font-size: 12px;
     overflow: hidden;
 }
+.encounter-data {
+    line-height: 20px;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chart-view-switcher {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #000;
+    cursor: pointer;
+    margin-left: 6px;
+    padding: 2px 4px;
+    text-align: center;
+    width: 54px;
+}
+
 .target-name {
     font-weight: bold;
     margin-right: 6px;
@@ -60,7 +83,27 @@ li:last-child {
     font-weight: bold;
 }
 
-.damage-stats {
+.text-overlay {
+    font-size: 11px;
+    position: absolute;
+    top: 0;
+    color: rgb(232, 255, 254);
+    background-color: rgba(0, 0, 0, 0);
+    left: 0;
+    right: 4px;
+    bottom: 0;
+    z-index: 10;
+    line-height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.info {
+    overflow: hidden;
+    white-space: nowrap;
+}
+.stats {
     float: right;
 }
 .damage {
@@ -137,28 +180,9 @@ li:last-child {
     opacity: 0.6;
 }
 
-.text-overlay {
-    font-size: 11px;
-    position: absolute;
-    top: 0;
-    color: rgb(232, 255, 254);
-    background-color: rgba(0, 0, 0, 0);
-    left: 0;
-    right: 4px;
-    bottom: 0;
-    z-index: 10;
-    line-height: 20px;
-}
 
 .inactive .bar {
     background-color: #d8dadb;
 }
 
 
-.chart-view-switcher {
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 1px solid #000;
-    cursor: pointer;
-    float: right;
-    padding: 2px 4px;
-}
