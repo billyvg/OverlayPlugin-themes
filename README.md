@@ -7,7 +7,14 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 
 ## Screenshots
 ### rdmty_default.html
-![rdmty Default](/screenshots/rdmty_default.png?raw=true "rdmty Default")
+* Collapse/expand detailed statistics for the encounter
+* Switch between DPS, Healer, or Tanking views
+![rdmty features](/screenshots/rdmty_explanation.png?raw=true "rdmty
+features")
+![rdmty Healing](/screenshots/rdmty_healing.png?raw=true "rdmty
+Healing")
+![rdmty Tanking](/screenshots/rdmty_tanking.png?raw=true "rdmty
+Tanking")
 
 ### rdmty_no_job_colors.html
 ![rdmty with single color for bars](/screenshots/rdmty_no_job_colors.png?raw=true "rdmty with single color for bars")
