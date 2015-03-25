@@ -145,7 +145,8 @@ li:last-child {
     font-size: 11px;
     position: absolute;
     top: 0;
-    color: rgb(232, 255, 254);
+    color: rgba(255, 255, 255, 1);
+    text-shadow: -1px 0 2px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.6), 1px 0 2px rgba(0, 0, 0, 0.6), 0 -1px 2px rgba(0, 0, 0, 0.6);
     background-color: rgba(0, 0, 0, 0);
     left: 0;
     right: 4px;
@@ -195,7 +196,7 @@ li:last-child {
 }
 
 .show-job-colors .cnj .bar, .show-job-colors .whm .bar {
-    background-color: #c7c292;
+    background-color: #fff;
 }
 
 .show-job-colors .thm .bar, .show-job-colors .blm .bar {
