@@ -44,7 +44,7 @@ var ActXiv = {
         "powerheal": "0",
         "kills": "47",
         "deaths": "1",
-        "Last10DPS": "",
+        "Last10DPS": "100",
         "Last30DPS": "",
         "Last60DPS": ""
     },
@@ -180,7 +180,7 @@ var ActXiv = {
             "NAME13": "Dodd Himself",
             "NAME14": "Dodd Himself",
             "NAME15": "Dodd Himself",
-            "Last10DPS": "0",
+            "Last10DPS": "5",
             "Last30DPS": "0",
             "Last60DPS": "9",
             "Job": "Lnc",
@@ -250,7 +250,7 @@ var ActXiv = {
             "NAME13": "Kyrie Otaku",
             "NAME14": "Kyrie Otaku",
             "NAME15": "Kyrie Otaku",
-            "Last10DPS": "0",
+            "Last10DPS": "100",
             "Last30DPS": "0",
             "Last60DPS": "17",
             "Job": "Brd",
@@ -320,7 +320,7 @@ var ActXiv = {
             "NAME13": "Lexxi Foxx",
             "NAME14": "Lexxi Foxx",
             "NAME15": "Lexxi Foxx",
-            "Last10DPS": "0",
+            "Last10DPS": "1234",
             "Last30DPS": "0",
             "Last60DPS": "5",
             "Job": "Nin",
@@ -1370,7 +1370,7 @@ var ActXiv = {
             "NAME13": "Lenex Zemphon",
             "NAME14": "Lenex Zemphoni",
             "NAME15": "Lenex Zemphonia",
-            "Last10DPS": "",
+            "Last10DPS": "10",
             "Last30DPS": "",
             "Last60DPS": "",
             "Job": "",
@@ -1384,7 +1384,7 @@ var ActXiv = {
 };
 
 
-setTimeout(function() {
+setInterval(function() {
     var event = new CustomEvent("onOverlayDataUpdate", {"detail": ActXiv});
     document.dispatchEvent(event);
-}, 500);
+}, 2000);
