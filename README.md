@@ -13,7 +13,7 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 ![rdmty with single color for bars](/screenshots/rdmty_no_job_colors.png?raw=true "rdmty with single color for bars")
 
 ### kyitrai
-![kyitrai](/screenshots/kyitrai.jpg?raw=true "kyitrai")
+![kyitrai](/screenshots/kyitrai.png?raw=true "kyitrai")
 
 ### Immutable
 ![Immutable](/screenshots/immutable.jpg?raw=true "Immutable")
