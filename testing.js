@@ -2,7 +2,7 @@ var ActXiv = {
     "Encounter": {
         "n": "\n",
         "t": "\t",
-        "title": "Redbelly Gutter",
+        "title": "Redbelly Gutter Gutter Gutter",
         "duration": "04:51",
         "DURATION": "291",
         "damage": "31867",
@@ -121,7 +121,7 @@ var ActXiv = {
         "Dodd Himself": {
             "n": "\n",
             "t": "\t",
-            "name": "Dodd Himself",
+            "name": "Dodd Himself Dodd Himself Dodd Himself Dodd Himself",
             "duration": "02:21",
             "DURATION": "141",
             "damage": "4130",
