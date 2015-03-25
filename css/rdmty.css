@@ -43,6 +43,7 @@ ul {
 
 .header {
 }
+
 .encounter-header {
     display: flex;
     align-items: center;
@@ -51,8 +52,10 @@ ul {
     padding: 6px 6px 1px 6px;
     font-size: 12px;
     overflow: hidden;
+    -webkit-user-select: none;
 }
 .encounter-data {
+    -webkit-user-select: initial;
     line-height: 20px;
     overflow: hidden;
     display: inline-block;
@@ -105,7 +108,7 @@ ul {
     background: #3282d3;
     border: 1px solid #154c8c;
     border-bottom: 1px solid #0e408e;
-    box-shadow: inset 0 0 6px 3px #1657b5, 0 1px 0 0 #fff;
+    box-shadow: inset 0 0 6px 3px #1657b5, 0 1px 0 0 #000;
     text-shadow: 0 -1px 1px #2361a4;
 }
 
