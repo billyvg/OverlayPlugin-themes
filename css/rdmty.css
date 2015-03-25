@@ -68,6 +68,7 @@ ul {
 .extra-row {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 .extra-details .cell {
     margin-right: 4px;
@@ -82,24 +83,16 @@ ul {
 }
 
 .chart-view-switcher {
-    background: #3b88d8;
     border-radius: 2px;
-    border-top: 1px solid #4081af;
-    border-right: 1px solid #2e69a3;
-    border-bottom: 1px solid #20559a;
-    border-left: 1px solid #2e69a3;
     cursor: pointer;
     margin-left: 6px;
-    padding: 4px;
+    padding: 2px 4px;
     text-align: center;
     width: 50px;
-    box-shadow: inset 0 1px 0 0 #72b9eb, 0 1px 2px 0 #b3b3b3;
-    color: white;
+    color: #eee;
     font-size: 10px;
     font-weight: normal;
-    text-shadow: 0 -1px 1px #3275bc;
-}
-.chart-view-switcher:hover {
+
     background-color: #2a81d7;
     box-shadow: inset 0 1px 0 0 #62b1e9;
     border-top: 1px solid #2a73a6;
