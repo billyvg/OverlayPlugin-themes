@@ -50,13 +50,14 @@ ul {
 }
 
 .chart-view-switcher {
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 1px solid #000;
+    background-color: rgba(42, 112, 132, 0.6);
+    border-radius: 2px;
+    border-color: rgba(30, 30, 30, 0.8);
     cursor: pointer;
     margin-left: 6px;
     padding: 2px 4px;
     text-align: center;
-    width: 54px;
+    width: 50px;
 }
 
 .target-name {
