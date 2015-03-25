@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+.container {
+	border-style: solid;
+	border-width: 76px 104px 21px 57px;
+	-moz-border-image: url(images/overlay.png) 76 104 21 57 repeat;
+	-webkit-border-image: url(images/overlay.png) 76 104 21 57 repeat;
+	-o-border-image: url(images/overlay.png) 76 104 21 57 repeat;
+	border-image: url(images/overlay.png) 76 104 21 57 fill repeat;
+}
+html {
+	/*background-image: url(images/handle.png);*/
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	box-sizing: border-box;
+	height: 70%;
+	overflow: hidden;
+}
+#overlay {
+	font-family: Meiryo;
+	color: #D3D4C2;
+	border-radius: 0px;
+	position: inherit;
+	width: 100%;
+}
+#header {
+	display: none;
+	width: 100%;
+	vertical-align: middle;
+	font-size: 14px;
+	position: relative;
+	top: 3px;
+}
+#source {
+	display: none;
+}
+#content2 {
+	width: 100%;
+	height: 1px;
+	margin: 0px auto;
+	background: #000;
+	shadow: 0px 1px 0px rgb(255,255,255);
+}
+ol {
+	list-style-type: none;
+	margin: 0;
+	padding: 3px;
+}
+ li .encountertitle {
+    font-size: 16px;
+    text-shadow: inset 0px 1px 1px #000;
+    color: #000;
+    position: absolute;
+    left: 38%;
+    top: 57px;
+	
+}
+li .raiddps {
+    display: block;
+    position: absolute;
+    width: 70px;
+    vertical-align: middle;
+    text-align: middle;
+    font-size: 20px;
+    color: #FFF;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95;
+    letter-spacing: 7px;
+    top: 25px;
+    left: 41%;
+}
+li {
+	margin: 0px;
+	padding: 0px;
+}
+li .dps {
+	display: inline-block;
+	color: #D5AD6D;
+	background: -webkit-linear-gradient(transparent, transparent), -webkit-linear-gradient(top, rgba(213,173,109,1) 0%, rgba(213,173,109,1) 26%, rgba(226,186,120,1) 35%, rgba(163,126,67,1) 45%, rgba(145,112,59,1) 61%, rgba(213,173,109,1) 100%);
+	background: -o-linear-gradient(transparent, transparent);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-shadow: 10px 10px 31px -14px rgba(0,0,0,0.75);
+	-moz-text-shadow: 10px 10px 31px -14px rgba(0,0,0,0.75);
+	text-shadow: 10px 10px 31px -14px rgba(0,0,0,0.75);
+	width: 48%;
+	max-width: 70px;
+	text-align: left;
+	font-size: 16px;
+	position: relative;
+	margin-left: -41px;
+	margin-right: 1%;
+	position: relative;
+	z-index: 100;
+}
+li .name {
+	font-family: Meiryo;
+	font-size: 12px;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+li. raidheader {
+ border-bottom: 1px solid #FFCC66;
+ margin-bottom: 8px;
+}
+li .duration {
+    position: absolute;
+    display: block;
+    vertical-align: bottom;
+    float: right;
+    font-size: 16px;
+    text-shadow: inset 0px 1px 1px #4d4d4d;
+    color: #000;
+    top: 57px;
+    right: 75px;
+}
+li .tohit {
+	font-family: Meiryo;
+	font-size: 8px;
+	position: absolute;
+	z-index: 100;
+}
+li .crithit {
+	font-family: Meiryo;
+	font-size: 8px;
+	position: relative;
+}
+li .hps {
+	font-family: Meiryo;
+	font-size: 8px;
+	position: relative;
+}
+li .besthit {
+	font-family: Meiryo;
+	font-size: 8px;
+	position: relative;
+}
+li .detail {
+	display: inline-block;
+	vertical-align: top;
+	color: #ded7be;
+	font-size: 12px;
+	width: 90%;
+}
+li .detail .number {
+	font-family: Meiryo;
+	display: inline-block;
+	color: #FFFFFF;
+	float: right;
+}
+li .bar {
+	display: block;
+	width: 100%;
+	height: 1px;
+	margin: 0px;
+	position: inherit;
+	-moz-animation: fullexpand ease-out;
+	-webkit-animation: fullexpand ease-out;
+	-webkit-box-shadow: 0px 0px 6px 1px rgba(255,0,0,0.20);
+}
+@-moz-keyframes fullexpand {
+ 0% {
+width: 0px;
+}
+ 100% {
+ width: 100%;
+}
+}
+ @-webkit-keyframes fullexpand {
+ 0% {
+ width: 0px;
+}
+ 100% {
+ width: 100%;
+};
+}
+.job-icon {
+    Top: 5px;
+	margin-left: -22px;
+	height: 20px;
+	position: relative;
+	z-index: 100;
+}
+.job-icon img {
+	height: 20px;
+	width: 20px;
+	z-index: 100;
+}
+#title {
+	position: absolute;
+	z-index: 101;
+	margin-left: 10px;
+}
+.inactive li .bar {
+	background-color: rgba(255,255,255,0.69);
+}
+</style>
+    <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+	
+
+	
+        $(function() {
+			
+            "use strict";
+            var rows = 10;
+            var rdps_max = 0;
+			String.prototype.capitalize = function() {
+				return this.charAt(0).toUpperCase() + this.slice(1);
+			}
+
+			function JobOrName(combatant) {
+				combatant.JobOrName = combatant.Job || combatant.name;
+				var egiSearch = combatant.JobOrName.indexOf("-Egi (");
+				if (egiSearch !=-1)
+				{
+					combatant.JobOrName = combatant.JobOrName.substring(0,egiSearch);
+				}
+				else if (combatant.JobOrName.indexOf("Eos (")==0)
+				{
+					combatant.JobOrName = "PET";
+				}
+				else if (combatant.JobOrName.indexOf("Selene (")==0)
+				{
+					combatant.JobOrName = "PET";
+				}
+				else if (combatant.JobOrName.indexOf("Carbuncle (")!=-1)
+				{
+					combatant.JobOrName = "PET";
+				}
+				else if (combatant.JobOrName.indexOf(" (")!=-1)
+				{
+					combatant.JobOrName = "CHO";
+				}		
+				return combatant.JobOrName;
+			};
+
+            function update(e) {
+                var encounter = e.detail.Encounter;
+                var combatants = e.detail.Combatant;
+                var template = $('#source li');
+                var container = $('#overlay').clone();
+
+                container.html('');
+
+                var rdps = parseFloat(encounter.encdps);
+
+                if (!isNaN(rdps) && rdps != Infinity) {
+                    rdps_max = Math.max(rdps_max, rdps);
+                }
+
+				var header = $('#header li').clone();
+                if (encounter.encdps.length <= 7) {
+                    header.find('.raiddps').text(encounter.encdps);
+                } else {
+                    header.find('.raiddps').text(encounter.ENCDPS);
+                }
+                header.find('.encountertitle').text(encounter.title);
+                header.find('.duration').text(encounter.duration);
+
+                // set inactive
+                if (!e.detail.isActive) {
+                    rdps_max = 0;
+                    $('body').addClass('inactive');
+                } else {
+                    $('body').removeClass('inactive');
+                }
+
+                container.append(header);
+
+                var limit = Math.max(combatants.length, rows);
+                var names = Object.keys(combatants).slice(0,rows-1);
+                var maxdps = false;
+
+                for (var i = 0; i < names.length; i++) {
+                    var combatant = combatants[names[i]];
+                    var row = template.clone();
+
+                    if (!maxdps) {
+                        maxdps = parseFloat(combatant.encdps);
+                    }
+
+                    if (combatant.name == 'YOU') {
+                        row.addClass('you');
+                    }
+					row.find('.tohit').text('ACC' + ' ' + combatant.tohit + '%');
+                    row.find('.dps').text(combatant.encdps);
+					row.find('.job-icon').html('<img src="images/jobs/default/' + JobOrName(combatant).toLowerCase() + '.png">');
+                    row.find('.name').text(combatant.name);
+                    row.find('.number').text(combatant['DAMAGE-k'] + 'k ' + '('+combatant['damage%'] +')');
+					row.find('.crithit').text('CRIT' + ' ' + combatant['crithit%']);
+                    row.find('.bar').css('width', ((parseFloat(combatant.encdps) / maxdps) * 100) + '%');
+					{
+                                                        }
+														//Job Colored Bars Gaven Bylander Excalibur//
+					if(JobOrName(combatant) == 'War') //Warrior//
+					{
+					row.find('.bar').css('background', 'rgba(200,0,0,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(200,0,0,0.40)');
+														}
+					else if(JobOrName(combatant) == 'Pld') //Paladin//
+					{
+					row.find('.bar').css('background', 'rgba(94,247,235,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(94,247,235,0.20)');
+														}
+					else if(JobOrName(combatant) == 'Brd') //Bard//
+					{
+					row.find('.bar').css('background', 'rgba(216,232,85,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(216,232,85,0.20)');
+														}
+					else if(JobOrName(combatant) == 'Drg') //Dragoon//
+					{
+					row.find('.bar').css('background', 'rgba(98,151,241,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(98,151,241,0.20)');
+					}
+					else if(JobOrName(combatant) == 'Mnk') //Monk//
+					{
+					row.find('.bar').css('background', 'rgba(245,238,80,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(245,238,80,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Nin') //Ninja//
+					{
+					row.find('.bar').css('background', 'rgba(138,0,0,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(138,0,0,0.20)');
+														}
+					else if(JobOrName(combatant) == 'Smn') //Summoner//
+					{
+					row.find('.bar').css('background', 'rgba(168,219,94,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(168,219,94,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Blm') //Black Mage//
+					{
+					row.find('.bar').css('background', 'rgba(146,115,202,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(146,115,202,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Whm') //White Mage//
+					{
+					row.find('.bar').css('background', 'rgba(232,229,192,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(232,229,192,0.20)');
+					row.find('.hps').text('HPS' + ' ' + combatant.enchps);				
+														}
+					else if(JobOrName(combatant) == 'Sch') //Scholar//
+					{
+					row.find('.bar').css('background', 'rgba(79,114,255,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(79,114,255,0.20)');
+					row.find('.hps').text('HPS' + ' ' + combatant.enchps);				
+														}
+					else if(JobOrName(combatant) == 'Mrd') //Marauder//
+					{
+					row.find('.bar').css('background', 'rgba(200,0,0,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(200,0,0,0.20)');
+														}
+					else if(JobOrName(combatant) == 'Gla') //Gladiator//
+					{
+					row.find('.bar').css('background', 'rgba(94,247,235,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(94,247,235,0.20)');
+														}
+					else if(JobOrName(combatant) == 'Arc') //Archer//
+					{
+					row.find('.bar').css('background', 'rgba(216,232,85,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(216,232,85,0.20)');
+														}
+					else if(JobOrName(combatant) == 'Lnc') //Lancer//
+					{
+					row.find('.bar').css('background', 'rgba(98,151,241,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(98,151,241,0.20)');
+					}
+					else if(JobOrName(combatant) == 'Pgl') //Pugilist//
+					{
+					row.find('.bar').css('background', 'rgba(245,238,80,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(245,238,80,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Rog') //Rogue//
+					{
+					row.find('.bar').css('background', 'rgba(138,0,0,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(138,0,0,0.20)');
+														}
+					else if(JobOrName(combatant) == 'Acn') //Arcanist//
+					{
+					row.find('.bar').css('background', 'rgba(168,219,94,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(168,219,94,0.20)');
+					row.find('.hps').text('HPS' + ' ' + combatant.enchps);				
+														}
+					else if(JobOrName(combatant) == 'Thm') //Thaumaturge//
+					{
+					row.find('.bar').css('background', 'rgba(146,115,202,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(146,115,202,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Cnj') //Conjurer//
+					{
+					row.find('.bar').css('background', 'rgba(232,229,192,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(232,229,192,0.20)');
+					row.find('.hps').text('HPS' + ' ' + combatant.enchps);					
+														}
+					else if(JobOrName(combatant) == 'Alc') //Alchemist//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Arm') //Armorer//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Bsm') //Blacksmith//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Crp') //Carpenter//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Cul') //Culinarian//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Gsm') //Goldsmith//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Ltw') //Leatherworker//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Wvr') //Weaver//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Bot') //Botanist//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Fsh') //Fisher//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'Min') //Miner//
+					{
+					row.find('.bar').css('background', 'rgba(150,150,150,0.65)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(150,150,150,0.20)');					
+														}
+					else if(JobOrName(combatant) == 'CHO') //Chocobo//
+					{
+					row.find('.bar').css('background', 'rgba(255,255,0,0.9)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(255,255,0,0.20)');
+					row.find('.hps').text('HPS' + ' ' + combatant.enchps);					
+
+														}
+					container.append(row);
+                }
+				
+
+                $('#overlay').replaceWith(container);
+            }
+
+            $(document).on('onOverlayDataUpdate', function(e) {
+                update(e.originalEvent);
+            });
+        });
+    </script>
+    </head>
+    <body>
+<ol id="header">
+      <li class="raidheader"> <span class="raiddps"></span> <span class="encountertitle"></span> <span class="duration"></span> </li>
+    </ol>
+<div class="container">
+      <div class="title"> <span class="title"></span> </div>
+      <ol id="source">
+    <li> <span class="dps"></span> <span class="job-icon"></span>
+          <div class="detail"> <span class="name"></span> <span class="tohit"></span> <span class="crithit"></span> <span class="hps"></span> <span class="number"></span>
+        <div id="content2"> <span class="bar"> </span></div>
+      </div>
+        </li>
+  </ol>
+      <ol id="overlay">
+    <li> <span class="title"></span>
+          <center>
+        Awaiting Parse Data.
+      </center>
+        </li>
+  </ol>
+    </div>
+</div>
+</body>
+<script src="testing.js"></script>
+</html>

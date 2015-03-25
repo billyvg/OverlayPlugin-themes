@@ -24,6 +24,9 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 ### tristoune
 ![tristoune](/screenshots/tristoune_miniparse.jpg?raw=true "tristoune")
 
+### Immutable
+![Immutable](/screenshots/immutable.jpg?raw=true "Immutable")
+
 ## Contributing Your Own Layouts
 
 ### Naming
