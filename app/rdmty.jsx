@@ -85,13 +85,13 @@ class ChartView extends React.Component {
 }
 
 class Header extends React.Component {
-	shouldComponentUpdate(nextProps) {
-		if (nextProps.encounter.encdps === '---') {
-			return false;
-		}
+    shouldComponentUpdate(nextProps) {
+        if (nextProps.encounter.encdps === '---') {
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
     render() {
         var encounter = this.props.encounter;
@@ -227,9 +227,9 @@ class DamageMeter extends React.Component {
         };
     }
 
-	shouldComponentUpdate(nextProps, nextState) {
-		return true;
-	}
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+    }
 
     handleCombatRowClick(e) {
     }
@@ -268,7 +268,7 @@ class DamageMeter extends React.Component {
         }
 
         return (
-			this.props.parseData.Encounter.encdps === '---' ? <h3>Awaiting Data</h3> :
+            this.props.parseData.Encounter.encdps === '---' ? <h3>Awaiting Data</h3> :
             <div
                 onClick={this.handleClick}
                 className={'damage-meter' + (!this.props.parseData.isActive ? ' inactive' : '') + (!this.props.noJobColors ? ' show-job-colors' : '')}>
