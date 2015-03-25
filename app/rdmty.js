@@ -18,7 +18,7 @@ var formatNumber = function(number)  {
     return number.toFixed(2);
 };
 
-var ____Classu=React.Component;for(var ____Classu____Key in ____Classu){if(____Classu.hasOwnProperty(____Classu____Key)){CombatantCompact[____Classu____Key]=____Classu[____Classu____Key];}}var ____SuperProtoOf____Classu=____Classu===null?null:____Classu.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____Classu);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____Classu;function CombatantCompact(){"use strict";if(____Classu!==null){____Classu.apply(this,arguments);}}
+var ____Class2A=React.Component;for(var ____Class2A____Key in ____Class2A){if(____Class2A.hasOwnProperty(____Class2A____Key)){CombatantCompact[____Class2A____Key]=____Class2A[____Class2A____Key];}}var ____SuperProtoOf____Class2A=____Class2A===null?null:____Class2A.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____Class2A);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____Class2A;function CombatantCompact(){"use strict";if(____Class2A!==null){____Class2A.apply(this,arguments);}}
     Object.defineProperty(CombatantCompact.prototype,"jobImage",{writable:true,configurable:true,value:function(job) {"use strict";
         if (window.JSFIDDLE) {
             return window.GLOW_ICONS[job.toLowerCase()];
@@ -77,7 +77,7 @@ CombatantCompact.defaultProps = {
     onClick:function() {}
 };
 
-var ____Classv=React.Component;for(var ____Classv____Key in ____Classv){if(____Classv.hasOwnProperty(____Classv____Key)){ChartView[____Classv____Key]=____Classv[____Classv____Key];}}var ____SuperProtoOf____Classv=____Classv===null?null:____Classv.prototype;ChartView.prototype=Object.create(____SuperProtoOf____Classv);ChartView.prototype.constructor=ChartView;ChartView.__superConstructor__=____Classv;function ChartView(){"use strict";if(____Classv!==null){____Classv.apply(this,arguments);}}
+var ____Class2B=React.Component;for(var ____Class2B____Key in ____Class2B){if(____Class2B.hasOwnProperty(____Class2B____Key)){ChartView[____Class2B____Key]=____Class2B[____Class2B____Key];}}var ____SuperProtoOf____Class2B=____Class2B===null?null:____Class2B.prototype;ChartView.prototype=Object.create(____SuperProtoOf____Class2B);ChartView.prototype.constructor=ChartView;ChartView.__superConstructor__=____Class2B;function ChartView(){"use strict";if(____Class2B!==null){____Class2B.apply(this,arguments);}}
     Object.defineProperty(ChartView.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
         return (
             React.createElement("div", {className: "chart-view"}
@@ -86,13 +86,28 @@ var ____Classv=React.Component;for(var ____Classv____Key in ____Classv){if(____C
     }});
 
 
-var ____Classw=React.Component;for(var ____Classw____Key in ____Classw){if(____Classw.hasOwnProperty(____Classw____Key)){Header[____Classw____Key]=____Classw[____Classw____Key];}}var ____SuperProtoOf____Classw=____Classw===null?null:____Classw.prototype;Header.prototype=Object.create(____SuperProtoOf____Classw);Header.prototype.constructor=Header;Header.__superConstructor__=____Classw;function Header(){"use strict";if(____Classw!==null){____Classw.apply(this,arguments);}}
+var ____Class2C=React.Component;for(var ____Class2C____Key in ____Class2C){if(____Class2C.hasOwnProperty(____Class2C____Key)){Header[____Class2C____Key]=____Class2C[____Class2C____Key];}}var ____SuperProtoOf____Class2C=____Class2C===null?null:____Class2C.prototype;Header.prototype=Object.create(____SuperProtoOf____Class2C);Header.prototype.constructor=Header;Header.__superConstructor__=____Class2C;
+    function Header(props) {"use strict";
+        ____Class2C.call(this,props);
+        this.state = {
+            expanded: true
+        };
+    }
+
     Object.defineProperty(Header.prototype,"shouldComponentUpdate",{writable:true,configurable:true,value:function(nextProps) {"use strict";
         if (nextProps.encounter.encdps === '---') {
             return false;
         }
 
         return true;
+    }});
+
+    Object.defineProperty(Header.prototype,"handleExtraDetails",{writable:true,configurable:true,value:function(e) {"use strict";
+        this.props.onExtraDetailsClick(e);
+
+        this.setState({
+            expanded: !this.state.expanded
+        });
     }});
 
     Object.defineProperty(Header.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
@@ -105,24 +120,83 @@ var ____Classw=React.Component;for(var ____Classw____Key in ____Classw){if(____C
         }
 
         return (
-            React.createElement("div", {className: "encounter-header"}, 
-                React.createElement("div", {
-                    className: "encounter-data"}, 
-                    React.createElement("span", {className: "target-name"}, 
-                        encounter.title
+            React.createElement("div", {className: ("header " + (this.state.expanded ? '' : 'collapsed'))}, 
+                React.createElement("div", {className: "encounter-header"}, 
+                    React.createElement("div", {className: "encounter-data ff-header"}, 
+                        React.createElement("span", {className: "target-name"}, 
+                            encounter.title
+                        ), 
+                        React.createElement("span", {className: "duration"}, 
+                            "(", encounter.duration, ")"
+                        ), 
+                        React.createElement("span", {className: ("arrow " + (this.state.expanded ? 'up' : 'down')), onClick: this.handleExtraDetails.bind(this)})
                     ), 
-                    React.createElement("span", {className: "dps"}, 
-                        "Dmg: ", formatNumber(encounter.damage), " (", formatNumber(encounter.encdps), " dps)"
-                    ), 
-                    React.createElement("span", {className: "duration"}, 
-                        "- ", encounter.duration
+
+                    React.createElement("div", {
+                        className: "chart-view-switcher", 
+                        onClick: this.props.onViewChange}, 
+                        this.props.currentView
                     )
                 ), 
-
-                React.createElement("div", {
-                    className: "chart-view-switcher", 
-                    onClick: this.props.onViewChange}, 
-                    this.props.currentView
+                React.createElement("div", {className: "extra-details"}, 
+                    React.createElement("div", {className: "extra-row damage"}, 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "Damage"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                formatNumber(encounter.damage)
+                            )
+                        ), 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "DPS"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                formatNumber(encounter.encdps)
+                            )
+                        ), 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "Crits"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                encounter['crithit%']
+                            )
+                        ), 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "Miss"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                encounter['misses']
+                            )
+                        ), 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "Max"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                encounter.maxhit
+                            )
+                        )
+                    ), 
+                    React.createElement("div", {className: "extra-row healing"}, 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "Heals"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                formatNumber(encounter.healed)
+                            )
+                        ), 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "HPS"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                formatNumber(encounter.enchps)
+                            )
+                        ), 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "Crits"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                encounter['critheal%']
+                            )
+                        ), 
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "Max"), 
+                            React.createElement("span", {className: "value ff-text"}, 
+                                encounter.maxheal
+                            )
+                        )
+                    )
                 )
             )
         );
@@ -131,11 +205,12 @@ var ____Classw=React.Component;for(var ____Classw____Key in ____Classw){if(____C
 
 Header.defaultProps = {
     encounter: {},
-    onViewChange:function() {}
+    onViewChange:function() {},
+    onExtraDetailsClick:function() {}
 };
 
 
-var ____Classx=React.Component;for(var ____Classx____Key in ____Classx){if(____Classx.hasOwnProperty(____Classx____Key)){Combatants[____Classx____Key]=____Classx[____Classx____Key];}}var ____SuperProtoOf____Classx=____Classx===null?null:____Classx.prototype;Combatants.prototype=Object.create(____SuperProtoOf____Classx);Combatants.prototype.constructor=Combatants;Combatants.__superConstructor__=____Classx;function Combatants(){"use strict";if(____Classx!==null){____Classx.apply(this,arguments);}}
+var ____Class2D=React.Component;for(var ____Class2D____Key in ____Class2D){if(____Class2D.hasOwnProperty(____Class2D____Key)){Combatants[____Class2D____Key]=____Class2D[____Class2D____Key];}}var ____SuperProtoOf____Class2D=____Class2D===null?null:____Class2D.prototype;Combatants.prototype=Object.create(____SuperProtoOf____Class2D);Combatants.prototype.constructor=Combatants;Combatants.__superConstructor__=____Class2D;function Combatants(){"use strict";if(____Class2D!==null){____Class2D.apply(this,arguments);}}
     Object.defineProperty(Combatants.prototype,"shouldComponentUpdate",{writable:true,configurable:true,value:function(nextProps) {"use strict";
         // if data is empty then don't re-render
         if (Object.getOwnPropertyNames(nextProps.data).length === 0) {
@@ -224,9 +299,9 @@ Combatants.defaultProps = {
     onClick:function() {}
 };
 
-var ____Classy=React.Component;for(var ____Classy____Key in ____Classy){if(____Classy.hasOwnProperty(____Classy____Key)){DamageMeter[____Classy____Key]=____Classy[____Classy____Key];}}var ____SuperProtoOf____Classy=____Classy===null?null:____Classy.prototype;DamageMeter.prototype=Object.create(____SuperProtoOf____Classy);DamageMeter.prototype.constructor=DamageMeter;DamageMeter.__superConstructor__=____Classy;
+var ____Class2E=React.Component;for(var ____Class2E____Key in ____Class2E){if(____Class2E.hasOwnProperty(____Class2E____Key)){DamageMeter[____Class2E____Key]=____Class2E[____Class2E____Key];}}var ____SuperProtoOf____Class2E=____Class2E===null?null:____Class2E.prototype;DamageMeter.prototype=Object.create(____SuperProtoOf____Class2E);DamageMeter.prototype.constructor=DamageMeter;DamageMeter.__superConstructor__=____Class2E;
     function DamageMeter(props) {"use strict";
-        ____Classy.call(this,props);
+        ____Class2E.call(this,props);
         this.state = {
             currentViewIndex: 0
         };
