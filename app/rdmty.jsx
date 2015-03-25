@@ -24,7 +24,7 @@ class CombatantCompact extends React.Component {
             return window.GLOW_ICONS[job.toLowerCase()];
         }
 
-        return IMAGE_PATH + '/jobs/glow/' + job.toLowerCase() + '.png';
+        return IMAGE_PATH + '/glow/' + job.toLowerCase() + '.png';
     }
 
     render() {
