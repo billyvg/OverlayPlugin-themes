@@ -21,7 +21,7 @@
             /* リサイズ用のハンドル
              * リサイズができる場所はウィンドウ右下の16x16ピクセルの場所
              * この部分が完全に透明だとマウス入力が透過してしまってサイズを変更できなくなる */
-            /*background-image: url(handle.png);*/
+            /*background-image: url(images/handle.png);*/
             background-position: bottom right;
             background-repeat: no-repeat;
             box-sizing: border-box;
@@ -124,7 +124,7 @@
         [
             //{ text: rankingText, width: "5%", align: "center", effect: deadYatsuEffect },
             { text: "{name}", width: "10%" },
-            { html: "<img src='./icons/{JobOrName}.png' onError=\"this.onerror=null;this.src='./icons/error.png';\" />", width: "5%", align: "center" },
+            { html: "<img src='./images/jobs/default/{JobOrName}.png' onError=\"this.onerror=null;this.src='./images/error.png';\" />", width: "5%", align: "center" },
             { text: "{encdps}", width: "5%", align: "center" },
             //{ text: "{damage%}", width: "5%", align: "center" },
             { text: "{crithit%}", width: "5%", align: "center" },
