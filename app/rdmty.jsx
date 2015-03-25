@@ -24,7 +24,7 @@ class CombatantCompact extends React.Component {
             return window.GLOW_ICONS[job.toLowerCase()];
         }
 
-        return IMAGE_PATH + '/jobs/' + job + '_glow.png';
+        return IMAGE_PATH + '/jobs/glow/' + job.toLowerCase() + '.png';
     }
 
     render() {
@@ -42,7 +42,7 @@ class CombatantCompact extends React.Component {
                     <div className="text-overlay">
                         <div className="info">
                             <span className='job-icon'>
-                                <img src={this.jobImage(this.props.job.toLowerCase())} />
+                                <img src={this.jobImage(this.props.job)} />
                             </span>
                             <span className="rank">
                                 {this.props.rank}.
