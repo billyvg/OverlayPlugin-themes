@@ -150,7 +150,6 @@ class Combatants extends React.Component {
             combatant = isDataArray ? this.props.data[i] : this.props.data[names[i]];
             stats = null;
 
-            console.log(combatant);
             isSelf = combatant.name === 'YOU' || combatant.name === 'You';
 
             if (combatant.Job !== "") {
@@ -220,8 +219,11 @@ class DamageMeter extends React.Component {
         };
     }
 
+	shouldComponentUpdate(nextProps, nextState) {
+	}
+
+
     handleCombatRowClick(e) {
-        console.log('Row clicked');
     }
 
     handleClick(e) {
