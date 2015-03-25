@@ -150,7 +150,6 @@ var ____Class3=React.Component;for(var ____Class3____Key in ____Class3){if(____C
             combatant = isDataArray ? this.props.data[i] : this.props.data[names[i]];
             stats = null;
 
-            console.log(combatant);
             isSelf = combatant.name === 'YOU' || combatant.name === 'You';
 
             if (combatant.Job !== "") {
@@ -220,8 +219,11 @@ var ____Class4=React.Component;for(var ____Class4____Key in ____Class4){if(____C
         };
     }
 
+	Object.defineProperty(DamageMeter.prototype,"shouldComponentUpdate",{writable:true,configurable:true,value:function(nextProps, nextState) {"use strict";
+	}});
+
+
     Object.defineProperty(DamageMeter.prototype,"handleCombatRowClick",{writable:true,configurable:true,value:function(e) {"use strict";
-        console.log('Row clicked');
     }});
 
     Object.defineProperty(DamageMeter.prototype,"handleClick",{writable:true,configurable:true,value:function(e) {"use strict";
