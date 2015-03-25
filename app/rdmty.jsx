@@ -90,7 +90,7 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            expanded: true
+            expanded: false
         };
     }
 
@@ -370,8 +370,7 @@ class DamageMeter extends React.Component {
 DamageMeter.defaultProps = {
     chartViews: [
         'Damage',
-        'Healing',
-        'Detailed'
+        'Healing'
     ],
     parseData: {},
     noJobColors: false
