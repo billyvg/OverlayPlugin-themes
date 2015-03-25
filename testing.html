@@ -14,21 +14,18 @@
 
             React.render(
                 React.createElement(DamageMeter, {
-                    parseData: e.detail,
-                    noJobColors: true
+                    parseData: e.detail
                 }),
                 document.getElementById('container')
             );
             //console.log('rendered in ' + (+new Date() - start) + 'ms');
         });
-        document.addEventListener('click', function(e) {
-            console.log('clicked');
-        });
     </script>
 </head>
-<body>
+<body style="background-color: #000">
     <div id="container">
         <h3>Awaiting data.</h3>
     </div>
 </body>
+    <script src="testing.js"></script>
 </html>
