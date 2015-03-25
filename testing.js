@@ -1,3 +1,4 @@
+/*eslint-disable*/
 var ActXiv = {
     "Encounter": {
         "n": "\n",
@@ -109,7 +110,7 @@ var ActXiv = {
             "NAME13": "YOU",
             "NAME14": "YOU",
             "NAME15": "YOU",
-            "Last10DPS": "0",
+            "Last10DPS": "20",
             "Last30DPS": "0",
             "Last60DPS": "0",
             "Job": "Pgl",
@@ -1379,7 +1380,7 @@ var ActXiv = {
             "OverHealPct": "0%"
         }
     },
-    "isActive": false
+    "isActive": true
 };
 
 
