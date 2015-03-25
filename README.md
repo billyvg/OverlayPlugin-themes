@@ -7,6 +7,7 @@ In ACT -> Plugins -> OverlayPlugin.dll settings, for URL, browse to the folder w
 
 ## Screenshots
 ### rdmty_default.html
+### Requires OverlayPlugin >= 0.3.3.3!!
 * Collapse/expand detailed statistics for the encounter
 * Switch between DPS, Healer, or Tanking views
 ![rdmty features](/screenshots/rdmty_explanation.png?raw=true "rdmty
