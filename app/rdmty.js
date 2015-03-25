@@ -18,7 +18,7 @@ var formatNumber = function(number)  {
     return number.toFixed(2);
 };
 
-var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){CombatantCompact[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____Class0);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____Class0;function CombatantCompact(){"use strict";if(____Class0!==null){____Class0.apply(this,arguments);}}
+var ____Class18=React.Component;for(var ____Class18____Key in ____Class18){if(____Class18.hasOwnProperty(____Class18____Key)){CombatantCompact[____Class18____Key]=____Class18[____Class18____Key];}}var ____SuperProtoOf____Class18=____Class18===null?null:____Class18.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____Class18);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____Class18;function CombatantCompact(){"use strict";if(____Class18!==null){____Class18.apply(this,arguments);}}
     Object.defineProperty(CombatantCompact.prototype,"jobImage",{writable:true,configurable:true,value:function(job) {"use strict";
         if (window.JSFIDDLE) {
             return window.GLOW_ICONS[job.toLowerCase()];
@@ -75,7 +75,7 @@ CombatantCompact.defaultProps = {
     onClick:function() {}
 };
 
-var ____Class1=React.Component;for(var ____Class1____Key in ____Class1){if(____Class1.hasOwnProperty(____Class1____Key)){ChartView[____Class1____Key]=____Class1[____Class1____Key];}}var ____SuperProtoOf____Class1=____Class1===null?null:____Class1.prototype;ChartView.prototype=Object.create(____SuperProtoOf____Class1);ChartView.prototype.constructor=ChartView;ChartView.__superConstructor__=____Class1;function ChartView(){"use strict";if(____Class1!==null){____Class1.apply(this,arguments);}}
+var ____Class19=React.Component;for(var ____Class19____Key in ____Class19){if(____Class19.hasOwnProperty(____Class19____Key)){ChartView[____Class19____Key]=____Class19[____Class19____Key];}}var ____SuperProtoOf____Class19=____Class19===null?null:____Class19.prototype;ChartView.prototype=Object.create(____SuperProtoOf____Class19);ChartView.prototype.constructor=ChartView;ChartView.__superConstructor__=____Class19;function ChartView(){"use strict";if(____Class19!==null){____Class19.apply(this,arguments);}}
     Object.defineProperty(ChartView.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
         return (
             React.createElement("div", {className: "chart-view"}
@@ -84,7 +84,15 @@ var ____Class1=React.Component;for(var ____Class1____Key in ____Class1){if(____C
     }});
 
 
-var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____Class2.hasOwnProperty(____Class2____Key)){Header[____Class2____Key]=____Class2[____Class2____Key];}}var ____SuperProtoOf____Class2=____Class2===null?null:____Class2.prototype;Header.prototype=Object.create(____SuperProtoOf____Class2);Header.prototype.constructor=Header;Header.__superConstructor__=____Class2;function Header(){"use strict";if(____Class2!==null){____Class2.apply(this,arguments);}}
+var ____Class1a=React.Component;for(var ____Class1a____Key in ____Class1a){if(____Class1a.hasOwnProperty(____Class1a____Key)){Header[____Class1a____Key]=____Class1a[____Class1a____Key];}}var ____SuperProtoOf____Class1a=____Class1a===null?null:____Class1a.prototype;Header.prototype=Object.create(____SuperProtoOf____Class1a);Header.prototype.constructor=Header;Header.__superConstructor__=____Class1a;function Header(){"use strict";if(____Class1a!==null){____Class1a.apply(this,arguments);}}
+	Object.defineProperty(Header.prototype,"shouldComponentUpdate",{writable:true,configurable:true,value:function(nextProps) {"use strict";
+		if (nextProps.encounter.encdps === '---') {
+			return false;
+		}
+
+		return true;
+	}});
+
     Object.defineProperty(Header.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
         var encounter = this.props.encounter;
         var rdps = parseFloat(encounter.encdps);
@@ -122,7 +130,7 @@ Header.defaultProps = {
 };
 
 
-var ____Class3=React.Component;for(var ____Class3____Key in ____Class3){if(____Class3.hasOwnProperty(____Class3____Key)){Combatants[____Class3____Key]=____Class3[____Class3____Key];}}var ____SuperProtoOf____Class3=____Class3===null?null:____Class3.prototype;Combatants.prototype=Object.create(____SuperProtoOf____Class3);Combatants.prototype.constructor=Combatants;Combatants.__superConstructor__=____Class3;function Combatants(){"use strict";if(____Class3!==null){____Class3.apply(this,arguments);}}
+var ____Class1b=React.Component;for(var ____Class1b____Key in ____Class1b){if(____Class1b.hasOwnProperty(____Class1b____Key)){Combatants[____Class1b____Key]=____Class1b[____Class1b____Key];}}var ____SuperProtoOf____Class1b=____Class1b===null?null:____Class1b.prototype;Combatants.prototype=Object.create(____SuperProtoOf____Class1b);Combatants.prototype.constructor=Combatants;Combatants.__superConstructor__=____Class1b;function Combatants(){"use strict";if(____Class1b!==null){____Class1b.apply(this,arguments);}}
     Object.defineProperty(Combatants.prototype,"shouldComponentUpdate",{writable:true,configurable:true,value:function(nextProps) {"use strict";
         // if data is empty then don't re-render
         if (Object.getOwnPropertyNames(nextProps.data).length === 0) {
@@ -211,17 +219,17 @@ Combatants.defaultProps = {
     onClick:function() {}
 };
 
-var ____Class4=React.Component;for(var ____Class4____Key in ____Class4){if(____Class4.hasOwnProperty(____Class4____Key)){DamageMeter[____Class4____Key]=____Class4[____Class4____Key];}}var ____SuperProtoOf____Class4=____Class4===null?null:____Class4.prototype;DamageMeter.prototype=Object.create(____SuperProtoOf____Class4);DamageMeter.prototype.constructor=DamageMeter;DamageMeter.__superConstructor__=____Class4;
+var ____Class1c=React.Component;for(var ____Class1c____Key in ____Class1c){if(____Class1c.hasOwnProperty(____Class1c____Key)){DamageMeter[____Class1c____Key]=____Class1c[____Class1c____Key];}}var ____SuperProtoOf____Class1c=____Class1c===null?null:____Class1c.prototype;DamageMeter.prototype=Object.create(____SuperProtoOf____Class1c);DamageMeter.prototype.constructor=DamageMeter;DamageMeter.__superConstructor__=____Class1c;
     function DamageMeter(props) {"use strict";
-        ____Class4.call(this,props);
+        ____Class1c.call(this,props);
         this.state = {
             currentViewIndex: 0
         };
     }
 
 	Object.defineProperty(DamageMeter.prototype,"shouldComponentUpdate",{writable:true,configurable:true,value:function(nextProps, nextState) {"use strict";
+		return true;
 	}});
-
 
     Object.defineProperty(DamageMeter.prototype,"handleCombatRowClick",{writable:true,configurable:true,value:function(e) {"use strict";
     }});
@@ -260,6 +268,7 @@ var ____Class4=React.Component;for(var ____Class4____Key in ____Class4){if(____C
         }
 
         return (
+			this.props.parseData.Encounter.encdps === '---' ? React.createElement("h3", null, "Awaiting Data") :
             React.createElement("div", {
                 onClick: this.handleClick, 
                 className: 'damage-meter' + (!this.props.parseData.isActive ? ' inactive' : '') + (!this.props.noJobColors ? ' show-job-colors' : '')}, 
