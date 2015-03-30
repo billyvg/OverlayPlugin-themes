@@ -118,9 +118,11 @@ ul {
     font-weight: 400;
     margin-right: 4px;
     padding: 2px 4px;
+    position: relative;
 }
 .target-name:hover {
     box-shadow: inset 0 0 6px 3px #333, 0 1px 0 0 #000;
+    border-radius: 6px;
 }
 
 .duration {
@@ -154,10 +156,7 @@ li:last-child {
     bottom: 0;
     z-index: 10;
     line-height: 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    overflow: hidden;
 }
 .info {
     overflow: hidden;
@@ -165,6 +164,8 @@ li:last-child {
 }
 .row .stats {
     float: right;
+    margin-left: 4px;
+    white-space: nowrap;
 }
 .row .additional {
     margin-right: 4px;
@@ -242,7 +243,11 @@ li:last-child {
     text-transform: uppercase;
     opacity: 0.6;
 }
-
+.character-name {
+    padding-left: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .inactive .bar {
     background-color: #d8dadb;
