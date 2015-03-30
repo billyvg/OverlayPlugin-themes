@@ -20,6 +20,13 @@
             );
             //console.log('rendered in ' + (+new Date() - start) + 'ms');
         });
+        document.addEventListener("onOverlayStateUpdate", function (e) {
+            if (!e.detail.isLocked) {
+				document.documentElement.classList.add("resizable");
+            } else {
+				document.documentElement.classList.remove("resizable");
+            }
+        });
     </script>
 </head>
 <body>

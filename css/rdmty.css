@@ -1,11 +1,15 @@
 html {
-    background-image: url(../images/handle.png);
-    background-position: bottom right;
-    background-repeat: no-repeat;
     box-sizing: border-box;
     height: 100%;
     overflow: hidden;
 }
+
+.resizable {
+    background-image: url(../images/handle.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
 #container {
     font-family: Tahoma;
     font-size: 12px;
