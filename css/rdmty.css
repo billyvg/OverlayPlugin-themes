@@ -11,11 +11,10 @@ html {
 }
 
 #container {
-    font-family: Tahoma;
+    font-family: "Meiryo", Tahoma;
     font-size: 12px;
     color: rgb(232, 255, 254);
     background-color: rgba(0,0,0,0.3);
-    overflow-y: hidden;
 }
 
 #source {
@@ -55,13 +54,11 @@ ul {
 
     padding: 6px 6px 1px 6px;
     font-size: 12px;
-    overflow: hidden;
     -webkit-user-select: none;
 }
 .encounter-data {
     -webkit-user-select: initial;
     line-height: 20px;
-    overflow: hidden;
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
