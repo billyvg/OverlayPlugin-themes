@@ -8,6 +8,7 @@ html {
     background-image: url(../images/handle.png);
     background-position: bottom right;
     background-repeat: no-repeat;
+    /*background-color: rgba(0, 133, 0, 0.6);*/
 }
 
 #container {
@@ -15,6 +16,7 @@ html {
     font-size: 12px;
     color: rgb(232, 255, 254);
     background-color: rgba(0,0,0,0.3);
+    overflow-y: hidden;
 }
 
 #source {
@@ -54,11 +56,13 @@ ul {
 
     padding: 6px 6px 1px 6px;
     font-size: 12px;
+    overflow: hidden;
     -webkit-user-select: none;
 }
 .encounter-data {
     -webkit-user-select: initial;
     line-height: 20px;
+    overflow: hidden;
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -118,11 +122,9 @@ ul {
     font-weight: 400;
     margin-right: 4px;
     padding: 2px 4px;
-    position: relative;
 }
 .target-name:hover {
     box-shadow: inset 0 0 6px 3px #333, 0 1px 0 0 #000;
-    border-radius: 6px;
 }
 
 .duration {
@@ -156,7 +158,10 @@ li:last-child {
     bottom: 0;
     z-index: 10;
     line-height: 20px;
-    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .info {
     overflow: hidden;
@@ -164,8 +169,6 @@ li:last-child {
 }
 .row .stats {
     float: right;
-    margin-left: 4px;
-    white-space: nowrap;
 }
 .row .additional {
     margin-right: 4px;
@@ -243,11 +246,7 @@ li:last-child {
     text-transform: uppercase;
     opacity: 0.6;
 }
-.character-name {
-    padding-left: 2px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+
 
 .inactive .bar {
     background-color: #d8dadb;
@@ -281,19 +280,40 @@ li:last-child {
     border-bottom-color: #fff;
 }
 
+.texture {
+	position: absolute;
+}
+.texture.right {
+	right: 0;
+	bottom: 30px;
+}
+.texture.left {
+	left: 0;
+	bottom: 30px;
+}
+
+.texture.middle {
+	left: 110px;
+	bottom: 0;
+}
+
 .hidden {
-    display: none;
+    opacity: 0;
+}
+.resizable .hidden {
 }
 
-.dropdown-parent {
-    position: relative;
-}
-
-.dropdown-menu {
-    background-color: rgba(0, 0, 0, 0.7);
+.texture-container {
     position: absolute;
-    top: 20px;
-    left: 0px;
-    padding: 2px 4px;
-    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#spelltimer-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
