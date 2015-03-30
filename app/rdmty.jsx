@@ -29,7 +29,7 @@ class CombatantCompact extends React.Component {
 
     render() {
         //var width = parseInt(this.props.data.damage / this.props.encounterDamage * 100, 10) + '%';
-        var width = parseInt(this.props.total / this.props.max * 100, 10) + '%';
+        var width = Math.min(100, parseInt(this.props.total / this.props.max * 100, 10)) + '%';
 
         return (
             this.props.perSecond === '---' ? null :
