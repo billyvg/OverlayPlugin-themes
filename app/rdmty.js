@@ -40,20 +40,6 @@ var ____Class1W=React.Component;for(var ____Class1W____Key in ____Class1W){if(__
                     className: "bar", 
                     style: {width: width}}), 
                     React.createElement("div", {className: "text-overlay"}, 
-                        React.createElement("div", {className: "info"}, 
-                            React.createElement("span", {className: "job-icon"}, 
-                                React.createElement("img", {src: this.jobImage(this.props.job)})
-                            ), 
-                            React.createElement("span", {className: "rank"}, 
-                                this.props.rank, "."
-                            ), 
-                            React.createElement("span", {className: "character-name"}, 
-                                this.props.characterName
-                            ), 
-                            React.createElement("span", {className: "character-job"}, 
-                                this.props.job
-                            )
-                        ), 
                         React.createElement("div", {className: "stats"}, 
                             React.createElement("span", {className: "total"}, 
                                 this.props.totalFormatted
@@ -74,6 +60,20 @@ var ____Class1W=React.Component;for(var ____Class1W____Key in ____Class1W){if(__
                                 this.props.percentage
                             ), 
                             ")"
+                        ), 
+                        React.createElement("div", {className: "info"}, 
+                            React.createElement("span", {className: "job-icon"}, 
+                                React.createElement("img", {src: this.jobImage(this.props.job)})
+                            ), 
+                            React.createElement("span", {className: "rank"}, 
+                                this.props.rank, "."
+                            ), 
+                            React.createElement("span", {className: "character-name"}, 
+                                this.props.characterName
+                            ), 
+                            React.createElement("span", {className: "character-job"}, 
+                                this.props.job
+                            )
                         )
                     )
             )

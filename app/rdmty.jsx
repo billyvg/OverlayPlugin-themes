@@ -40,20 +40,6 @@ class CombatantCompact extends React.Component {
                     className='bar'
                     style={{width: width}} />
                     <div className="text-overlay">
-                        <div className="info">
-                            <span className='job-icon'>
-                                <img src={this.jobImage(this.props.job)} />
-                            </span>
-                            <span className="rank">
-                                {this.props.rank}.
-                            </span>
-                            <span className="character-name">
-                                {this.props.characterName}
-                            </span>
-                            <span className="character-job">
-                                {this.props.job}
-                            </span>
-                        </div>
                         <div className="stats">
                             <span className="total">
                                 {this.props.totalFormatted}
@@ -74,6 +60,20 @@ class CombatantCompact extends React.Component {
                                 {this.props.percentage}
                             </span>
                             )
+                        </div>
+                        <div className="info">
+                            <span className='job-icon'>
+                                <img src={this.jobImage(this.props.job)} />
+                            </span>
+                            <span className="rank">
+                                {this.props.rank}.
+                            </span>
+                            <span className="character-name">
+                                {this.props.characterName}
+                            </span>
+                            <span className="character-job">
+                                {this.props.job}
+                            </span>
                         </div>
                     </div>
             </li>
