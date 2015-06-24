@@ -6,11 +6,11 @@
     <style>
 .container {
 	border-style: solid;
-	border-width: 76px 104px 21px 57px;
-	-moz-border-image: url(images/overlay.png) 76 104 21 57 repeat;
-	-webkit-border-image: url(images/overlay.png) 76 104 21 57 repeat;
-	-o-border-image: url(images/overlay.png) 76 104 21 57 repeat;
-	border-image: url(images/overlay.png) 76 104 21 57 fill repeat;
+border-width: 67px 37px 18px 62px;
+-moz-border-image: url(images/overlay.png) 67 37 18 62 repeat;
+-webkit-border-image: url(images/overlay.png) 67 37 18 62 repeat;
+-o-border-image: url(images/overlay.png) 67 37 18 62 repeat;
+border-image: url(images/overlay.png) 67 37 18 62 fill repeat;
 }
 html {
 	/*background-image: url(images/handle.png);*/
@@ -48,15 +48,15 @@ html {
 ol {
 	list-style-type: none;
 	margin: 0;
-	padding: 3px;
+	padding: 5px;
 }
  li .encountertitle {
-    font-size: 16px;
+    font-size: 18px;
     text-shadow: inset 0px 1px 1px #000;
     color: #000;
     position: absolute;
     left: 38%;
-    top: 57px;
+    top: 51px;
 	
 }
 li .raiddps {
@@ -65,11 +65,11 @@ li .raiddps {
     width: 70px;
     vertical-align: middle;
     text-align: middle;
-    font-size: 20px;
+    font-size: 23px;
     color: #FFF;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95;
     letter-spacing: 7px;
-    top: 25px;
+    top: 18px;
     left: 41%;
 }
 li {
@@ -113,10 +113,10 @@ li .duration {
     display: block;
     vertical-align: bottom;
     float: right;
-    font-size: 16px;
+    font-size: 18px;
     text-shadow: inset 0px 1px 1px #4d4d4d;
     color: #000;
-    top: 57px;
+    top: 51px;
     right: 75px;
 }
 li .tohit {
@@ -290,7 +290,7 @@ width: 0px;
                     }
 					row.find('.tohit').text('ACC' + ' ' + combatant.tohit + '%');
                     row.find('.dps').text(combatant.encdps);
-					row.find('.job-icon').html('<img src="images/default/' + JobOrName(combatant).toLowerCase() + '.png">');
+					row.find('.job-icon').html('<img src="images/default/' + JobOrName(combatant) + '.png" onerror="$(this).attr(\'src\', \'images/error.png\');">');
                     row.find('.name').text(combatant.name);
                     row.find('.number').text(combatant['DAMAGE-k'] + 'k ' + '('+combatant['damage%'] +')');
 					row.find('.crithit').text('CRIT' + ' ' + combatant['crithit%']);
@@ -348,6 +348,22 @@ width: 0px;
 					{
 					row.find('.bar').css('background', 'rgba(79,114,255,1.00)');
 					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(79,114,255,0.20)');
+					row.find('.hps').text('HPS' + ' ' + combatant.enchps);				
+														}
+					else if(JobOrName(combatant) == 'Drk') //Darkknight//
+					{
+					row.find('.bar').css('background', 'rgba(150, 80, 30,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(179,0,0,0.70)');
+														}
+					else if(JobOrName(combatant) == 'Mch') //Machinist//
+					{
+					row.find('.bar').css('background', 'rgba(89, 168, 240,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(89, 168, 240,0.20)');			
+														}
+					else if(JobOrName(combatant) == 'Ast') //Astrologian//
+					{
+					row.find('.bar').css('background', 'rgba(218, 149, 94,1.00)');
+					row.find('.bar').css('-webkit-box-shadow', '0px 0px 6px 1px rgba(218, 149, 94,0.20)');
 					row.find('.hps').text('HPS' + ' ' + combatant.enchps);				
 														}
 					else if(JobOrName(combatant) == 'Mrd') //Marauder//
@@ -495,5 +511,4 @@ width: 0px;
     </div>
 </div>
 </body>
-<script src="testing.js"></script>
 </html>
