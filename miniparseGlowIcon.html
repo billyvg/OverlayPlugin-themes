@@ -87,6 +87,7 @@ td:last-child {
 #combatantTableBody .Gla td,
 #combatantTableBody .Pld td,
 #combatantTableBody .Mrd td,
+#combatantTableBody .Drk td,
 #combatantTableBody .War td {
 	color: #ffffff;
 	background-color: rgba(41,112,243,0.2);
@@ -95,6 +96,7 @@ td:last-child {
 
 #combatantTableBody .Cnj td,
 #combatantTableBody .Whm td,
+#combatantTableBody .Ast td,
 #combatantTableBody .Sch td {
 	color: #ffffff;
 	background-color: rgba(107,240,86,0.2);
@@ -112,7 +114,8 @@ td:last-child {
 #combatantTableBody .Acn td,
 #combatantTableBody .Smn td,
 #combatantTableBody .Thm td,
-#combatantTableBody .Blm td {
+#combatantTableBody .Blm td,
+#combatantTableBody .Mch td {
 	color: #ffffff;
 	background-color: rgba(200,3,8,0.2);
 	background-blend-mode: soft-light;
@@ -139,7 +142,7 @@ td:last-child {
         }
 
 </style>
-<script src="jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="lib/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script>
 
 		//
@@ -344,8 +347,8 @@ td:last-child {
                     		combatant.JobOrName = "choco";
                 		}
                 			
-                			var tableRow = newTableBody.insertRow(newTableBody.rows.length);
-                			for (var i = 0; i < bodyDefine.length; i++)
+						var tableRow = newTableBody.insertRow(newTableBody.rows.length);
+						for (var i = 0; i < bodyDefine.length; i++)
 				
 
 
