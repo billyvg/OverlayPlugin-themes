@@ -220,34 +220,34 @@ td:last-child {
 			}
 		}
 
-function dpsBarEffect(cell, combatant, index) {
-    var tank = ["Gla", "Pld", "Mrd", "War"]
-    var dps = ["Pgl", "Mnk", "Lnc", "Drg", "Arc", "Brd", "Rog", "Nin", "Acn", "Smn", "Thm", "Blm"]
-    var healer = ["Cnj", "Whm", "Sch"]
+		function dpsBarEffect(cell, combatant, index) {
+			var tank = ["Gla", "Pld", "Mrd", "War", "Drk"]
+			var dps = ["Pgl", "Mnk", "Lnc", "Drg", "Arc", "Brd", "Rog", "Nin", "Acn", "Smn", "Thm", "Blm", "Mch"]
+			var healer = ["Cnj", "Whm", "Sch", "Ast"]
 
-    if (index == 0 || typeof dpsBarEffect.topdeeps == 'undefined') {
-        dpsBarEffect.topdeeps = combatant["encdps"];
-    }
-    var deeps = combatant["encdps"];
+			if (index == 0 || typeof dpsBarEffect.topdeeps == 'undefined') {
+				dpsBarEffect.topdeeps = combatant["encdps"];
+			}
+			var deeps = combatant["encdps"];
 
-    // 色指定
-    var job = combatant["Job"];
-    if (dps.indexOf(job) > -1){
-        var color = "rgba(200,3,8,0.3)";
-    } else if (tank.indexOf(job) > -1){
-        var color = "rgba(41,112,243,0.3)";
-    } else if (healer.indexOf(job) > -1){
-        var color = "rgba(107,240,86,0.3)";
-    } else {
-        var color = "rgba(128,0,255,0.3)";
-    }
-    
-    var tableRow = cell.parentNode;
-    tableRow.style.background = "-webkit-gradient(linear, left top,right top, color-stop(0.95,"+ color + "), to(rgba(24,24,24,0.0)))";
-    tableRow.style.backgroundSize = (parseInt(deeps) * 100 / parseInt(dpsBarEffect.topdeeps)) + "% 100%";
-    tableRow.style.backgroundAttachment = "fixed";
-    tableRow.style.backgroundRepeat = "no-repeat";
-}
+			// 色指定
+			var job = combatant["Job"];
+			if (dps.indexOf(job) > -1){
+				var color = "rgba(200,3,8,0.3)";
+			} else if (tank.indexOf(job) > -1){
+				var color = "rgba(41,112,243,0.3)";
+			} else if (healer.indexOf(job) > -1){
+				var color = "rgba(107,240,86,0.3)";
+			} else {
+				var color = "rgba(128,0,255,0.3)";
+			}
+			
+			var tableRow = cell.parentNode;
+			tableRow.style.background = "-webkit-gradient(linear, left top,right top, color-stop(0.95,"+ color + "), to(rgba(24,24,24,0.0)))";
+			tableRow.style.backgroundSize = (parseInt(deeps) * 100 / parseInt(dpsBarEffect.topdeeps)) + "% 100%";
+			tableRow.style.backgroundAttachment = "fixed";
+			tableRow.style.backgroundRepeat = "no-repeat";
+		}
 
 
 
