@@ -227,6 +227,19 @@ li:last-child {
 .show-job-colors .mrd .bar, .show-job-colors .war .bar {
     background-color: #a91a16;
 }
+.show-job-colors .mrd .bar, .show-job-colors .war .bar {
+    background-color: #a91a16;
+}
+.show-job-colors .drk .bar {
+    background-color: #4a2829;
+}
+.show-job-colors .ast .bar {
+    background-color: #f6da6a;
+}
+.show-job-colors .mch .bar {
+    background-color: #6bcec2;
+}
+
 
 .job-icon {
     float: left;

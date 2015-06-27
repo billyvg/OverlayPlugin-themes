@@ -18,14 +18,13 @@ var formatNumber = (number) => {
 
     return number.toFixed(2);
 };
-
 class CombatantCompact extends React.Component {
     jobImage(job) {
         if (window.JSFIDDLE) {
             return window.GLOW_ICONS[job.toLowerCase()];
         }
 
-        return IMAGE_PATH + '/glow/' + job.toLowerCase() + '.png';
+        return IMAGE_PATH + '/default/' + job.toLowerCase() + '.png';
     }
 
     render() {
