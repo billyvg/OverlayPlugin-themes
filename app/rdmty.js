@@ -18,7 +18,7 @@ var formatNumber = function(number)  {
 
     return number.toFixed(2);
 };
-var ____ClassJ=React.Component;for(var ____ClassJ____Key in ____ClassJ){if(____ClassJ.hasOwnProperty(____ClassJ____Key)){CombatantCompact[____ClassJ____Key]=____ClassJ[____ClassJ____Key];}}var ____SuperProtoOf____ClassJ=____ClassJ===null?null:____ClassJ.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____ClassJ);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____ClassJ;function CombatantCompact(){"use strict";if(____ClassJ!==null){____ClassJ.apply(this,arguments);}}
+var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){CombatantCompact[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;CombatantCompact.prototype=Object.create(____SuperProtoOf____Class0);CombatantCompact.prototype.constructor=CombatantCompact;CombatantCompact.__superConstructor__=____Class0;function CombatantCompact(){"use strict";if(____Class0!==null){____Class0.apply(this,arguments);}}
     Object.defineProperty(CombatantCompact.prototype,"jobImage",{writable:true,configurable:true,value:function(job) {"use strict";
         if (window.JSFIDDLE) {
             return window.GLOW_ICONS[job.toLowerCase()];
@@ -84,7 +84,7 @@ CombatantCompact.defaultProps = {
     onClick:function() {}
 };
 
-var ____ClassK=React.Component;for(var ____ClassK____Key in ____ClassK){if(____ClassK.hasOwnProperty(____ClassK____Key)){ChartView[____ClassK____Key]=____ClassK[____ClassK____Key];}}var ____SuperProtoOf____ClassK=____ClassK===null?null:____ClassK.prototype;ChartView.prototype=Object.create(____SuperProtoOf____ClassK);ChartView.prototype.constructor=ChartView;ChartView.__superConstructor__=____ClassK;function ChartView(){"use strict";if(____ClassK!==null){____ClassK.apply(this,arguments);}}
+var ____Class1=React.Component;for(var ____Class1____Key in ____Class1){if(____Class1.hasOwnProperty(____Class1____Key)){ChartView[____Class1____Key]=____Class1[____Class1____Key];}}var ____SuperProtoOf____Class1=____Class1===null?null:____Class1.prototype;ChartView.prototype=Object.create(____SuperProtoOf____Class1);ChartView.prototype.constructor=ChartView;ChartView.__superConstructor__=____Class1;function ChartView(){"use strict";if(____Class1!==null){____Class1.apply(this,arguments);}}
     Object.defineProperty(ChartView.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
         return (
             React.createElement("div", {className: "chart-view"}
@@ -93,9 +93,9 @@ var ____ClassK=React.Component;for(var ____ClassK____Key in ____ClassK){if(____C
     }});
 
 
-var ____ClassL=React.Component;for(var ____ClassL____Key in ____ClassL){if(____ClassL.hasOwnProperty(____ClassL____Key)){Header[____ClassL____Key]=____ClassL[____ClassL____Key];}}var ____SuperProtoOf____ClassL=____ClassL===null?null:____ClassL.prototype;Header.prototype=Object.create(____SuperProtoOf____ClassL);Header.prototype.constructor=Header;Header.__superConstructor__=____ClassL;
+var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____Class2.hasOwnProperty(____Class2____Key)){Header[____Class2____Key]=____Class2[____Class2____Key];}}var ____SuperProtoOf____Class2=____Class2===null?null:____Class2.prototype;Header.prototype=Object.create(____SuperProtoOf____Class2);Header.prototype.constructor=Header;Header.__superConstructor__=____Class2;
     function Header(props) {"use strict";
-        ____ClassL.call(this,props);
+        ____Class2.call(this,props);
         this.state = {
             expanded: false,
             showEncountersList: false
@@ -242,7 +242,7 @@ Header.defaultProps = {
 };
 
 
-var ____ClassM=React.Component;for(var ____ClassM____Key in ____ClassM){if(____ClassM.hasOwnProperty(____ClassM____Key)){Combatants[____ClassM____Key]=____ClassM[____ClassM____Key];}}var ____SuperProtoOf____ClassM=____ClassM===null?null:____ClassM.prototype;Combatants.prototype=Object.create(____SuperProtoOf____ClassM);Combatants.prototype.constructor=Combatants;Combatants.__superConstructor__=____ClassM;function Combatants(){"use strict";if(____ClassM!==null){____ClassM.apply(this,arguments);}}
+var ____Class3=React.Component;for(var ____Class3____Key in ____Class3){if(____Class3.hasOwnProperty(____Class3____Key)){Combatants[____Class3____Key]=____Class3[____Class3____Key];}}var ____SuperProtoOf____Class3=____Class3===null?null:____Class3.prototype;Combatants.prototype=Object.create(____SuperProtoOf____Class3);Combatants.prototype.constructor=Combatants;Combatants.__superConstructor__=____Class3;function Combatants(){"use strict";if(____Class3!==null){____Class3.apply(this,arguments);}}
     Object.defineProperty(Combatants.prototype,"shouldComponentUpdate",{writable:true,configurable:true,value:function(nextProps) {"use strict";
         // if data is empty then don't re-render
         if (Object.getOwnPropertyNames(nextProps.data).length === 0) {
@@ -350,9 +350,9 @@ Combatants.defaultProps = {
     onClick:function() {}
 };
 
-var ____ClassN=React.Component;for(var ____ClassN____Key in ____ClassN){if(____ClassN.hasOwnProperty(____ClassN____Key)){DamageMeter[____ClassN____Key]=____ClassN[____ClassN____Key];}}var ____SuperProtoOf____ClassN=____ClassN===null?null:____ClassN.prototype;DamageMeter.prototype=Object.create(____SuperProtoOf____ClassN);DamageMeter.prototype.constructor=DamageMeter;DamageMeter.__superConstructor__=____ClassN;
+var ____Class4=React.Component;for(var ____Class4____Key in ____Class4){if(____Class4.hasOwnProperty(____Class4____Key)){DamageMeter[____Class4____Key]=____Class4[____Class4____Key];}}var ____SuperProtoOf____Class4=____Class4===null?null:____Class4.prototype;DamageMeter.prototype=Object.create(____SuperProtoOf____Class4);DamageMeter.prototype.constructor=DamageMeter;DamageMeter.__superConstructor__=____Class4;
     function DamageMeter(props) {"use strict";
-        ____ClassN.call(this,props);
+        ____Class4.call(this,props);
         this.state = {
             currentViewIndex: 0
         };
@@ -459,8 +459,6 @@ var ____ClassN=React.Component;for(var ____ClassN____Key in ____ClassN){if(____C
             }
         }
 
-        if (!this.encounterData) {
-        }
         return (
             React.createElement("div", {
                 onClick: this.handleClick, 
