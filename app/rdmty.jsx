@@ -314,7 +314,7 @@ class Combatants extends React.Component {
                         characterName: combatant.name,
                         total: combatant.damage,
                         totalFormatted: formatNumber(combatant.damage),
-                        perSecond: formatNumber(combatant.dps),
+                        perSecond: formatNumber(combatant.encdps),
                         percentage: combatant['damage%']
                     }
                 }

@@ -314,7 +314,7 @@ var ____Class3=React.Component;for(var ____Class3____Key in ____Class3){if(____C
                         characterName: combatant.name,
                         total: combatant.damage,
                         totalFormatted: formatNumber(combatant.damage),
-                        perSecond: formatNumber(combatant.dps),
+                        perSecond: formatNumber(combatant.encdps),
                         percentage: combatant['damage%']
                     }
                 }
