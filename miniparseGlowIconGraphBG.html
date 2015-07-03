@@ -23,6 +23,12 @@ html {
 	overflow: hidden;
 }
 
+#container {
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 #combatantTable {
 	width: 100%;
 	table-layout: fixed;
@@ -89,7 +95,6 @@ td:last-child {
 #combatantTableBody .Mrd td,
 #combatantTableBody .War td,
 #combatantTableBody .Drk td {
-
 	color: #ffffff;
 	background-color: rgba(41,112,243,0.2);
 	background-blend-mode: soft-light;
@@ -99,7 +104,6 @@ td:last-child {
 #combatantTableBody .Whm td,
 #combatantTableBody .Sch td,
 #combatantTableBody .Ast td {
-
 	color: #ffffff;
 	background-color: rgba(107,240,86,0.2);
 	background-blend-mode: soft-light;
@@ -118,7 +122,6 @@ td:last-child {
 #combatantTableBody .Thm td,
 #combatantTableBody .Blm td,
 #combatantTableBody .Mch td {
-
 	color: #ffffff;
 	background-color: rgba(200,3,8,0.2);
 	background-blend-mode: soft-light;
@@ -171,7 +174,7 @@ td:last-child {
 		//
 
 		// エンカウント情報の定義
-		var encounterDefine = "Time:<span class='enc'>{duration}</span> &nbsp;&nbsp;&nbsp;Total DPS:<span class='enc'>{dps}</span> &nbsp;&nbsp;&nbsp;Best Hit:<span class='enc'>{maxhit}</span>";
+		var encounterDefine = "Time:<span class='enc'>{duration}</span> &nbsp;&nbsp;&nbsp;Total DPS:<span class='enc'>{dps}</span> &nbsp;&nbsp;&nbsp;Top Hit:<span class='enc'>{maxhit}</span>";
 
 		// 上記のエンカウント情報を HTML として扱うなら true
 		var useHTMLEncounterDefine = true;
@@ -181,9 +184,8 @@ td:last-child {
 		[
 			{ text: "Job", width: "2em", align: "center" },
 			{ text: "Name", width: "9em", align: "center" },
-			{ text: "DPS", width: "4em", align: "center" },
-			{ text: "DMG", width: "3.3em", align: "right" },
-			{ text: "", width: "3em", align: "left" },
+			{ text: "DPS", width: "3em", align: "center" },
+			{ text: "HPS", width: "3.3em", align: "center" },
 			{ text: "Crit", width: "2.5em", align: "center" },
 			{ text: "Miss", width: "2.5em", align: "center" },
 			{ text: "Best Hit", width: "7.5em", align: "center" }
@@ -192,11 +194,10 @@ td:last-child {
 		// 表示するデータの定義
 		var bodyDefine =
 		[
-			{ html: "<img src='./images/glow/{JobOrName}.png' onerror='$(this).attr(\"src\", \"./images/error.png\");' style='width=60%;height:60%;' />", align: "center", effect: jobColorEffect },
+			{ html: "<img src='./images/glow/{JobOrName}.png' onerror='$(this).attr(\"src\", \"./images/error.png\");' style='width=60%;height:60%;' />", align: "center", effect: dpsBarEffect },
 			{ text: "{name}", width: "", align: "center",effect: myCharacterEffect },
 			{ text: "{encdps}", width: "", align: "center" },
-			{ text: "{damage}", width: "", align: "right" },
-			{ text: "({damage%})", width: "", align: "left" },
+			{ text: "{enchps}", width: "", align: "center" },
 			{ text: "{crithit%}", width: "", align: "center" },
 			{ text: "{misses}", width: "", align: "center", effect: redTextEffect },
 			{ text: "{maxhit}", width: "", align: "center", }
@@ -226,6 +227,36 @@ td:last-child {
 
 		function graphEffect(cell) {
 			$(cell).addClass("graphCell");
+		}
+
+
+		function dpsBarEffect(cell, combatant, index) {
+    		var tank = ["Gla", "Pld", "Mrd", "War", "Drk"]
+   		var dps = ["Pgl", "Mnk", "Lnc", "Drg", "Arc", "Brd", "Rog", "Nin", "Acn", "Smn", "Thm", "Blm", "Mch"]
+    		var healer = ["Cnj", "Whm", "Sch", "Ast"]
+
+    		if (index == 0 || typeof dpsBarEffect.topdeeps == 'undefined') {
+        		dpsBarEffect.topdeeps = combatant["encdps"];
+    		}
+    		var deeps = combatant["encdps"];
+
+    		// 色指定
+    		var job = combatant["Job"];
+    		if (dps.indexOf(job) > -1){
+    		    var color = "rgba(200,3,8,0.3)";
+    		} else if (tank.indexOf(job) > -1){
+    		    var color = "rgba(41,112,243,0.3)";
+    		} else if (healer.indexOf(job) > -1){
+    		    var color = "rgba(107,240,86,0.3)";
+    		} else {
+    		    var color = "rgba(128,0,255,0.3)";
+    		}
+    
+    		var tableRow = cell.parentNode;
+    		tableRow.style.background = "-webkit-gradient(linear, left top,right top, color-stop(0.95,"+ color + "), to(rgba(24,24,24,0.0)))";
+    		tableRow.style.backgroundSize = (parseInt(deeps) * 100 / parseInt(dpsBarEffect.topdeeps)) + "% 100%";
+    		tableRow.style.backgroundAttachment = "fixed";
+   		tableRow.style.backgroundRepeat = "no-repeat";
 		}
 
 		function graphRendering(table) {
@@ -443,6 +474,9 @@ td:last-child {
 </head>
 <body>
 
+<div id="container">
+
+	
 	<div id="encounter">
 		No data to show.
 		<!-- ここにエンカウント情報が入る -->
@@ -453,5 +487,6 @@ td:last-child {
 		<!-- ここに各キャラの情報が入る -->
 	</table>
 
+</div>
 </body>
 </html>

@@ -1,0 +1,421 @@
+﻿<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+
+    * {
+      /* フォント （一部のフォントは上手く適用されない） */
+      font-family: "Meiryo";
+      font-size: 12px;
+    }
+
+    body, html {
+      margin: 0;
+    }
+
+    html {
+      /* リサイズ用のハンドル
+       * リサイズができる場所はウィンドウ右下の16x16ピクセルの場所
+       * この部分が完全に透明だとマウス入力が透過してしまってサイズを変更できなくなる */
+      background-image: url(handle.png);
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      box-sizing: border-box;
+      height: 100%;
+      /* 外枠 */
+      /*border: 1px solid rgba(0,0,0,0.1);*/
+      /* はみ出た内容はスクロールバーを表示させずに隠す
+             * 今のところ、ブラウザへの入力はできないので表示させても無意味 */
+      overflow: hidden;
+      /* 背景色 */
+      background-color: transparent;
+    }
+
+    #container {
+      background: rgba(0,0,0,0.4);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    #target {
+      border-bottom: 1px solid #DED7BE;
+      color: #DED7BE;
+      text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+      font-weight: 300;
+      white-space: nowrap;
+      padding: 2px;
+    }
+
+    #target_name_plate {
+      width: 100%;
+      position: relative;
+      bottom: 0;
+      z-index: 2;
+    }
+
+    #target_hp_gauge {
+      position: absolute;
+      display: block;
+      bottom: 2px;
+      height: 2px;
+      /* background-color: rgba(81, 255, 0, 0.75); */ /* Apply Effect で設定するのでコメント */
+      z-index: 1;
+    }
+
+    .target_header {
+      color: #DED7BE;
+      text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+      font-weight: 300;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .target_body {
+      color: #E2EBF5;
+      text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+      font-weight: 300;
+      /* はみ出たテキストを「…」で省略する */
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    #enmityList {
+      margin: 1px 5px 1px 5px;
+      padding: 0 0 0 0;
+    }
+
+    .character {
+      float: left;
+      color: #E2EBF5;
+      text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+      font-weight: 300;
+    }
+
+    .enmity {
+      float: right;
+      color: #E2EBF5;
+      text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+      font-weight: 300;
+    }
+
+    .content {
+      position: relative;
+      bottom: 0;
+      z-index: 2;
+      clear: both;
+    }
+
+    .gauge {
+      position: absolute;
+      display: block;
+      bottom: -15px;
+      height: 3px;
+      background-color: rgba(101, 50, 50, 0.75);
+      z-index: 1;
+    }
+
+    .box {
+      position: relative;
+    }
+
+    /* TANK */
+    .PLD,
+    .WAR,
+    .MRD,
+    .GLD,
+    .DRK { background-color: rgba(52,67,150,0.75); }
+
+    /* HEALER */
+    .CNJ,
+    .WHM,
+    .SCH,
+    .AST { background-color: rgba(57,101,39,0.75); }
+
+    /* DPS */
+    .PGL,
+    .LNC,
+    .ARC,
+    .THM,
+    .MNK,
+    .DRG,
+    .BRD,
+    .BLM,
+    .ACN,
+    .SMN,
+    .ROG,
+    .NIN,
+    .MCH { background-color: rgba(101, 50, 50, 0.75); }
+
+	
+	
+    .UNKNOWN { background-color: rgba(211,211,211,0.75); }
+    .Pet { background-color: rgba(150,147,52,0.75); }
+	
+	
+	
+    .content .me {
+      color: #FFFF00;
+      text-shadow: -1px 0 2px #594709, 0 1px 2px #594709, 1px 0 2px #594709, 0 -1px 2px #594709;
+    }
+  </style>
+  <script>
+    //
+    // プラグイン側から以下のような ActXiv オブジェクトとしてデータが提供される
+    //
+    // ダミーデータ(デバッグ用)
+    var ActXivDebug = {
+      "Enmity": {
+        "Target": { 'Name': 'マンドラゴラ・プライム', 'HPPercent': 17.74, 'CurrentHP': 221004, 'MaxHP': 1245321, 'Distance': 3.02, 'EffectiveDistance': 2, 'HorizontalDistance': 2.32 },
+        // "Target": null,
+        "Entries": [
+          { "Name": 'Tomonori Tamagawa', "Enmity": 128923, 'EnmityString': '128,923', 'isMe': true, 'HateRate': 100,'JobName': 'WAR' },
+          { "Name": 'Tomonori Arakawa', "Enmity": 3845, 'EnmityString': '3,845', 'isMe': false, 'HateRate': 20, 'JobName': 'SCH' },
+          { "Name": 'Tomonori Tonegawa', "Enmity": 0, 'EnmityString': '0', 'isMe': false, 'HateRate': 00, 'JobName': 'WHM' }
+        ]
+      }
+    };
+
+    //
+    // プラグインから onOverlayDataUpdate イベントが発行されるので、それを受信することもできる
+    // イベントハンドラの第一引数の detail プロパティ内に上記のオブジェクトが入る
+    //
+
+    // ターゲット情報の定義
+    // テンプレート文字列
+    var targetDefine =
+        "<div class='box'>" +
+          "<div id='target_hp_gauge' style='width: {HPPercent}%'></div>" +
+          "<div id='target_name_plate'>" +
+            "<span class='target_header'>Target: </span> " +
+            "<span id='target_name' class='target_body'>{Name}</span>" +
+          "</div>" +
+        "</div>" +
+        "<div id='target_detail'>" +
+          "<span>HP: </span>" +
+          "<span class='target_body'>{HPPercent}% ({CurrentHP}/{MaxHP})</span>" +
+          "<div style='float: right'>" +
+            "<span>Distance: </span>" +
+            "<span class='target_body'>{Distance}m ({EffectiveDistance}m)</span>" +
+          "</div>" +
+        "</div>";
+
+    // なにもターゲットしてない時のテンプレート
+    var noTargetDefine =
+         "<div id='target_name_plate'>Target: <span class='target_body'>No target</span></div>";
+
+    // 関数にする場合のサンプル
+    var _targetDefine = function (target) {
+      if (target == null) {
+        return noTargetDefine;
+      }
+
+      // ターゲット全体の箱
+      var body = document.createElement('div');
+
+      // ターゲット名の箱
+      var box = document.createElement('div');
+      box.classList.add('box');
+      var target_info = document.createElement('div');
+      target_info.id = 'target_name_plate';
+
+      // HPバー
+      var gauge = document.createElement('div');
+      gauge.id = 'target_hp_gauge';
+      gauge.style.width = target.HPPercent + "%";
+      box.appendChild(gauge);
+
+      // ヘッダ
+      var span = document.createElement('span');
+      span.classList.add('target_header');
+      span.textContent = "ターゲット: ";
+      target_info.appendChild(span);
+
+      // 名前
+      span = document.createElement('span');
+      span.classList.add('target_body');
+      span.textContent = target.Name;
+      target_info.appendChild(span);
+
+      box.appendChild(target_info);
+      body.appendChild(box);
+
+      
+      // ターゲット詳細行
+      var detail = document.createElement('div');
+      detail.id = 'target_detail';
+
+      // HP:
+      span = document.createElement('span');
+      span.textContent = "HP: ";
+      detail.appendChild(span);
+
+      // HP value
+      span = document.createElement('span');
+      span.classList.add('target_body');
+      span.textContent = target.HPPercent + "% (" + target.CurrentHP + "/" + target.MaxHP + ")";
+      detail.appendChild(span);
+
+      // 距離: (右寄せ)
+      div = document.createElement('div');
+      div.style.float = 'right';
+      span = document.createElement('span');
+      span.classList.add('target_header');
+      span.textContent = "距離: ";
+      div.appendChild(span);
+
+      // 距離 value
+      span = document.createElement('span');
+      span.classList.add('target_body');
+      span.textContent = target.Distance + "m (" + target.EffectiveDistance + "m)";
+      div.appendChild(span);
+
+      detail.appendChild(div);
+
+      body.appendChild(detail);
+
+      return body.innerHTML;
+    }
+
+
+    // 上記のターゲット情報を HTML として扱うなら true
+    var useHTMLTargetDefine = true;
+
+    // 最後の装飾処理を適当に定義する 
+    var applyEffect = function (data) {
+       if (data.Enmity.Target != null) {
+         // HPバーの色を変えるとか
+         var hp = data.Enmity.Target.HPPercent;
+         var element = document.getElementById('target_hp_gauge');
+         if (hp < 25) {
+           element.style.backgroundColor = 'rgba(255, 45, 45, 0.75)';
+         } else if (hp < 50) {
+           element.style.backgroundColor = 'rgba(239, 151, 43, 0.75)';
+         } else if (hp < 75) {
+           element.style.backgroundColor = 'rgba(201, 204, 36, 0.75)';
+         } else {
+           element.style.backgroundColor = 'rgba(38, 214, 70, 0.75)';
+         }
+       }
+    };
+
+    // 表示するデータの定義
+    var bodyDefine = function (e, index) {
+      var rank = index + 1;
+      var content = document.createElement('div');
+      var name = document.createElement('span');
+      var enmity = document.createElement('span');
+      content.classList.add('content');
+      name.classList.add('character');
+      enmity.classList.add('enmity');
+      if (e.isMe == true) {
+        name.classList.add('me');
+        enmity.classList.add('me');
+        name.innerText = rank + '. YOU'; // たとえば自分をYOUに変えてみる。
+      } else {
+        name.innerText = rank + '. ' + e.Name;
+      }
+      enmity.innerText = e.EnmityString;
+      content.appendChild(name);
+      content.appendChild(enmity);
+      return content;
+    };
+    //
+    // 以下表示用スクリプト
+    //
+
+    // onOverlayDataUpdate イベントを購読
+    document.addEventListener("onOverlayDataUpdate", function (e) {
+      update(e.detail);
+    });
+
+    // 表示要素の更新
+    function update(data) {
+      updateTarget(data);
+      updateEnmityList(data);
+      applyEffect(data);
+    }
+
+    // ターゲット情報を更新する
+    function updateTarget(data) {
+      // 要素取得
+      var targetElem = document.getElementById("target");
+
+      // テキスト取得
+      var elementText;
+      if (typeof targetDefine === 'function') {
+        elementText = targetDefine(data.Enmity.Target);
+        if (typeof elementText !== 'string') {
+          console.log("updateTarget: 'targetDefine' is declared as function but not returns a value as string.");
+          return;
+        }
+      } else if (typeof targetDefine === 'string') {
+        if (data.Enmity.Target == null) {
+          elementText = noTargetDefine;
+        } else {
+          elementText = targetDefine.replace(/{(.+?)}/g, function (_, key) { return key in data.Enmity.Target ? data.Enmity.Target[key] : ""; });
+        }
+
+      } else {
+        console.log("updateTarget: 'targetDefine' should be string or function that returns string.");
+        return;
+      }
+      // テキスト設定
+      if (!useHTMLTargetDefine) {
+        var hoge = data.Enmity.Target;
+        targetElem.innerText = elementText;
+      } else {
+        targetElem.innerHTML = elementText;
+      }
+    }
+
+    // プレイヤーリストを更新する
+    function updateEnmityList(data) {
+      // 要素取得＆作成
+      var body = document.getElementById('enmityList');
+      body.innerHTML = '';
+
+      // List の内容を作成
+      data.Enmity.Entries.forEach(function(entry, index, array) {
+        var box = document.createElement('div');
+        var graph = document.createElement('div');
+        box.classList.add('box');
+        graph.classList.add(entry.JobName);
+        graph.classList.add('gauge');
+        graph.style.width = "" + entry.HateRate + "%";
+        if (entry.isMe == true) {
+          graph.classList.add('me');
+        }
+        if (entry.isPet == true) {
+          graph.classList.add('Pet');
+        }
+        if (typeof (bodyDefine) == 'string') {
+          var content = document.createElement('div');
+          // クラス
+          content.classList.add('content');
+          content.innerHTML = bodyDefine.replace(/{(.+?)}/g, function (_, key) { return key in entry ? entry[key] : ""; });
+          box.appendChild(content);
+        } else {
+          content = bodyDefine(entry, index);
+          box.appendChild(content);
+        }
+        box.appendChild(graph);
+        body.appendChild(box);
+      });
+    }
+  </script>
+</head>
+<body>
+<div id="container">
+  <div id="target">
+    No data to show.
+    <!-- ここにターゲット情報が入る -->
+  </div>
+
+  <div id="enmityList">
+    <!-- ここに敵視のエントリの情報が入る -->
+  </div>
+</div>
+</body>
+</html>

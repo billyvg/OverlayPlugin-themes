@@ -23,6 +23,14 @@ html {
 	overflow: hidden;
 }
 
+
+#container {
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
 #combatantTable {
 	width: 100%;
 	table-layout: fixed;
@@ -118,7 +126,6 @@ td:last-child {
 #combatantTableBody .Thm td,
 #combatantTableBody .Blm td,
 #combatantTableBody .Mch td {
-
 	color: #ffffff;
 	background-color: rgba(200,3,8,0.2);
 	background-blend-mode: soft-light;
@@ -132,7 +139,6 @@ td:last-child {
 	background-size: 100% 100%, 100% 100%;
 }
 
-
  .enc{
             color: #E2EBF5;
             text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
@@ -143,6 +149,9 @@ td:last-child {
             white-space: nowrap;
             text-overflow: ellipsis;
         }
+         
+
+
 
 </style>
 <script src="./lib/jquery-2.1.1.min.js" type="text/javascript"></script>
@@ -175,13 +184,12 @@ td:last-child {
 
 		// 上記のエンカウント情報を HTML として扱うなら true
 		var useHTMLEncounterDefine = true;
-
 		// ヘッダの定義
 		var headerDefine =
 		[
 			{ text: "Job", width: "2em", align: "center" },
-			{ text: "Name", width: "9em", align: "center" },
-			{ text: "DPS", width: "4em", align: "center" },
+			{ text: "Name", width: "7em", align: "center" },
+			{ text: "DPS", width: "4.5em", align: "center" },
 			{ text: "DMG", width: "3.3em", align: "right" },
 			{ text: "", width: "3em", align: "left" },
 			{ text: "Crit", width: "2.5em", align: "center" },
@@ -192,7 +200,7 @@ td:last-child {
 		// 表示するデータの定義
 		var bodyDefine =
 		[
-			{ html: "<img src='./images/glow/{JobOrName}.png' onerror='$(this).attr(\"src\", \"./images/error.png\");' style='width=60%;height:60%;' />", align: "center", effect: jobColorEffect },
+			{ text: "{Job}", width: "", align: "center", effect: jobColorEffect },
 			{ text: "{name}", width: "", align: "center",effect: myCharacterEffect },
 			{ text: "{encdps}", width: "", align: "center" },
 			{ text: "{damage}", width: "", align: "right" },
@@ -332,27 +340,37 @@ td:last-child {
 			var combatantIndex = 0;
 			for (var combatantName in data.Combatant) {
 				var combatant = data.Combatant[combatantName];
-				 combatant.JobOrName = combatant.Job || combatantName;
-                		var egiSearch = combatant.JobOrName.indexOf("-Egi (");
-                		if (egiSearch != -1) {
-                    		combatant.JobOrName = combatant.JobOrName.substring(0, egiSearch);
-                		}
-                		else if (combatant.JobOrName.indexOf("Eos (") == 0) {
-                    		combatant.JobOrName = "Eos";
-                		}
-                		else if (combatant.JobOrName.indexOf("Selene (") == 0) {
-                    		combatant.JobOrName = "Selene";
-                		}
-                		else if (combatant.JobOrName.indexOf("Carbuncle (") != -1) {
-                    		// currently no carbuncle pics
-                		}
-                		else if (combatant.JobOrName.indexOf(" (") != -1) {
-                    		combatant.JobOrName = "choco";
-                		}
-                			
+				var tableRow = newTableBody.insertRow(newTableBody.rows.length);
+				for (var i = 0; i < bodyDefine.length; i++)
+				//ペットのジョブ画像読み込み用の設定
+                		if (combatantName.search("エオス") != -1) {
+                  		 var combatantName = 'Eos';
+                  		 }
+                　		 if (combatantName.search("ガルーダ") != -1) {
+                 		  var combatantName = 'Garuda';
+                 		  }
+                 		  if (combatantName.search("タイタン") != -1) {
+                		   var combatantName = 'Titan';
+                		   }
+                		   if (combatantName.search("イフリート") != -1) {
+              	 		    var combatantName = 'Ifrit';
+              			     }
+              			     if (combatantName.search("セレネ") != -1) {
+             			      var combatantName = 'Selene';
+               			    }
+              			     if (combatantName.search("エメラルド") != -1) {
+             			      var combatantName = 'emerald';
+                   			}
+                   			if (combatantName.search("トパーズ") != -1) {
+                   			var combatantName = 'topaz';
+                   			}
+                   			if (combatantName.search(/\)$/) != -1) {
+                   			var combatantName = 'Chocobo';
+                   			}
+                			combatant.JobOrName = combatant.Job || combatantName;
                 			var tableRow = newTableBody.insertRow(newTableBody.rows.length);
                 			for (var i = 0; i < bodyDefine.length; i++)
-				
+
 
 
 
@@ -443,6 +461,9 @@ td:last-child {
 </head>
 <body>
 
+<div id="container">
+
+	
 	<div id="encounter">
 		No data to show.
 		<!-- ここにエンカウント情報が入る -->
@@ -452,6 +473,8 @@ td:last-child {
 		<!-- ここにヘッダが入る -->
 		<!-- ここに各キャラの情報が入る -->
 	</table>
+
+</div>
 
 </body>
 </html>

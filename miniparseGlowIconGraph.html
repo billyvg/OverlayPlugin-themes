@@ -87,8 +87,8 @@ td:last-child {
 #combatantTableBody .Gla td,
 #combatantTableBody .Pld td,
 #combatantTableBody .Mrd td,
-#combatantTableBody .Drk td,
-#combatantTableBody .War td {
+#combatantTableBody .War td,
+#combatantTableBody .Drk td {
 	color: #ffffff;
 	background-color: rgba(41,112,243,0.2);
 	background-blend-mode: soft-light;
@@ -96,8 +96,8 @@ td:last-child {
 
 #combatantTableBody .Cnj td,
 #combatantTableBody .Whm td,
-#combatantTableBody .Ast td,
-#combatantTableBody .Sch td {
+#combatantTableBody .Sch td,
+#combatantTableBody .Ast td {
 	color: #ffffff;
 	background-color: rgba(107,240,86,0.2);
 	background-blend-mode: soft-light;
@@ -114,8 +114,8 @@ td:last-child {
 #combatantTableBody .Acn td,
 #combatantTableBody .Smn td,
 #combatantTableBody .Thm td,
-#combatantTableBody .Mch td,
-#combatantTableBody .Blm td {
+#combatantTableBody .Blm td,
+#combatantTableBody .Mch td {
 	color: #ffffff;
 	background-color: rgba(200,3,8,0.2);
 	background-blend-mode: soft-light;
@@ -142,7 +142,7 @@ td:last-child {
         }
 
 </style>
-<script src="lib/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="./lib/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script>
 
 		//
@@ -168,7 +168,7 @@ td:last-child {
 		//
 
 		// エンカウント情報の定義
-		var encounterDefine = "Time:<span class='enc'>{duration}</span> &nbsp;&nbsp;&nbsp;Total DPS:<span class='enc'>{dps}</span> &nbsp;&nbsp;&nbsp;Best Hit:<span class='enc'>{maxhit}</span>";
+		var encounterDefine = "Time:<span class='enc'>{duration}</span> &nbsp;&nbsp;&nbsp;Total DPS:<span class='enc'>{dps}</span> &nbsp;&nbsp;&nbsp;Top Hit:<span class='enc'>{maxhit}</span>";
 
 		// 上記のエンカウント情報を HTML として扱うなら true
 		var useHTMLEncounterDefine = true;
@@ -178,25 +178,23 @@ td:last-child {
 		[
 			{ text: "Job", width: "2em", align: "center" },
 			{ text: "Name", width: "9em", align: "center" },
-			{ text: "DPS", width: "4em", align: "center" },
-			{ text: "DMG", width: "3.3em", align: "right" },
-			{ text: "", width: "3em", align: "left" },
+			{ text: "DPS", width: "3em", align: "center" },
+			{ text: "HPS", width: "3.3em", align: "center" },
 			{ text: "Crit", width: "2.5em", align: "center" },
 			{ text: "Miss", width: "2.5em", align: "center" },
-			{ text: "Death", width: "2.5em", align: "center" }
+			{ text: "Best Hit", width: "7.5em", align: "center" }
 		];
 
 		// 表示するデータの定義
 		var bodyDefine =
 		[
-			{ html: "<img src='./images/glow/{JobOrName}.png' style='width=60%;height:60%;' />", align: "center", effect: dpsBarEffect },
+			{ html: "<img src='./images/glow/{JobOrName}.png' onerror='$(this).attr(\"src\", \"./images/error.png\");' style='width=60%;height:60%;' />", align: "center", effect: dpsBarEffect },
 			{ text: "{name}", width: "", align: "center",effect: myCharacterEffect },
 			{ text: "{encdps}", width: "", align: "center" },
-			{ text: "{damage}", width: "", align: "right" },
-			{ text: "({damage%})", width: "", align: "left" },
+			{ text: "{enchps}", width: "", align: "center" },
 			{ text: "{crithit%}", width: "", align: "center" },
 			{ text: "{misses}", width: "", align: "center", effect: redTextEffect },
-			{ text: "{deaths}", width: "", align: "center", effect: redTextEffect }
+			{ text: "{maxhit}", width: "", align: "center", }
 		];
 
 		function myCharacterEffect(cell, combatant, index) {
@@ -228,7 +226,7 @@ td:last-child {
 
 		function dpsBarEffect(cell, combatant, index) {
     		var tank = ["Gla", "Pld", "Mrd", "War", "Drk"]
-			var dps = ["Pgl", "Mnk", "Lnc", "Drg", "Arc", "Brd", "Rog", "Nin", "Acn", "Smn", "Thm", "Blm", "Mch"]
+   		var dps = ["Pgl", "Mnk", "Lnc", "Drg", "Arc", "Brd", "Rog", "Nin", "Acn", "Smn", "Thm", "Blm", "Mch"]
     		var healer = ["Cnj", "Whm", "Sch", "Ast"]
 
     		if (index == 0 || typeof dpsBarEffect.topdeeps == 'undefined') {
