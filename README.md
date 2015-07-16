@@ -38,6 +38,9 @@ Tanking")
 ### tristoune
 ![tristoune](/screenshots/tristoune_miniparse.jpg?raw=true "tristoune")
 
+### Vertigo
+![miniparseVertigo](/screenshots/miniparseVertigo.jpg?raw=true "miniparseVertigo")
+
 ## Contributing Your Own Layouts
 
 ### Naming
