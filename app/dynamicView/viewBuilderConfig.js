@@ -68,6 +68,7 @@ var enableDynamicSort = false,
                 { text: "HPS", width: "3%", align: "left", span: 2 },
                 { text: "Crit %", width: "2%", align: "left" },
                 { text: "OverH %", width: "2%", align: "left" },
+                { text: "Actual", width: "2.5%", align: "left" },
                 { text: "Max Heal", width: "4%", align: "left"}
             ],
             bodyDef: [
@@ -75,6 +76,7 @@ var enableDynamicSort = false,
                 { text: "{0}", options: [combatantOptions.HEALED_PERCENT], width: "1.5%", align: "left"},
                 { text: "{0}", options: [combatantOptions.CRITICAL_HEALS_PERCENTAGE], width: "2%", align: "left" },
                 { text: "{0}", options: [combatantOptions.OVERHEAL_PERCENT], width: "2%", align: "left" },
+                { text: "{0}", options: [combatantOptions.CUSTOM_ACTUAL_HEALING], width: "2.5%", align: "left"},
                 { text: "{0}", options: [combatantOptions.MAX_HEAL], width: "4%", align: "left"}
             ],
             encounterDef: {
