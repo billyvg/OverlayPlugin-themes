@@ -1,0 +1,69 @@
+<!--
+    Dynamic View
+    By: Sinistral Revicane of Faerie
+
+    For configuration options, please see app/dynamicView/viewBuilderConfig.js
+
+    Coming Soon:
+        Dynamic Sorting
+        Resizing
+        More cleanup
+        Changing Infinity to 0
+        Better View Menu
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/dynamicView.css">
+    <script src="app/config.js"></script>
+    <script src="app/dynamicView/viewBuilderConfig.js"></script>
+    <script src="app/dynamicView/viewBuilder.js"></script>
+    <script>
+        document.addEventListener("onOverlayDataUpdate", function (e) {
+            var data;
+            //Check for activity, no point in doing all the processing if nothing relevant has changed.
+            inactivityTracker.update(e.detail);
+
+            if(inactivityTracker.getIsActive())
+            {
+                viewBuilder.update(attachCustomOptions(e.detail));
+            }
+        });
+
+        document.addEventListener("onOverlayStateUpdate", function (e) {
+            if (!e.detail.isLocked) {
+                displayResizeHandle();
+            } else {
+                hideResizeHandle();
+            }
+        });
+
+        function displayResizeHandle() {
+            document.documentElement.classList.add("resizeHandle");
+        }
+
+        function hideResizeHandle() {
+            document.documentElement.classList.remove("resizeHandle");
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            viewBuilder.init();
+        }, false);
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="views">
+
+        </div>
+        <div id="encounter">
+            <span id="encounterData" style="color:white;">No data to show.</span>
+        </div>
+        <table id="combatantTable">
+
+        </table>
+    </div>
+</body>
+</html>
