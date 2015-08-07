@@ -1,0 +1,58 @@
+* 
+{
+    font-family: "Meiryo";
+    font-size: 12px;
+}
+
+body, html 
+{
+    margin: 0;
+}
+
+html 
+{
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.resizeHandle 
+{
+    background-image: url(images/handle.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+#combatantTable 
+{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#combatantTableBody * 
+{
+    color: #E2EBF5;
+    text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+    font-weight: 300;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#encounter,
+#combatantTableHeader *,
+.viewOption
+{
+    color: #DED7BE;
+    text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+#combatantTableHeader tr 
+{
+    border-bottom: 1px solid #DED7BE;
+}
