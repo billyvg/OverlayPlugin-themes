@@ -130,12 +130,12 @@ var encounterOptions = {
         DAMAGE_ROUNDED_MILLIONS: "DAMAGE-m",
         //Percentage of overall damage this player contributed.
         DAMAGE_PERCENT: "damage%",
-        //DPS done by entity. Seems identical to encdps
-        DPS: "dps",
-        //DPS done by entity, rounded to whole number. Seems identical to ENCDPS
-        DPS_ROUNDED: "DPS",
-        //Thousands of DPS done by entity. Seems identical to ENCDPS-k
-        DPS_ROUNDED_THOUSANDS: "DPS-k",
+        //DPS done by entity. Seems identical to dps
+        DPS: "encdps",
+        //DPS done by entity, rounded to whole number. Seems identical to DPS
+        DPS_ROUNDED: "ENCDPS",
+        //Thousands of DPS done by entity. Seems identical to DPS-k
+        DPS_ROUNDED_THOUSANDS: "ENCDPS-k",
         //Number of landed hits done by entity.
         HITS: "hits",
         //Number of critical hits done by entity.
@@ -161,12 +161,12 @@ var encounterOptions = {
         HEALED: "healed",
         //Percentage of overall attempted healing this player contributed.
         HEALED_PERCENT: "healed%",
-        //The total HPS attempted to be performed by all players and pets parsed. Seems identical to enchps
-        HPS: "hps",
-        //The total HPS attempted to be performed by all players and pets parsed, rounded to whole number. Seems identical to ENCHPS
-        HPS_ROUNDED: "HPS",
-        //The total HPS in thousands attempted to be performed by all players and pets parsed. Seems identical to ENCHPS-k
-        HPS_ROUNDED_THOUSANDS: "HPS-k",
+        //The total HPS attempted to be performed by all players and pets parsed.
+        HPS: "enchps",
+        //The total HPS attempted to be performed by all players and pets parsed, rounded to whole number.
+        HPS_ROUNDED: "ENCHPS",
+        //The total HPS in thousands attempted to be performed by all players and pets parsed. 
+        HPS_ROUNDED_THOUSANDS: "ENCHPS-k",
         //The total critical heals performed by all players and pets parsed.
         CRITICAL_HEALS: "critheals",
         //The total critical heal rate performed by all players and pets parsed.
