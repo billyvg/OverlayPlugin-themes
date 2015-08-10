@@ -197,7 +197,7 @@ viewBuilder = (function(){
             tempSortField = currentData.Combatant[combatantName][dynamicViewList[currentView].sortDef];
             percentIndex = tempSortField.indexOf("%");
 
-            combatantEntry.sortField = parseFloat( percentIndex === -1 ? tempSortField : tempSortField.substring(0, percentIndex);
+            combatantEntry.sortField = parseFloat(percentIndex === -1 ? tempSortField : tempSortField.substring(0, percentIndex));
 
             combatantArray.push(combatantEntry);
         }
