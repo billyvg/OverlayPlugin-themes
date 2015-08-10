@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link href="css/Torgan.MiniParse.css" rel="stylesheet" type="text/css" />
+<style>
+#dpsMeterHeader { border: 0; }
+</style>
+<script type="text/javascript" src="app/Torgan.MiniParse.js"></script>
+<script>
+// Party members display type
+// FN => Full Name
+// S  => Surname
+// SA => Surname Abbreviated
+// F  => Forename
+// FA => Forename Abbreviated
+nameDisplayType = "SA";
+
+// Your display name. Leave blank for default value.
+displayName = "";
+
+maxCombatantsShown = 9;
+
+showDpsBar = true;
+
+
+
+
+
+
+
+useHTMLEncounterDefine = true;
+headerDefine = [];
+var viewModes = {
+    damage: {
+        encounter: "<div class=\"rdps\">Raid DPS: <span>{ENCDPS}</span></div><div class=\"time\">Time: <span>{duration}</span></div>",
+        body: [
+            { html: "{icon}", class: "icon" },
+            { text: "{name}", class: "name" },
+            { text: "{crithit%}", class: "crit" },
+            { text: "{ENCDPS}", class: "dps" },
+            { text: "{misses}", class: "miss", autohide: true }
+        ],
+    },
+    healing: {
+        encounter: "<div class=\"rdps\">Raid HPS: <span>{ENCHPS}</span></div><div class=\"time\">Time: <span>{duration}</span></div>",
+        body: [
+            { html: "{icon}", class: "icon" },
+            { text: "{name}", class: "name" },
+            { text: "{critheal%}", class: "crit" },
+            { text: "{ENCHPS}", class: "dps" },
+            { text: "{OverHealPct}", class: "oheal", autohide: true }
+        ]
+    },
+    tanking: {
+        encounter: "<div class=\"rdps\">Raid DTPS: <span>{ENCDTPS}</span></div><div class=\"time\">Time: <span>{duration}</span></div>",
+        body: [
+            { html: "{icon}", class: "icon" },
+            { text: "{name}", class: "name" },
+            { text: "{ParryPct}", class: "crit" },
+            { text: "{ENCDTPS}", class: "dps" },
+            { text: "{BlockPct}", class: "block", autohide: true }
+        ]
+    }
+};
+
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="encounter" class="encounter">
+            No data to show.
+            <!-- ここにエンカウント情報が入る -->
+        </div>
+        <div id="dpsMeter" class="dpsMeter">
+            <div id="dpsMeterHeader" class="dpsMeterHeader"></div>
+            <div id="dpsMeterBody" class="dpsMeterBody"></div>
+        </div>
+        <ul class="viewModes"><li onclick="setMode('damage');" class="damage"></li><li onclick="setMode('healing');" class="healing"></li><li onclick="setMode('tanking');" class="tanking"></li></ul>
+    </div>
+<script>
+var encounter = document.getElementById("encounter"),
+    dpsMeter = document.getElementById("dpsMeter"),
+    dpsMeterHeader = document.getElementById("dpsMeterHeader"),
+    dpsMeterBody = document.getElementById("dpsMeterBody");
+</script>
+<!--<script type="text/javascript" src="testing.js"></script>-->
+</body>
+</html>
