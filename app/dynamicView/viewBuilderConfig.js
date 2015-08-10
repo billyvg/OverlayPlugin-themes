@@ -10,8 +10,9 @@
 
     If you want to edit encounterDef, make sure you use encounterOptions instead.
 
-
     You can also add entirely new views. Just follow the structure of the ones given. The view builder will pick up the changes and add it as an option.
+
+    To change how each view is ranked, you can edit sortDef. Just specify the field you wish to sort by. Currently, sortDef only supports numeric values, and DESC sorting. 
 
 */
 

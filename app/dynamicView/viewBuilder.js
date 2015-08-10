@@ -186,13 +186,18 @@ viewBuilder = (function(){
     {
         var combatantArray = [],
             combatantEntry,
-            sortedCombatant = {};
+            sortedCombatant = {},
+            tempSortField,
+            percentIndex;
 
         for(var combatantName in currentData.Combatant)
         {
             combatantEntry = {};
             combatantEntry[combatantOptions.NAME] = combatantName;
-            combatantEntry.sortField = parseFloat(currentData.Combatant[combatantName][dynamicViewList[currentView].sortDef]);
+            tempSortField = currentData.Combatant[combatantName][dynamicViewList[currentView].sortDef];
+            percentIndex = tempSortField.indexOf("%");
+
+            combatantEntry.sortField = parseFloat( percentIndex === -1 ? tempSortField : tempSortField.substring(0, percentIndex);
 
             combatantArray.push(combatantEntry);
         }
@@ -202,12 +207,12 @@ viewBuilder = (function(){
 
     function sortCombatants(a, b)
     {
-        if(a.sortField == NaN)
+        if(a.sortField === NaN)
         {
             return 1;
         }
 
-        if(b.sortField == NaN)
+        if(b.sortField === NaN)
         {
             return -1;
         }
