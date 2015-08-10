@@ -161,12 +161,12 @@ var encounterOptions = {
         HEALED: "healed",
         //Percentage of overall attempted healing this player contributed.
         HEALED_PERCENT: "healed%",
-        //The total HPS attempted to be performed by all players and pets parsed.
-        HPS: "enchps",
-        //The total HPS attempted to be performed by all players and pets parsed, rounded to whole number.
-        HPS_ROUNDED: "ENCHPS",
-        //The total HPS in thousands attempted to be performed by all players and pets parsed.
-        HPS_ROUNDED_THOUSANDS: "ENCHPS-k",
+        //The total HPS attempted to be performed by all players and pets parsed. Seems identical to enchps
+        HPS: "hps",
+        //The total HPS attempted to be performed by all players and pets parsed, rounded to whole number. Seems identical to ENCHPS
+        HPS_ROUNDED: "HPS",
+        //The total HPS in thousands attempted to be performed by all players and pets parsed. Seems identical to ENCHPS-k
+        HPS_ROUNDED_THOUSANDS: "HPS-k",
         //The total critical heals performed by all players and pets parsed.
         CRITICAL_HEALS: "critheals",
         //The total critical heal rate performed by all players and pets parsed.

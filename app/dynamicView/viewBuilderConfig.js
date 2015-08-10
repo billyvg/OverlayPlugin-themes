@@ -16,9 +16,9 @@
 */
 
     /*
-        Allows for dynamic sorting when changing view. This might be CPU intensive for some users. Leave this disabled if you are not using a overlay that uses the viewBuilder.
+        Allows for dynamic sorting when changing view. This might be CPU intensive for some users.
     */
-var enableDynamicSort = false,
+var enableDynamicSort = true,
 
     /*
         Data attached to every view filter. Editing this will change every single view.

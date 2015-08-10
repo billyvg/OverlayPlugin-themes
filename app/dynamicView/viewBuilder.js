@@ -85,59 +85,28 @@ viewBuilder = (function(){
     {
         var newTableBody = document.createElement("tbody"),
             oldTableBody = document.getElementById("combatantTableBody"),
-            combatantIndex = 0,
             combatant,
-            egiSearch,
-            tableRow,
-            cell,
-            currentView = defCache.bodyDef || getCurrentView(defType.BODY);
+            combatantList = enableDynamicSort ? sortData() : currentData.Combatant;
 
         newTableBody.id = "combatantTableBody";
 
-        for(var combatantName in currentData.Combatant)
+        if(enableDynamicSort)
         {
-            combatant = currentData.Combatant[combatantName];
-            combatant.JobOrName = combatant.Job || "limit break";
-            egiSearch = combatant.JobOrName.indexOf("-Egi (");
-
-            if(egiSearch != -1 ||
-               combatant.JobOrName.indexOf("Eos (") == 0 ||
-               combatant.JobOrName.indexOf("Selene (") == 0 ||
-               combatant.JobOrName.indexOf("Carbuncle (") != -1) 
+            for(var i = 0; i < combatantList.length; i++)
             {
-                combatant.JobOrName = "pet";
+                combatant = currentData.Combatant[combatantList[i][combatantOptions.NAME]];
+                buildViewBodyHTML(combatant, newTableBody);
             }
-            else if(combatant.JobOrName.indexOf(" (") != -1) 
-            {
-                combatant.JobOrName = "cho";
-            }
-
-            tableRow = newTableBody.insertRow(newTableBody.rows.length);
-
-            for(var i = 0; i < currentView.length; i++)
-            {
-                cell = tableRow.insertCell(i);
-
-                if(currentView[i].html) 
-                {
-                    cell.innerHTML = loadOptions(currentView[i].html, currentView[i].options, combatant);
-                } 
-                else
-                {
-                    cell.innerText = loadOptions(currentView[i].text, currentView[i].options, combatant);
-                }
-
-                cell.style.width = currentView[i].width;
-                cell.style.maxWidth = currentView[i].width;
-
-                if(currentView[i].align) 
-                {
-                    cell.style.textAlign = currentView[i].align;
-                }
-            }
-
-            combatantIndex++;
         }
+        else
+        {
+            for(var combatName in combatantList)
+            {
+                combatant = currentData.Combatant[combatantName];
+                buildViewBodyHTML(combatant, newTableBody);
+            }
+        }
+
         if(oldTableBody)
         {
             combatantTable.replaceChild(newTableBody, oldTableBody);
@@ -145,6 +114,53 @@ viewBuilder = (function(){
         else
         {
             combatantTable.appendChild(newTableBody);
+        }
+    }
+
+    function buildViewBodyHTML(combatant, newTableBody)
+    {
+        var cell,
+            egiSearch,
+            tableRow,
+            currentView = defCache.bodyDef || getCurrentView(defType.BODY);
+
+        combatant.JobOrName = combatant.Job || "limit break";
+        egiSearch = combatant.JobOrName.indexOf("-Egi (");
+
+        if(egiSearch != -1 ||
+           combatant.JobOrName.indexOf("Eos (") == 0 ||
+           combatant.JobOrName.indexOf("Selene (") == 0 ||
+           combatant.JobOrName.indexOf("Carbuncle (") != -1) 
+        {
+            combatant.JobOrName = "pet";
+        }
+        else if(combatant.JobOrName.indexOf(" (") != -1) 
+        {
+            combatant.JobOrName = "cho";
+        }
+
+        tableRow = newTableBody.insertRow(newTableBody.rows.length);
+
+        for(var i = 0; i < currentView.length; i++)
+        {
+            cell = tableRow.insertCell(i);
+
+            if(currentView[i].html) 
+            {
+                cell.innerHTML = loadOptions(currentView[i].html, currentView[i].options, combatant);
+            } 
+            else
+            {
+                cell.innerText = loadOptions(currentView[i].text, currentView[i].options, combatant);
+            }
+
+            cell.style.width = currentView[i].width;
+            cell.style.maxWidth = currentView[i].width;
+
+            if(currentView[i].align) 
+            {
+                cell.style.textAlign = currentView[i].align;
+            }
         }
     }
 
@@ -166,6 +182,41 @@ viewBuilder = (function(){
         }
     }
 
+    function sortData()
+    {
+        var combatantArray = [],
+            combatantEntry,
+            sortedCombatant = {};
+
+        for(var combatantName in currentData.Combatant)
+        {
+            combatantEntry = {};
+            combatantEntry[combatantOptions.NAME] = combatantName;
+            combatantEntry.sortField = parseFloat(currentData.Combatant[combatantName][dynamicViewList[currentView].sortDef]);
+
+            combatantArray.push(combatantEntry);
+        }
+
+        return combatantArray.sort(sortCombatants);
+    }
+
+    function sortCombatants(a, b)
+    {
+        if(a.sortField == NaN)
+        {
+            return 1;
+        }
+
+        if(b.sortField == NaN)
+        {
+            return -1;
+        }
+
+        if (a.sortField < b.sortField)
+            return 1;
+        if (a.sortField > b.sortField)
+            return -1;
+    }
 
     function ViewBuilder() {};
 
