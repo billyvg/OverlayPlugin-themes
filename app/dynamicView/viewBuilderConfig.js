@@ -10,15 +10,16 @@
 
     If you want to edit encounterDef, make sure you use encounterOptions instead.
 
-
     You can also add entirely new views. Just follow the structure of the ones given. The view builder will pick up the changes and add it as an option.
+
+    To change how each view is ranked, you can edit sortDef. Just specify the field you wish to sort by. Currently, sortDef only supports numeric values, and DESC sorting. 
 
 */
 
     /*
-        Allows for dynamic sorting when changing view. This might be CPU intensive for some users. Leave this disabled if you are not using a overlay that uses the viewBuilder.
+        Allows for dynamic sorting when changing view. This might be CPU intensive for some users.
     */
-var enableDynamicSort = false,
+var enableDynamicSort = true,
 
     /*
         Data attached to every view filter. Editing this will change every single view.

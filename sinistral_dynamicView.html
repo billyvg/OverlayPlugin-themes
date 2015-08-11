@@ -5,18 +5,29 @@
     For configuration options, please see app/dynamicView/viewBuilderConfig.js
 
     Coming Soon:
-        Dynamic Sorting
-        Resizing
         More cleanup
-        Changing Infinity to 0
         Better View Menu
+        ASC sorting
+        String sorting (I doubt many people would want this, but it might be useful for someone)
+        Ability to Hide/Show Overlay easily
+        ..and more!
+
+    Example of the data structure being passed down
+    // var ActXiv = {
+    //    "Encounter": {...},
+    //    "Combatant": {
+    //        "PlayerName1": {...},
+    //        "PlayerName2": {...},
+    //        ...
+    //    }
+    // };
 -->
 <html>
 <head>
     <meta charset="utf-8" />
     <title></title>
     <link rel="stylesheet" type="text/css" href="css/dynamicView.css">
-    <script src="app/config.js"></script>
+    <script src="app/coreUtils.js"></script>
     <script src="app/dynamicView/viewBuilderConfig.js"></script>
     <script src="app/dynamicView/viewBuilder.js"></script>
     <script>
