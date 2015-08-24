@@ -241,4 +241,9 @@ $(function() {
     }
 
     $(document).on('onOverlayDataUpdate', function(e) { update(e.originalEvent.detail) } );
+    window.addEventListener('message', function(e) {
+        if (e.data.type === 'onOverlayDataUpdate') {
+            update(e.data.detail);
+        }
+    });
 });
