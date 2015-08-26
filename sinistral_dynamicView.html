@@ -31,7 +31,7 @@
     <script src="app/dynamicView/viewBuilderConfig.js"></script>
     <script src="app/dynamicView/viewBuilder.js"></script>
     <script>
-        document.addEventListener("onOverlayDataUpdate", function (e) {
+        function onOverlayDataUpdate(e) {
             var data;
             //Check for activity, no point in doing all the processing if nothing relevant has changed.
             inactivityTracker.update(e.detail);
@@ -40,8 +40,13 @@
             {
                 viewBuilder.update(attachCustomOptions(e.detail));
             }
+	}
+        document.addEventListener("onOverlayDataUpdate", onOverlayDataUpdate);
+        window.addEventListener("message", function(e) {
+            if (e.data.type === "onOverlayDataUpdate") {
+                onOverlayDataUpdate(e.data);
+            }
         });
-
         document.addEventListener("onOverlayStateUpdate", function (e) {
             if (!e.detail.isLocked) {
                 displayResizeHandle();

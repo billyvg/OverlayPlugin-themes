@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <title></title>
     <link rel="stylesheet" type="text/css" href="css/rdmty.css">
-    <script src="lib/react-0.13.1.min.js"></script>
+    <script src="lib/react.min.js"></script>
     <script src="lib/lodash.min.js"></script>
     <script src="app/rdmty.js"></script>
     <script>
-        document.addEventListener('onOverlayDataUpdate', function(e) {
+        function onOverlayDataUpdate(e) {
             var start = new Date().getTime();
             var details = e.detail;
 
@@ -20,6 +20,12 @@
                 document.getElementById('container')
             );
             //console.log('rendered in ' + (+new Date() - start) + 'ms');
+        };
+        document.addEventListener('onOverlayDataUpdate', onOverlayDataUpdate);
+        window.addEventListener("message", function (e) {
+            if (e.data.type === "onOverlayDataUpdate") {
+	        onOverlayDataUpdate(e.data);
+            }
         });
         document.addEventListener('click', function(e) {
             console.log('clicked');

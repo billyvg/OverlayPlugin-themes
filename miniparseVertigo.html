@@ -11,6 +11,11 @@
             //update(e.originalEvent);
 			update(e);
         });
+        window.addEventListener("message", function (e) {
+            if (e.data.type === "onOverlayDataUpdate") {
+                update(e.data);
+            }
+        });
         /*document.addEventListener("onOverlayStateUpdate", function (e) {
         });*/
     </script>
