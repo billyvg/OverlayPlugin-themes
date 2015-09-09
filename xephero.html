@@ -153,6 +153,11 @@
             $(document).on('onOverlayDataUpdate', function(e) {
                 update(e.originalEvent);
             });
+            window.addEventListener('message', function(e) {
+		if (e.data.type === 'onOverlayDataUpdate') {
+		    update(e.data);
+		}
+	    });
         });
     </script>
 </head>

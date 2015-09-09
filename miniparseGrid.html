@@ -197,6 +197,11 @@
         document.addEventListener("onOverlayDataUpdate", function (e) {
             update(e.detail);
         });
+        window.addEventListener("message", function (e) {
+            if (e.data.type === "onOverlayDataUpdate") {
+                update(e.data.detail);
+            }
+        });
 
         // 表示要素の更新
         function update(data) {
