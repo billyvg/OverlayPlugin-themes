@@ -1,0 +1,21 @@
+<div class="combatants">
+
+	<table>
+			<tr class="tableheader">
+				<th class="header"
+					ng-repeat="header in headers"
+					ng-class="header.value">{{header.label}}</th>
+			</tr>
+			<tr combatant="combatant"
+				bestdps="bestdps"
+				ng-repeat="combatant in combatants track by combatant.name"
+				ng-class="combatant.Job"
+				class="combatant"></tr>
+			<tr ng-hide="combatants">
+				<td colspan="{{headers.length}}}" class="waiting">
+					<div class="message">--- Waiting for Data ---</div>
+				</td>
+			</tr>
+	</table>
+
+</div>

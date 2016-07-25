@@ -1,0 +1,43 @@
+
+<div class="menu">
+	<a href="#/dpsmeter"
+	   class="glyphicon glyphicon-tasks menu-item"></a>
+</div>
+
+<div class="config">
+
+	<h1>Presets</h1>
+
+	<div class="presets-collection">
+
+		<div ng-repeat="preset in presets" class="preset-line">
+			<div class="controls">
+				<span class="glyphicon delete"
+					  ng-click="remove($event, preset)"
+					  ng-class="{
+					    'glyphicon-minus': checkRemove !== preset,
+					  	'glyphicon-trash': checkRemove === preset,
+					  	'remove': checkRemove === preset
+					  }"
+					  prevent-selection></span>
+				<a 
+				   class="glyphicon glyphicon-eye-open disabled preview"></a>
+				<a ng-href="#/config/preset/{{preset.__uid}}/clone"
+				   class="glyphicon glyphicon-duplicate clone"></a>
+				<a ng-href="#/config/preset/{{preset.__uid}}/edit"
+				   class="glyphicon glyphicon-wrench edit"></a>
+			</div>
+			<span class="field preset"
+				  ng-class="{selected: selectedPreset === preset}"
+				  ng-click="select(preset)"
+				  >{{preset.name}}</span>
+		</div>
+
+	</div>
+
+	<div>
+		<a ng-href="#/config/preset/new"
+		   class="glyphicon glyphicon-plus add"></a>
+	</div>
+
+</div>

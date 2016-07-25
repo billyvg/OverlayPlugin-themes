@@ -1,0 +1,43 @@
+
+<div ng-repeat="col in cols"
+	 class="preset-col">
+	<div class="controls">
+		<span class="preset-col-index">({{$index}})</span>
+		<sorter ng-model="cols"
+				index="$index"></sorter>
+		<span class="glyphicon delete"
+			  ng-click="remove($event, $index)"
+			  ng-class="{
+			    'glyphicon-minus': removeIndex !== $index,
+			  	'glyphicon-trash': removeIndex === $index,
+			  	remove: removeIndex === $index
+			  }"
+			  prevent-selection></span>
+	</div>
+		<fieldselect ng-model="col.value"
+					 options="colsCollection"
+					 label="label"
+					 value="value"></fieldselect>
+	<input type="text"
+		   ng-model="col.label"
+		   class="preset-col-label"
+		   auto-select />
+</div>
+
+<div class="preset-col preset-col-template">
+	<div class="controls">
+		<span class="preset-col-index">({{cols.length}})</span>
+		<sorter ng-model="newcol"
+				index="0"></sorter>
+		<span class="glyphicon glyphicon-plus add"
+			  ng-click="add(newcol[0])"
+			  prevent-selection></span>
+	</div>
+		<fieldselect ng-model="newcol[0]"
+					 options="colsCollection"
+					 label="label"></fieldselect>
+	<input type="text"
+		   ng-model="newcol[0].label"
+		   class="preset-col-label"
+		   auto-select />
+</div>
