@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="ko-kr">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./css/laiglinne-overlayskin/crystal_style.css">
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.7/vue.min.js"></script>
+		<script src="./lib/react.min.js"></script>
+		<script src="./lib/lodash.min.js"></script>
+		<script src="./app/laiglinne-overlayskin/rdmty.js"></script>
+		<script src="./js/laiglinne-overlayskin/setting.js"></script>
+		<script>
+			function onOverlayDataUpdate(e) 
+			{
+				var start = new Date().getTime();
+				var details = e.detail;
+
+				React.render(
+					React.createElement(DamageMeter, 
+					{
+						parseData: e.detail
+					}),
+					document.getElementById('container')
+				);
+				//console.log('rendered in ' + (+new Date() - start) + 'ms');
+			}
+			
+			document.addEventListener('onOverlayDataUpdate', onOverlayDataUpdate);
+			document.addEventListener("onOverlayStateUpdate", function (e) {
+				if (!e.detail.isLocked) {
+					document.documentElement.classList.add("resizable");
+				} else {
+					document.documentElement.classList.remove("resizable");
+				}
+			});
+			window.addEventListener('message', function (e) {
+				if (e.data.type === 'onOverlayDataUpdate') {
+				onOverlayDataUpdate(e.data);
+				}
+			});
+			
+			setInterval(function(){
+				//privbar(true);
+				//$("#blurcont").height($("#container").height()+12);
+			}, 50);
+		</script>
+	</head>
+	<body>
+		<div id="realcont">
+			<div id="blurcont">
+			</div>
+			<div id="containercase">
+				<div id="container">
+					◇ DPS Meter v2016.06.16<br>
+					Modify by Laiglinne - [KR] Altema
+				</div>
+			</div>
+			<div id="setainer" style="display:none; padding:10px; color:#FFF; z-index:99; position:absolute;">
+				<div class="setting_border"><span id="_displayMe">내 이름 표시</span> <input id="myname" type="checkbox" checked="checked" />
+				<input id="mynameval" type="text" value="나" /></div>
+				<div class="setting_border"><span id="_displayResize">크기조절 표시</span> <input type="checkbox" checked="checked" onclick="resizeview();" id="showresize"/></div>
+				<div class="setting_border"><span id="_displayName">미터기 닉네임 표시</span> <input id="showname" type="checkbox" checked="checked" onclick="goTab(currenttab + 1, $('#tab' + currenttab));"/></div>
+			</div>
+			<div id="bottomset">
+				<div class="chatloglikehandle settingcon" id="viewresize" style="border-bottom-right-radius:0px; float:right;">
+				</div>
+				<div class="chatloglikehandle" id="shg">
+					<div id="tab0" class="pcl handlecont selbg" onclick="goTab(1, $(this));"><div class="handlecont_in" id="_DPS">딜량</div></div>
+					<div id="tab1" class="pcl handlecont2" onclick="goTab(2, $(this));"><div class="handlecont_in handlecont_in2" id="_HPS">힐량</div></div>
+					<div id="tab2" class="pcl handlecont2" onclick="goTab(3, $(this));"><div class="handlecont_in handlecont_in2" id="_DMG">피격</div></div>
+					<div id="tab3" class="pcl handlecont2" onclick="goTab(4, $(this));"><div class="handlecont_in handlecont_in2" id="_accNCrit">기타</div></div>
+				</div>
+				<div class="chatloglikehandle settingcon" onclick="toggleset();">
+					<div class="settingcon_in"><div style="background:url(images/icon.png) no-repeat; background-position:3px 2px; width:20px; height:20px;" /></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var toggle = true;
+			var viewback = true;
+			var nicknameshow = true;
+			var currenttab = 0; // max 3
+			
+			language_kr = setting.language;
+
+			$("input:checkbox[id='myname']").prop("checked", setting.useCustomName);
+			$("input:checkbox[id='showname']").prop("checked", setting.showPlayerName);
+			$("input:checkbox[id='showresize']").prop("checked", setting.showResize);
+
+			viewback = !setting.showResize;
+			resizeview();
+
+			$("#_DPS").html(languagepack.DPS[language_kr]);
+			$("#_HPS").html(languagepack.HPS[language_kr]);
+			$("#_DMG").html(languagepack.DMG[language_kr]);
+			$("#_accNCrit").html(languagepack.accNCrit[language_kr]);
+
+			$("#mynameval").val(languagepack.me[language_kr]);
+			$("#_displayMe").html(languagepack.displayMe[language_kr]);
+			$("#_displayResize").html(languagepack.displayResize[language_kr]);
+			$("#_displayName").html(languagepack.displayName[language_kr]);
+			
+			$("#_acc").html(languagepack.acc[language_kr]);
+			$("#_dodge").html(languagepack.Dodge[language_kr]);
+			
+			function privbar(bool)
+			{
+				if(bool == 1)
+				{
+					$(".self .bar-back").css("background", "rgb("+$("#cr").val()+","+$("#cg").val()+","+$("#cb").val()+")");
+				}
+				$("#privbar").css("background", "rgb("+$("#cr").val()+","+$("#cg").val()+","+$("#cb").val()+")");
+			}
+			
+			function resizeview()
+			{
+				if(!viewback)
+					$("#viewresize").show();
+				else
+					$("#viewresize").hide();
+					
+				viewback=!viewback;
+			}
+			
+			function toggleset()
+			{
+				if(toggle)
+				{
+					$("#container").hide();
+					$("#setainer").show();
+				}
+				else
+				{
+					$("#container").show();
+					$("#setainer").hide();
+				}
+				
+				toggle = !toggle;
+			}
+			
+			function goTab(e, obj)
+			{
+				$(".chatloglikehandle .pcl").removeClass("selbg");
+				obj.addClass("selbg");
+				
+				for(i=currenttab; i<4; i++)
+					$("#container").find(".chart-view-switcher").trigger("click");
+					
+				for(i=0; i<e-1; i++)
+					$("#container").find(".chart-view-switcher").trigger("click");
+					
+				currenttab = e-1;
+			}
+			
+			function tmp()
+			{
+				$("#container").find(".chart-view-switcher").trigger("click");
+				$("#container").find(".chart-view-switcher").trigger("click");
+			}
+		</script>
+	</body>
+</html>
