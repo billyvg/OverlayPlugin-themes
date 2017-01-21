@@ -24,7 +24,7 @@ var languagepack =
     "DMG" : ["피격", "Dmg", "被撃"],
     "Limitbreak" : ["리미트 브레이크","Limit Break","リミット"]
 };
-var IMAGE_PATH = 'images';
+var IMAGE_PATH = 'images/laiglinne-overlayskin';
 var EncountersArray = [];
 var React = window.React;
 var formatNumber = function(number)  
