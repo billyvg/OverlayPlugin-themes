@@ -1,0 +1,18 @@
+
+<div class="menu">
+
+	<a class="glyphicon menu-item"
+	   ng-class="{
+	   	'glyphicon-object-align-top':		!expandFromBottom,
+	   	'glyphicon-object-align-bottom':	expandFromBottom}"
+	   ng-click="setExpandFromBottom(!expandFromBottom)"></a>
+
+	<a href="#/config"
+	   class="glyphicon glyphicon-cog menu-item"></a>
+
+</div>
+
+<div>
+	<encounter encounter="encounter" active="active"></encounter>
+	<combatants combatants="combatants"></combatants>
+</div>

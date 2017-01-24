@@ -1,0 +1,17 @@
+
+<div class="fieldselect" ng-class="{ expanded: isExpanded }">
+
+	<div class="selected field"
+		 ng-click="isExpanded = !isExpanded"
+		 prevent-selection>{{selectedLabel}}</div>
+
+	<div class="fields" ng-click="isExpanded = false">
+		<div class="field"
+			 ng-repeat="option in parsedOptions"
+			 ng-click="setSelected(option)"
+			 prevent-selection
+			 >
+			 {{option.label}}</div>
+	</div>
+
+</div>

@@ -1,0 +1,244 @@
+* {
+    font-family: "Meiryo", "Segoe UI";
+    font-size: 12px;
+    box-sizing: border-box;
+}
+a {
+    margin: 0px 2px;
+    text-decoration: none;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+}
+#wrapper:hover .viewModes {
+    display: block;
+}
+#wrapper:hover .time {
+    display: none;
+}
+.viewModes {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+li {
+    background-color: rgb(150, 150, 150);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+}
+li:hover {
+    border: 2px solid #ccc;
+}
+.damage {
+    background-color: #8E4A4C;
+}
+.healing {
+    background-color: #5EA041;
+}
+.tanking {
+    background-color: #465BC4;
+}
+html {
+    background-image: url(handle.png);
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100%;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin: 0;
+}
+#wrapper {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.4);
+    /*border-radius: 4px;*/
+    margin: 12px;
+    position: relative;
+}
+.dpsMeterBody * {
+	color: #FFF7E8;
+    text-shadow: -1px 0 3px #38352F, 0 1px 3px #38352F, 1px 0 3px #38352F, 0 -1px 3px #38352F;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.you .name {
+	color: #FFF7E8;
+    text-shadow: -1px 0 3px #38352F, 0 1px 3px #38352F, 1px 0 3px #38352F, 0 -1px 3px #38352F;
+}
+.dpsMeterBody {
+    position: relative;
+    z-index: 1;
+}
+.dpsMeterHeader > div,
+.dpsMeterBody > div {
+    height: 22px;
+    margin: 1px 0;
+}
+.dpsMeterBody img {
+    height: 20px;
+    width: 20px;
+    /* 7649 */
+}
+.dpsMeterBody .row,
+.dpsMeterBody .row div {
+    position: relative;
+}
+.dpsMeterBody .row div {
+    position: absolute;
+    z-index: 2;
+}
+.cell {
+    padding: 0 5px;
+    height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.bar-container {
+    position: absolute !important;
+    height: 100%;
+    display: inline-block;
+    left: 22px;
+    right: 0;
+    /*border-radius: 0 10px 10px 0;*/
+    z-index: 1 !important;
+}
+.hide:hover {
+    display: none;
+}
+.hide {
+    display: none;
+}
+.bar {
+    height: 100%;
+/*    border: 1px solid rgb(25, 25, 25);
+    border-left: 0;*/
+}
+.gld div.bar, .pld div.bar {
+    background: linear-gradient(to top, rgba(135, 140, 155, 0.75), rgba(200, 210, 230, 0.75));
+}
+.pgl div.bar, .mnk div.bar {
+    background: linear-gradient(to top, rgba(105, 80, 10, 0.75), rgba(185, 145, 15, 0.75));
+}
+.mrd div.bar, .war div.bar {
+    background: linear-gradient(to top, rgba(105, 15, 15, 0.75), rgba(185, 30, 25, 0.75));
+}
+.lnc div.bar, .drg div.bar {
+    background: linear-gradient(to top, rgba(40, 60, 125, 0.75), rgba(65, 100, 205, 0.75));
+}
+.arc div.bar, .brd div.bar {
+    background: linear-gradient(to top, rgba(75, 85, 35, 0.75), rgba(140, 165, 65, 0.75));
+}
+.rog div.bar, .nin div.bar {
+    background: linear-gradient(to top, rgba(95, 15, 55, 0.75), rgba(175, 25, 100, 0.75));
+}
+.cnj div.bar, .whm div.bar {
+    background: linear-gradient(to top, rgba(180, 170, 155, 0.75), rgba(255, 240, 220, 0.75));
+}
+.thm div.bar, .blm div.bar {
+    background: linear-gradient(to top, rgba(104, 77, 135, 0.75), rgba(165, 121, 214, 0.75));
+}
+.acn div.bar, .smn div.bar {
+    background: linear-gradient(to top, rgba(45, 70, 5, 0.75), rgba(90, 150, 10, 0.75));
+}
+.sch div.bar {
+    background: linear-gradient(to top, rgba(25, 20, 50, 0.75), rgba(70, 55, 125, 0.75));
+}
+.drk div.bar {
+    background: linear-gradient(to top, rgba(160, 89, 17, 0.75), rgba(239, 134, 24, 0.75));
+}
+.mch div.bar {
+    background: linear-gradient(to top, rgba(72, 147, 140, 0.75), rgba(110, 225, 214, 0.75));
+}
+.ast div.bar {
+    background: linear-gradient(to top, rgba(178, 161, 53, 0.75), rgba(255, 231, 74, 0.75));
+}
+.jobless div.bar {
+    background: linear-gradient(to top, rgba(81, 81, 81, 0.75), rgba(160, 160, 160, 0.75));
+}
+.dpsMeter {
+    display: none;
+    margin: 5px 0 0 0;
+}
+.encounter,
+.dpsMeterHeader * {
+    color: #E2EBF5;
+    text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dpsMeterHeader {
+    border-bottom: 1px solid #DED7BE;
+}
+.encounter {
+    padding: 0 5px;
+}
+.encounter > div {
+    display: inline-block;
+    width: 50%;
+}
+.encounter span {
+    color: #FFCC66;
+    text-shadow: -1px 0 3px #996633, 0 1px 3px #996633, 1px 0 3px #996633, 0 -1px 3px #996633;
+}
+.rdps {
+    text-align: left;
+}
+.time {
+    text-align: right;
+}
+.icon {
+	width: 22px;
+    left: 0;
+    background-color: rgb(25, 25, 25);
+    padding: 1px;
+}
+.name {
+	font-size: 12px;
+	font-weight: bold;
+    left: 22px;
+}
+.dps {
+    position: relative !important;
+    text-align: right;
+    float: right;
+    font-weight: bold;
+}
+.dps {
+    padding-right: 0;
+}
+.crit,
+.miss,
+.oheal,
+.block {
+    text-align: right;
+    height: 100%;
+    float: right;
+}
+.crit,
+.block {
+    position: relative !important;
+    width: 36px;
+    font-size: 10px;
+
+}
+.miss,
+.oheal {
+    position: relative !important;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FF0000 !important;
+    text-shadow: -1px 0 3px #270000, 0 1px 3px #270000, 1px 0 3px #270000, 0 -1px 3px #270000 !important;
+}
+.oheal {
+    font-size: 10px;
+}

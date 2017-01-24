@@ -87,8 +87,9 @@ td:last-child {
 #combatantTableBody .Gla td,
 #combatantTableBody .Pld td,
 #combatantTableBody .Mrd td,
-#combatantTableBody .Drk td,
-#combatantTableBody .War td {
+#combatantTableBody .War td,
+#combatantTableBody .Drk td {
+
 	color: #ffffff;
 	background-color: rgba(41,112,243,0.2);
 	background-blend-mode: soft-light;
@@ -96,8 +97,9 @@ td:last-child {
 
 #combatantTableBody .Cnj td,
 #combatantTableBody .Whm td,
-#combatantTableBody .Ast td,
-#combatantTableBody .Sch td {
+#combatantTableBody .Sch td,
+#combatantTableBody .Ast td {
+
 	color: #ffffff;
 	background-color: rgba(107,240,86,0.2);
 	background-blend-mode: soft-light;
@@ -116,6 +118,7 @@ td:last-child {
 #combatantTableBody .Thm td,
 #combatantTableBody .Blm td,
 #combatantTableBody .Mch td {
+
 	color: #ffffff;
 	background-color: rgba(200,3,8,0.2);
 	background-blend-mode: soft-light;
@@ -142,7 +145,7 @@ td:last-child {
         }
 
 </style>
-<script src="lib/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="./lib/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script>
 
 		//
@@ -183,20 +186,20 @@ td:last-child {
 			{ text: "", width: "3em", align: "left" },
 			{ text: "Crit", width: "2.5em", align: "center" },
 			{ text: "Miss", width: "2.5em", align: "center" },
-			{ text: "Death", width: "2.5em", align: "center" }
+			{ text: "Best Hit", width: "7.5em", align: "center" }
 		];
 
 		// 表示するデータの定義
 		var bodyDefine =
 		[
-			{ html: "<img src='./images/glow/{JobOrName}.png' style='width=60%;height:60%;' />", align: "center", effect: jobColorEffect },
+			{ html: "<img src='./images/glow/{JobOrName}.png' onerror='$(this).attr(\"src\", \"./images/error.png\");' style='width=60%;height:60%;' />", align: "center", effect: jobColorEffect },
 			{ text: "{name}", width: "", align: "center",effect: myCharacterEffect },
 			{ text: "{encdps}", width: "", align: "center" },
 			{ text: "{damage}", width: "", align: "right" },
 			{ text: "({damage%})", width: "", align: "left" },
 			{ text: "{crithit%}", width: "", align: "center" },
 			{ text: "{misses}", width: "", align: "center", effect: redTextEffect },
-			{ text: "{deaths}", width: "", align: "center", effect: redTextEffect }
+			{ text: "{maxhit}", width: "", align: "center", }
 		];
 
 		function myCharacterEffect(cell, combatant, index) {
@@ -352,8 +355,8 @@ td:last-child {
                     		combatant.JobOrName = "choco";
                 		}
                 			
-						var tableRow = newTableBody.insertRow(newTableBody.rows.length);
-						for (var i = 0; i < bodyDefine.length; i++)
+                			var tableRow = newTableBody.insertRow(newTableBody.rows.length);
+                			for (var i = 0; i < bodyDefine.length; i++)
 				
 
 

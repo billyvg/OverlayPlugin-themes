@@ -135,6 +135,10 @@
                         row.addClass('you');
                     }
 
+                    if (combatant.damage.length > 6) {
+                        combatant.damage = combatant.damage.substring(0,combatant.damage.length-3) + 'K';
+                    }
+
                     row.find('.dps').text(combatant.encdps);
                     row.find('.name').text(combatant.Job.toUpperCase() + ' ' + combatant.name);
                     row.find('.number').text(combatant.damage);

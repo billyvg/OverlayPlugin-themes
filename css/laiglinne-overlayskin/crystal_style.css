@@ -1,0 +1,813 @@
+html 
+{
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+    font-size: 12px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+.resizable 
+{
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+#realcont 
+{
+    min-width: 200px;
+}
+#bottomset 
+{
+    height: 23px;
+    position: fixed;
+    bottom: 2px;
+    left: 4px;
+    right: 0px;
+}
+.chatloglikehandle 
+{
+    background: -webkit-linear-gradient(#686568 0%, #525252 49%, #373837 50%, #4a4a4a 100%);
+    background: -o-linear-gradient(#686568 0%, #525252 49%, #373837 50%, #4a4a4a 100%);
+    background: linear-gradient(#686568 0%, #525252 49%, #373837 50%, #4a4a4a 100%);
+    height: 21px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 19px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, .5), inset 0px 1px 0px rgba(255, 255, 255, .25), inset 0px -1px 0px rgba(0, 0, 0, 0.25);
+    float: left;
+}
+.settingcon 
+{
+    padding: 0px;
+    min-width: 20px;
+    margin-left: 5px;
+    overflow: hidden;
+}
+.settingcon_in 
+{
+    height: 21px;
+}
+.settingcon_in:hover 
+{
+    background: rgba(255, 255, 255, .08);
+}
+.settingcon:active 
+{
+    margin-top: 1px;
+}
+.chatloglikehandle div 
+{
+    cursor: pointer;
+}
+.handlecont 
+{
+    float: left;
+    height: 21px;
+    border-left: 1px solid rgba(255, 255, 255, .1);
+}
+.handlecont_in:hover 
+{
+    background: rgba(255, 255, 255, .08);
+}
+.handlecont2 
+{
+    float: left;
+    height: 21px;
+    box-shadow: inset -1px 0px 0px rgba(0, 0, 0, .1);
+}
+.handlecont_in 
+{
+    height: 21px;
+    line-height: 21px;
+    font-size: 12px;
+    color: #EEE1C5;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    border-right: 1px solid rgba(0, 0, 0, .2);
+    box-shadow: inset 1px 0px 0px rgba(255, 255, 255, .1), inset -1px 0px 0px rgba(255, 255, 255, .1);
+    padding-left: 12px;
+    padding-right: 12px;
+    font-family: '맑은 고딕';
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
+}
+.handlecont_in2 
+{
+    padding-left: 13px;
+    border-left: 0px;
+}
+.selbg 
+{
+    background-position: 1px top;
+    background-repeat: no-repeat;
+    background-image: url(../../images/laiglinne-overlayskin/sel_bg.png);
+}
+#blurcont 
+{
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 36px;
+    filter: blur(3px);
+    -ms-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -webkit-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    z-index: -1;
+}
+#containercase 
+{
+    position: fixed;
+    top: 6px;
+    left: 10px;
+    right: 10px;
+    bottom: 40px;
+    overflow: none;
+}
+#container 
+{
+    padding: 6px;
+    font-family: "맑은 고딕", Tahoma;
+    font-size: 12px;
+    color: rgb(232, 255, 254);
+    overflow: none;
+}
+#source 
+{
+    display: none;
+}
+h3 
+{
+    font-weight: normal;
+    padding: 12px;
+}
+ul 
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.ff-header 
+{
+    color: #DED7BE;
+    text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+}
+.ff-text 
+{
+    color: #E2EBF5;
+    text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+    float: right;
+}
+.combatants 
+{
+    padding: 0 6px 6px;
+}
+.hoverview 
+{
+    transition: 1s;
+    display: inline-block;
+    width: 1px;
+    padding-left: 10px;
+    margin-right: -8px;
+}
+.datas:hover .hoverview 
+{
+    width: auto;
+}
+.datablock 
+{
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 18px;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+    text-align: right;
+}
+.detailTitle 
+{
+    left: 10px;
+    right: 10px;
+    top: -10px;
+    position: absolute;
+    background: #000;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 5px rgba(210, 240, 255, .5), 0px 1px 5px rgba(210, 240, 255, .5);
+    border: 1px solid rgba(210, 240, 255, .75);
+    text-align: center;
+    color: #E2EBF5;
+    text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+}
+.header 
+{
+    padding-bottom: 3px;
+}
+.encounter-header 
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+    font-size: 11px;
+    -webkit-user-select: none;
+}
+.encounter-data 
+{
+    -webkit-user-select: initial;
+    line-height: 20px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.extra-details 
+{
+    padding: 10px;
+    padding-top: 20px;
+    z-index: 99;
+    position: absolute;
+    background: rgba(0, 0, 0, .8);
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 5px rgba(210, 240, 255, .5);
+    border: 1px solid rgba(210, 240, 255, .75);
+}
+.collapsed .extra-details 
+{
+    display: none;
+}
+.extra-row 
+{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    display: block;
+    line-height: 20px;
+}
+.extra-details .cell 
+{
+    margin-right: 4px;
+}
+.extra-details .label 
+{
+    font-weight: 400;
+    margin-right: 4px;
+}
+.extra-details .value 
+{
+    font-weight: 200;
+    margin-right: 4px;
+}
+.chart-view-switcher 
+{
+    position: fixed;
+    top: -99px;
+    opacity: .5;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-left: 6px;
+    padding: 2px 4px;
+    text-align: center;
+    width: 100px;
+    color: #eee;
+    font-size: 11px;
+    font-weight: normal;
+    background-color: #2a81d7;
+    box-shadow: inset 0 1px 0 0 #62b1e9;
+    border-top: 1px solid #2a73a6;
+    border-right: 1px solid #165899;
+    border-bottom: 1px solid #07428f;
+    border-left: 1px solid #165899;
+    text-shadow: 0 -1px 1px #1d62ab;
+}
+.chart-view-switcher:active 
+{
+    background: #3282d3;
+    border: 1px solid #154c8c;
+    border-bottom: 1px solid #0e408e;
+    box-shadow: inset 0 0 6px 3px #1657b5, 0 1px 0 0 #000;
+    text-shadow: 0 -1px 1px #2361a4;
+}
+.target-name 
+{
+    cursor: pointer;
+    font-weight: 400;
+    margin-right: 12px;
+    padding: 2px 4px;
+    position: relative;
+}
+.target-name:hover 
+{
+    box-shadow: inset 0 0 6px 3px #333, 0 1px 0 0 #000;
+    border-radius: 6px;
+}
+.duration 
+{} li 
+{
+    position: relative;
+    margin: 0;
+    margin-bottom: 2px;
+    padding: 0;
+    height: 18px;
+    transition: .2s;
+}
+li:last-child 
+{
+    margin-bottom: 10px;
+}
+.self 
+{
+    font-weight: bold;
+    background: transparent;
+}
+.setting_border 
+{
+    border: 1px solid rgba(255, 255, 255, .25);
+    padding: 3px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.setting_border input 
+{
+    background: rgba(255, 255, 255, .5);
+    border: 0px;
+    padding: 3px;
+    border-radius: 5px;
+}
+.bar::after 
+{
+    display: block;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-width: 9px 6px 9px 6px;
+    border-style: solid;
+    border-color: transparent rgba(255, 255, 255, .5) transparent transparent;
+    float: left;
+    content: ' ';
+    margin-left: -12px;
+}
+.bar::before 
+{
+    display: block;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-width: 9px 6px 9px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(255, 255, 255, .5);
+    float: right;
+    content: ' ';
+    right: -12px;
+}
+/*
+.character-job
+
+{
+    color:#F04040;
+}
+
+.character-job.학자, .character-job.점성술사, .character-job.환술사, .character-job.백마도사
+
+{
+    color:#00E000;
+}
+
+.character-job.검술사, .character-job.나이트, .character-job.도끼술사, .character-job.전사, .character-job.암흑기사
+
+{
+    color:#40A0F0;
+}*/
+.show-job-colors .bar
+{
+    background-color: transparent !important;
+}
+.show-job-colors .bar::after 
+{
+    border-color: transparent rgb(255, 255, 255) transparent transparent;
+}
+.show-job-colors .bar::before 
+{
+    border-color: transparent transparent transparent rgb(255, 255, 255);
+}
+.show-job-colors .리미트 .bar
+{
+    background: linear-gradient(to right, rgb(255, 204, 0) 0%, transparent 5%, transparent 80%, rgb(255, 204, 0) 100%);
+    box-shadow: inset 0px 0px 7px rgb(255, 204, 0);
+}
+.show-job-colors .리미트 .bar::after 
+{
+    border-color: transparent rgb(255, 204, 0) transparent transparent;
+}
+.show-job-colors .리미트 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(255, 204, 0);
+}
+.show-job-colors .셀레네 .bar,
+.show-job-colors .에오스 .bar,
+.show-job-colors .학자 .bar 
+{
+    background: linear-gradient(to right, rgb(60, 60, 170) 0%, transparent 5%, transparent 80%, rgb(60, 60, 170) 100%);
+    box-shadow: inset 0px 0px 7px rgb(60, 60, 170);
+}
+.show-job-colors .학자 .bar::after 
+{
+    border-color: transparent rgb(60, 60, 170) transparent transparent;
+}
+.show-job-colors .학자 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(60, 60, 170);
+}
+.show-job-colors .격투사 .bar,
+.show-job-colors .몽크 .bar 
+{
+    background: linear-gradient(to right, rgb(180, 140, 20) 0%, transparent 5%, transparent 80%, rgb(180, 140, 20) 100%);
+    box-shadow: inset 0px 0px 7px #b38915;
+}
+.show-job-colors .격투가 .bar::after,
+.show-job-colors .몽크 .bar::after 
+{
+    border-color: transparent rgb(180, 140, 20) transparent transparent;
+}
+.show-job-colors .격투가 .bar::before,
+.show-job-colors .몽크 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(180, 140, 20);
+}
+.show-job-colors .비술사 .bar,
+.show-job-colors .소환사 .bar,
+.show-job-colors .가루다 .bar,
+.show-job-colors .타이탄 .bar,
+.show-job-colors .이프리트 .bar,
+.show-job-colors .카벙클 .bar 
+{
+    background: linear-gradient(to right, rgb(40, 150, 0) 0%, transparent 5%, transparent 80%, rgb(40, 150, 0) 100%);
+    box-shadow: inset 0px 0px 7px rgb(40, 150, 0);
+}
+.show-job-colors .비술사 .bar::after,
+.show-job-colors .소환사 .bar::after 
+{
+    border-color: transparent rgb(40, 150, 0) transparent transparent;
+}
+.show-job-colors .비술사 .bar::before,
+.show-job-colors .소환사 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(40, 150, 0);
+}
+.show-job-colors .창술사 .bar,
+.show-job-colors .용기사 .bar 
+{
+    background: linear-gradient(to right, rgb(84, 96, 240) 0%, transparent 5%, transparent 80%, rgb(84, 96, 240) 100%);
+    box-shadow: inset 0px 0px 7px rgb(84, 96, 240);
+}
+.show-job-colors .창술사 .bar::after,
+.show-job-colors .용기사 .bar::after 
+{
+    border-color: transparent rgb(84, 96, 240) transparent transparent;
+}
+.show-job-colors .창술사 .bar::before,
+.show-job-colors .용기사 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(84, 96, 240);
+}
+.show-job-colors .환술사 .bar,
+.show-job-colors .백마도사 .bar 
+{
+    background: linear-gradient(to right, rgb(220, 210, 180) 0%, transparent 5%, transparent 80%, rgb(220, 210, 180) 100%);
+    box-shadow: inset 0px 0px 7px rgba(220, 215, 180, 1);
+}
+.show-job-colors .환술사 .bar::after,
+.show-job-colors .백마도사 .bar::after 
+{
+    border-color: transparent rgb(220, 215, 180) transparent transparent;
+}
+.show-job-colors .환술사 .bar::before,
+.show-job-colors .백마도사 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(220, 215, 180);
+}
+.show-job-colors .주술사 .bar,
+.show-job-colors .흑마도사 .bar 
+{
+    background: linear-gradient(to right, rgb(100, 70, 150) 0%, transparent 5%, transparent 80%, rgb(100, 70, 150) 100%);
+    box-shadow: inset 0px 0px 7px rgba(100, 70, 150, 1);
+}
+.show-job-colors .주술사 .bar::after,
+.show-job-colors .흑마도사 .bar::after 
+{
+    border-color: transparent rgb(100, 70, 150) transparent transparent;
+}
+.show-job-colors .주술사 .bar::before,
+.show-job-colors .흑마도사 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(100, 70, 150);
+}
+.show-job-colors .닌자 .bar,
+.show-job-colors .쌍검사 .bar 
+{
+    background: linear-gradient(to right, rgb(50, 50, 60) 0%, transparent 5%, transparent 80%, rgb(50, 50, 60) 100%);
+    box-shadow: inset 0px 0px 7px rgba(140, 50, 50, 1);
+}
+.show-job-colors .쌍검사 .bar::after,
+.show-job-colors .닌자 .bar::after 
+{
+    border-color: transparent rgb(140, 50, 50) transparent transparent;
+}
+.show-job-colors .쌍검사 .bar::before,
+.show-job-colors .닌자 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(140, 50, 50);
+}
+.show-job-colors .궁술사 .bar,
+.show-job-colors .음유시인 .bar 
+{
+    background: linear-gradient(to right, rgb(180, 200, 80) 0%, transparent 5%, transparent 80%, rgb(180, 200, 80) 100%);
+    box-shadow: inset 0px 0px 7px rgba(180, 200, 80, 1);
+}
+.show-job-colors .궁술사 .bar::after,
+.show-job-colors .음유시인 .bar::after 
+{
+    border-color: transparent rgb(180, 200, 80) transparent transparent;
+}
+.show-job-colors .궁술사 .bar::before,
+.show-job-colors .음유시인 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(180, 200, 80);
+}
+.show-job-colors .검술사 .bar,
+.show-job-colors .나이트 .bar 
+{
+    background: linear-gradient(to right, rgb(210, 255, 255) 0%, transparent 5%, transparent 80%, rgb(210, 255, 255) 100%);
+    box-shadow: inset 0px 0px 7px rgba(210, 255, 255, 1);
+}
+.show-job-colors .검술사 .bar::after,
+.show-job-colors .나이트 .bar::after 
+{
+    border-color: transparent rgb(210, 255, 255) transparent transparent;
+}
+.show-job-colors .검술사 .bar::before,
+.show-job-colors .나이트 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(210, 255, 255);
+}
+.show-job-colors .도끼술사 .bar,
+.show-job-colors .전사 .bar 
+{
+    background: linear-gradient(to right, rgb(170, 25, 25) 0%, transparent 5%, transparent 80%, rgb(170, 25, 25) 100%);
+    box-shadow: inset 0px 0px 7px rgba(170, 26, 22, 1);
+}
+.show-job-colors .도끼술사 .bar::after,
+.show-job-colors .전사 .bar::after 
+{
+    border-color: transparent rgb(170, 26, 22) transparent transparent;
+}
+.show-job-colors .도끼술사 .bar::before,
+.show-job-colors .전사 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(170, 26, 22);
+}
+.show-job-colors .점성술사 .bar 
+{
+    background: linear-gradient(to right, rgb(250, 210, 100) 0%, transparent 5%, transparent 80%, rgb(250, 210, 100) 100%);
+    box-shadow: inset 0px 0px 7px rgba(250, 210, 100, 1);
+}
+.show-job-colors .점성술사 .bar::after 
+{
+    border-color: transparent rgb(250, 210, 100) transparent transparent;
+}
+.show-job-colors .점성술사 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(250, 210, 100);
+}
+.show-job-colors .기공사 .bar,
+.show-job-colors .포탑 .bar 
+{
+    background: linear-gradient(to right, rgb(130, 255, 240) 0%, transparent 5%, transparent 80%, rgb(130, 255, 240) 100%);
+    box-shadow: inset 0px 0px 7px rgba(130, 255, 240, 1);
+}
+.show-job-colors .기공사 .bar::after,
+.show-job-colors .포탑 .bar::after 
+{
+    border-color: transparent rgb(130, 255, 240) transparent transparent;
+}
+.show-job-colors .기공사 .bar::before,
+.show-job-colors .포탑 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(130, 255, 240);
+}
+.show-job-colors .암흑기사 .bar 
+{
+    background: linear-gradient(to right, rgb(150, 50, 50) 0%, transparent 5%, transparent 80%, rgb(150, 50, 50) 100%);
+    box-shadow: inset 0px 0px 7px rgba(150, 50, 50, 1);
+}
+.show-job-colors .암흑기사 .bar::after 
+{
+    border-color: transparent rgb(150, 50, 50) transparent transparent;
+}
+.show-job-colors .암흑기사 .bar::before 
+{
+    border-color: transparent transparent transparent rgb(150, 50, 50);
+}
+/* JOB ONLY (no class) */
+.job-icon *
+{
+    opacity: .5;
+}
+.job-icon>.학자 
+{
+    -webkit-filter: hue-rotate(190deg);
+}
+.job-icon>.몽크 
+{
+    -webkit-filter: hue-rotate(5deg);
+}
+.job-icon>.소환사 
+{
+    -webkit-filter: hue-rotate(70deg);
+}
+.job-icon>.용기사 
+{
+    -webkit-filter: hue-rotate(180deg);
+}
+.job-icon>.백마도사 
+{
+    -webkit-filter: brightness(2);
+}
+.job-icon>.흑마도사 
+{
+    -webkit-filter: hue-rotate(200deg);
+}
+.job-icon>.닌자 
+{
+    -webkit-filter: hue-rotate(285deg);
+}
+.job-icon>.음유시인 
+{
+    -webkit-filter: hue-rotate(30deg);
+}
+.job-icon>.나이트 
+{
+    -webkit-filter: hue-rotate(145deg);
+}
+.job-icon>.전사 
+{
+    -webkit-filter: hue-rotate(285deg);
+}
+.job-icon>.점성술사 
+{
+    -webkit-filter: hue-rotate(345deg);
+}
+.job-icon>.기공사,
+.job-icon>.포탑 
+{
+    -webkit-filter: hue-rotate(135deg);
+}
+.job-icon>.암흑기사 
+{
+    -webkit-filter: hue-rotate(350deg);
+}
+.bar 
+{
+    border-width: 0px 1px 2px 0px;
+    border-style: solid;
+    border-right: 0px !important;
+    border-bottom: 0px !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: width .4s ease-in-out;
+    min-width: 20px;
+}
+.text-overlay 
+{
+    font-size: 11px;
+    position: absolute;
+    top: 0;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: -1px 0 2px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.6), 1px 0 2px rgba(0, 0, 0, 0.6), 0 -1px 2px rgba(0, 0, 0, 0.6);
+    left: 0;
+    right: 0px;
+    bottom: 0;
+    z-index: 10;
+    line-height: 18px;
+    overflow: hidden;
+}
+.info 
+{
+    overflow: hidden;
+    white-space: nowrap;
+}
+.row .stats 
+{
+    float: right;
+    margin-left: 4px;
+    white-space: nowrap;
+}
+.row .additional 
+{
+    margin-right: 4px;
+}
+.row .total 
+{
+    margin-right: 4px;
+}
+.row .ps 
+{
+    margin-right: 4px;
+}
+.bar-back 
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.0);
+    transition: width .4s ease-in-out;
+    /*height: 40px;*/
+}
+.self .bar-back 
+{
+    background-color: transparent;
+}
+.job-icon 
+{
+    top: 0;
+    float: left;
+    height: 18px;
+}
+.job-icon img 
+{
+    margin-top: 0px;
+    height: 20px;
+    width: 20px;
+}
+.character-job 
+{
+    margin-left: 4px;
+    /*text-transform: uppercase;*/
+    
+    opacity: 0.8;
+}
+.character-name 
+{
+    float: left;
+    padding-left: 2px;
+    padding-right: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.rank 
+{
+    float: left;
+    padding-left: 2px;
+}
+.inactive .bar 
+{
+    background-color: #d8dadb;
+}
+.arrow 
+{
+    cursor: pointer;
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+}
+.arrow:after 
+{
+    clear: both;
+    display: block;
+    position: relative;
+    top: 12px;
+    left: 7px;
+    content: "";
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: -4px;
+    border: 4px solid transparent;
+}
+.arrow.down:after 
+{
+    border-top-color: #fff;
+}
+.arrow.up:after 
+{
+    top: 8px;
+    border-bottom-color: #fff;
+}
+.hidden 
+{
+    display: none;
+}
+.dropdown-parent 
+{
+    position: relative;
+}
+.dropdown-menu 
+{
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    padding: 2px 4px;
+    z-index: 100;
+}
