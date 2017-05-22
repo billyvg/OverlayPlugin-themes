@@ -1,0 +1,53 @@
+﻿<html>
+  <head>
+    <meta charset="utf-8">
+    <title>enmity</title>
+    <link rel="stylesheet" href="enmity.css">
+  </head>
+
+  <body id="enmity" v-class="resize-handle: !locked">
+    <div class="outer {{hideNoTarget}}">
+      <div class="inner">
+        <div class="background"></div>
+
+        <div v-if="!updated" class="gold">
+          <span>No data to show.</span>
+        </div>
+
+        <div v-if="updated">
+
+          <div id="target">
+
+            <div class="box">
+              <div class="gauge {{target | hpcolor}}" style="width: {{target.HPPercent}}%"></div>
+              <div class="name">
+                <span class="header">Target: </span>
+                <span class="value">{{target.Name}}</span>
+              </div>
+            </div>
+
+            <div>
+              <span class="header">HP: </span>
+              <span class="value">{{target.HPPercent}}% ({{target.CurrentHP}}/{{target.MaxHP}})</span>
+              <div style="float: right">
+                <span class="header">Distance: </span>
+                <span class="value">{{target.Distance}}m ({{target.EffectiveDistance}}m)</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="entries">
+            <div class="box" v-repeat="e: entries">
+              <div class="content"><span class="name {{e.isMe ? 'me' : '' }}">{{$index + 1}}.{{e | you}}</span><span class="enmity">{{e.EnmityString}}</span></div>
+              <div class="gauge {{e | jobclass}}" style="width: {{e.HateRate}}%"></div>
+            </div>
+          </div><!-- entries -->
+
+        </div><!-- if updated -->
+      </div><!-- inner -->
+    </div><!-- outer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.7/vue.min.js"></script>
+    <script src="enmity.js"></script>
+  </body>
+</html>

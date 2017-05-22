@@ -1,0 +1,362 @@
+
+* {
+    font-family: "Meiryo";
+    font-size: 11px;
+}
+body, html {
+    margin: 0;
+    background-color: transparent;
+
+}
+html {
+    height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Table */
+
+table {
+    table-layout: fixed;
+    width:100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    padding: 0.2em 0;
+    text-align:center;
+}
+
+input, button {
+    /* Blueish */
+    color:#E2EBF5;
+    text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+    font-weight: 300;
+    background: rgba(0,0,0,0.4);
+    padding: 0 0.2em;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0 0 0.5em;
+}
+
+a,
+a:hover,
+a:active {
+    color:inherit;
+
+    text-decoration: none;
+}
+
+/* Glyphicon */
+
+.glyphicon,
+.glyphicon:hover,
+.glyphicon:active {
+    /* Goldish */
+    color:#DED7BE;
+    text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+    font-weight: 300;
+    font-size:1.3em;
+}
+
+.glyphicon.disabled {
+    color:#AAA;
+    text-shadow:none;
+}
+
+.glyphicon.remove {
+    color: #DEBEBE;
+    text-shadow: 0 0 2px #791616, 0 0 5px #791616, 0 0 10px #791616, 0 0 15px #791616;
+}
+
+.glyphicon.checkbox {
+    font-size: 1em;
+}
+
+/* Menu */
+
+.menu {
+    float:right;
+    margin-left:-100%;
+}
+
+.menu-item {}
+
+/* fieldselect */
+
+.field {
+    border:1px solid #DED7BE;
+    min-width: 3em;
+    padding: 0.1em 0.3em;
+    margin: 0.1em 0.3em;
+    text-align: center;
+}
+
+.fieldselect {}
+
+.fieldselect .selected {}
+
+.fieldselect .fields {
+    display:none;
+    flex-wrap:wrap;
+    z-index:100;
+}
+
+.fieldselect.expanded .fields {
+    display:flex;
+    position:absolute;
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 10px;
+    width: 97%;
+    left:1.5%;
+}
+
+.fieldselect .fields .field {
+    flex: 1 1 auto;
+    background: rgba(0,0,0,0.4);
+    padding: 0.2em 0.3em;
+    margin:0;
+    /* Goldish */
+    color:#DED7BE;
+    text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+    font-weight: 300;
+}
+
+/* Main */
+
+#container {
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    /* Blueish */
+    color:#E2EBF5;
+    text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+    font-weight: 300;
+}
+
+.expandFromBottom {
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
+
+.resizable {
+    background-image: url(../images/handle.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+/* dpsmeter */
+
+.encounter {}
+
+.encounter .encounter-duration {
+    float: left;
+    margin-right:-100%;
+    padding-top: 3px;
+}
+
+.encounter .encounter-encdps {
+    text-align:center;
+    /* Greenish */
+    color: #BEDEC5;
+    text-shadow: -1px 0 2px #167930, 0 1px 2px #167930, 1px 0 2px #167930, 0 -1px 2px #167930;
+    font-weight: 300;
+
+    font-size:1.3em;
+}
+
+.encounter.active .encounter-encdps {
+    /* Redish */
+    color: #DEBEBE;
+    text-shadow: 0 0 2px #791616, 0 0 5px #791616, 0 0 10px #791616, 0 0 15px #791616;
+    font-weight: 300;
+}
+
+/* combatants */
+
+.combatants  {
+    text-align: center;
+}
+
+.tableheader {
+    border-bottom: 1px solid #DED7BE;
+    /* Goldish */
+    color:#DED7BE;
+    text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+    font-weight: 300;
+}
+
+.header {
+    width:2em;
+}
+.header.name {
+    width:6em;
+}
+
+/* combatant */
+
+.combatant {}
+
+.combatant td.job {
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    padding-left: 2em;
+}
+
+/* config */
+
+.config {}
+
+.presets-collection {}
+
+.preset-line {
+    display:flex;
+}
+
+.controls {
+    flex: 0 0 auto;
+}
+
+.delete {}
+
+.preview {}
+
+.clone {}
+
+.edit {}
+
+.preset {
+    flex: 1 0 auto;
+}
+
+.preset.field.selected {
+    font-weight: 800;
+}
+.preset.field.selected:before {
+    content:'->';
+}
+.preset.field.selected:after {
+    content:'<-';
+}
+
+.add {}
+
+.preset-name {
+    display:flex;
+}
+
+preset-config {}
+
+.preset-col {
+    display: flex;
+}
+
+.preset-col-index {}
+
+sorter {}
+
+.sorter-up {}
+
+.sorter-down {}
+
+fieldselect {
+    flex: 1 0 30%;
+}
+
+.preset-col-label {
+    flex: 1 1 auto;
+}
+
+.preset-col-template {}
+
+
+/* Jobs */
+
+tr.Gld,
+tr.Pld,
+tr.Mrd,
+tr.War,
+tr.Drk {
+    /*background-color: rgba(41,112,243,0.2);*/
+    background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(41,112,243,0.2)), to(rgba(24,24,24,0.0))),
+                linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: soft-light;
+}
+
+tr.Cnj,
+tr.Whm,
+tr.Sch,
+tr.Ast {
+    /*background-color: rgba(107,240,86,0.2);*/
+    background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(107,240,86,0.2)), to(rgba(24,24,24,0.0))),
+                linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: soft-light;
+}
+
+tr.Pgl,
+tr.Mnk,
+tr.Lnc,
+tr.Drg,
+tr.Arc,
+tr.Brd,
+tr.Rog,
+tr.Nin,
+tr.Acn,
+tr.Smn,
+tr.Thm,
+tr.Blm,
+tr.Mch {
+    /*background-color: rgba(200,3,8,0.2);*/
+    background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(200,3,8,0.2)), to(rgba(24,24,24,0.0))),
+                linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: soft-light;
+}
+
+tr.Limit-Break {
+    background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(128,0,255,0.3)), to(rgba(24,24,24,0.0))),
+                linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: soft-light;
+}
+
+tr.Choco {
+    background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(245, 240, 0,0.3)), to(rgba(24,24,24,0.0))),
+                linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: soft-light;
+}
+
+
+tr.Titan,
+tr.Eos,
+tr.Selene,
+tr.Carbuncle,
+tr.Garuda,
+tr.Ifrit {
+    background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(153, 0, 245,0.3)), to(rgba(24,24,24,0.0))),
+                linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: soft-light;
+}

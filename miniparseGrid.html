@@ -99,13 +99,13 @@
 			display: block;
 		}
 
-        th:nth-child(-n+5){
+        th:nth-child(-n+7){
             /* Name横の区切り線 */
             /*padding: 3px;*/
             border-right: 1px solid rgba(222,215,190,0.5);
         }
 
-        td:nth-child(-n+5){
+        td:nth-child(-n+7){
             /* キャラクター名横の区切り線 */
             /*padding: 3px;*/
             border-right: 1px solid rgba(222,215,190,0.5);
@@ -163,18 +163,20 @@
             { text: "DPS", width: "3.5em", align: "center" },
 	    { text: "Damage(％)", width: "6em", align: "center", span: 2 },
             { text: "Miss", width: "1.5em", align: "center" },
+	    { text: "Crit", width: "1.5em", align: "center" },
         ];
 
 
         // 表示するデータの定義
         var bodyDefine =
         [
-            { html: "<img src='./images/colorbg/{JobOrName}.png' style='width=60%;height:60%;' />", align: "center"},
+            { html: "<img src='./images/colorbg/{JobOrName}.png' onerror='$(this).attr(\"src\", \"./images/error.png\");' onerror='$(this).attr(\"src\", \"./images/error.png\");' style='width=60%;height:60%;' />", align: "center"},
             { text: "{name}", width: "7em" },
             { text: "{encdps}", width: "3.5em", align: "center" },
-	    { text: "{damage}", width: "", align: "right" },
+	    { text: "{damage}", width: "6em", align: "right" },
 	    { text: "{damage%}", width: "", align: "right" },
             { text: "{misses}", width: "1.5", align: "center", effect: missEffect },
+	    { text: "{crithit%}", width: "1.5", align: "center" },
         ];
 
         
@@ -194,6 +196,11 @@
         // onOverlayDataUpdate イベントを購読
         document.addEventListener("onOverlayDataUpdate", function (e) {
             update(e.detail);
+        });
+        window.addEventListener("message", function (e) {
+            if (e.data.type === "onOverlayDataUpdate") {
+                update(e.data.detail);
+            }
         });
 
         // 表示要素の更新
