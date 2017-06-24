@@ -227,9 +227,6 @@ li:last-child {
 .show-job-colors .mrd .bar, .show-job-colors .war .bar {
     background-color: #a91a16;
 }
-.show-job-colors .mrd .bar, .show-job-colors .war .bar {
-    background-color: #a91a16;
-}
 .show-job-colors .drk .bar {
     background-color: #4a2829;
 }
@@ -238,6 +235,12 @@ li:last-child {
 }
 .show-job-colors .mch .bar {
     background-color: #6bcec2;
+}
+.show-job-colors .sam .bar {
+    background-color: #184B4D;
+}
+.show-job-colors .rdm .bar {
+    background-color: #E1907E;
 }
 
 
