@@ -30,7 +30,6 @@ var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____C
     Object.defineProperty(CombatantCompact.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
         //var width = parseInt(this.props.data.damage / this.props.encounterDamage * 100, 10) + '%';
         var width = Math.min(100, parseInt(this.props.total / this.props.max * 100, 10)) + '%';
-
         return (
             this.props.perSecond === '---' ? null :
             React.createElement("li", {
@@ -129,6 +128,7 @@ var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____C
 
     Object.defineProperty(Header.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
         var encounter = this.props.encounter;
+        var self = this.props.data['YOU'];
         var rdps = parseFloat(encounter.encdps);
         var rdps_max = 0;
 
@@ -174,57 +174,76 @@ var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____C
                         React.createElement("div", {className: "cell"}, 
                             React.createElement("span", {className: "label ff-header"}, "Damage"), 
                             React.createElement("span", {className: "value ff-text"}, 
-                                formatNumber(encounter.damage)
+                                formatNumber(encounter.damage) + " (" + formatNumber(encounter.encdps) + ")"
                             )
                         ), 
+                        /* Removing to save space
                         React.createElement("div", {className: "cell"}, 
                             React.createElement("span", {className: "label ff-header"}, "DPS"), 
                             React.createElement("span", {className: "value ff-text"}, 
                                 formatNumber(encounter.encdps)
                             )
                         ), 
+                        */
                         React.createElement("div", {className: "cell"}, 
-                            React.createElement("span", {className: "label ff-header"}, "Crits"), 
+                            React.createElement("span", {className: "label ff-header"}, "Max"),
                             React.createElement("span", {className: "value ff-text"}, 
-                                encounter['crithit%']
+                                self['maxhit']
+                            )
+                            )
+                        ), 
+
+                    React.createElement("div", {className: "extra-row damage2"},
+
+                        React.createElement("div", {className: "cell"}, 
+                            React.createElement("span", {className: "label ff-header"}, "Crit"),
+                            React.createElement("span", {className: "value ff-text"}, 
+                                self['crithit%']
                             )
                         ), 
                         React.createElement("div", {className: "cell"}, 
-                            React.createElement("span", {className: "label ff-header"}, "Miss"), 
-                            React.createElement("span", {className: "value ff-text"}, 
-                                encounter['misses']
+                            React.createElement("span", {className: "label ff-header"}, "dHit"),
+                            React.createElement("span", {className: "value ff-text"},
+                                self['DirectHitPct']
                             )
-                        ), 
-                        React.createElement("div", {className: "cell"}, 
-                            React.createElement("span", {className: "label ff-header"}, "Max"), 
+                        ),
+                        React.createElement("div", {className: "cell"},
+                            React.createElement("span", {className: "label ff-header"}, "dCrit"),
+                            React.createElement("span", {className: "value ff-text"},
+                                self['CritDirectHitPct']
+                            )
+                        ),
+                        React.createElement("div", {className: "cell"},
+                            React.createElement("span", {className: "label ff-header"}, "Miss"),
                             React.createElement("span", {className: "value ff-text"}, 
-                                encounter.maxhit
+                                self['misses']
                             )
                         )
                     ), 
+
                     React.createElement("div", {className: "extra-row healing"}, 
                         React.createElement("div", {className: "cell"}, 
                             React.createElement("span", {className: "label ff-header"}, "Heals"), 
                             React.createElement("span", {className: "value ff-text"}, 
-                                formatNumber(encounter.healed)
+                                formatNumber(self['healed'])
                             )
                         ), 
                         React.createElement("div", {className: "cell"}, 
                             React.createElement("span", {className: "label ff-header"}, "HPS"), 
                             React.createElement("span", {className: "value ff-text"}, 
-                                formatNumber(encounter.enchps)
+                                formatNumber(self['enchps'])
                             )
                         ), 
                         React.createElement("div", {className: "cell"}, 
-                            React.createElement("span", {className: "label ff-header"}, "Crits"), 
+                            React.createElement("span", {className: "label ff-header"}, "hCrit"),
                             React.createElement("span", {className: "value ff-text"}, 
-                                encounter['critheal%']
+                                self['critheal%']
                             )
                         ), 
                         React.createElement("div", {className: "cell"}, 
-                            React.createElement("span", {className: "label ff-header"}, "Max"), 
+                            React.createElement("span", {className: "label ff-header"}, "hMax"),
                             React.createElement("span", {className: "value ff-text"}, 
-                                encounter.maxheal
+                                self['maxheal']
                             )
                         )
                     )
@@ -424,7 +443,7 @@ var ____Class4=React.Component;for(var ____Class4____Key in ____Class4){if(____C
             });
         }
         this.render();
-        console.log('handle select', index);
+        //console.log('handle select', index);
     }});
 
     Object.defineProperty(DamageMeter.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
@@ -465,6 +484,7 @@ var ____Class4=React.Component;for(var ____Class4____Key in ____Class4){if(____C
                 className: 'damage-meter' + (!this.props.parseData.isActive ? ' inactive' : '') + (!this.props.noJobColors ? ' show-job-colors' : '')}, 
                 React.createElement(Header, {
                     encounter: encounterData, 
+                    data: data,
                     onViewChange: this.handleViewChange.bind(this), 
                     onSelectEncounter: this.handleSelectEncounter.bind(this), 
                     currentView: this.props.chartViews[this.state.currentViewIndex]}

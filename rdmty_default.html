@@ -9,9 +9,9 @@
     <script src="app/rdmty.js"></script>
     <script>
         function onOverlayDataUpdate(e) {
+
             var start = new Date().getTime();
             var details = e.detail;
-
             React.render(
                 React.createElement(DamageMeter, {
                     parseData: e.detail
@@ -19,6 +19,7 @@
                 document.getElementById('container')
             );
             //console.log('rendered in ' + (+new Date() - start) + 'ms');
+
         }
         document.addEventListener('onOverlayDataUpdate', onOverlayDataUpdate);
         document.addEventListener("onOverlayStateUpdate", function (e) {
