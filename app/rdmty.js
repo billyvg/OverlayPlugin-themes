@@ -216,7 +216,7 @@ var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____C
                         React.createElement("div", {className: "cell"},
                             React.createElement("span", {className: "label ff-header"}, "Miss"),
                             React.createElement("span", {className: "value ff-text"}, 
-                                self['misses']
+                                (Math.round(self['misses']/self['swings'] * 100) || 0) + '%'
                             )
                         )
                     ), 
