@@ -171,8 +171,12 @@ class Header extends React.Component {
               datalength++;
             }
           }
-          DirectHitPct = parseFloat( DirectHitPct / datalength);
-          CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
+          if ( DirectHitPct > 0 ){
+              DirectHitPct = parseFloat( DirectHitPct / datalength);
+          }
+          if (CritDirectHitPct > 0){
+            CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
+          }
         } else {
           if (self != undefined){
             DirectHitPct = self.DirectHitPct;
