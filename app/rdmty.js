@@ -672,7 +672,7 @@ var DamageMeter = function (_React$Component5) {
         value: function render() {
             var _this6 = this;
 
-            var debug = true;
+            var debug = false;
             var data = this.props.parseData.Combatant;
             var encounterData = this.props.parseData.Encounter;
 
