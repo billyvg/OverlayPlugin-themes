@@ -98,6 +98,7 @@ class Header extends React.Component {
         super(props);
         this.state = {
             expanded: false,
+            group: true,
             showEncountersList: false
         };
     }
@@ -128,32 +129,49 @@ class Header extends React.Component {
         });
     }
 
+
+    /**
+     * Toggle between group and indidivual stats.
+     */
+    handleToggleStats(e){
+      this.setState({
+        group: !this.state.group
+      })
+    }
+
+
     render() {
+        var data = this.props.data;
         var encounter = this.props.encounter;
+        var self = data['YOU'];
+
         var rdps = parseFloat(encounter.encdps);
         var rdps_max = 0;
-
         if (!isNaN(rdps) && rdps !== Infinity) {
             rdps_max = Math.max(rdps_max, rdps);
         }
 
+        // This is the switcher for Toggling group info or self info
+        var DataSource = this.state.group ? encounter : self;
 
         // Calculate the drect hit % based off of the combatant list. This is not efficient and needs to be removed
         // Once the encounter object is fixed to properly include this info.
-        var data = this.props.data;
         var datalength = 0;
         var DirectHitPct = 0
         var CritDirectHitPct = 0;
-
-        for (var x in data){
-          if(!data.hasOwnProperty(x)) continue;
-          DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, (data[x].DirectHitPct.length - 1)));
-          CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, (data[x].CritDirectHitPct.length - 1)));
-          datalength++;
+        if (this.state.group){
+          for (var x in data){
+            if(!data.hasOwnProperty(x)) continue;
+            DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, (data[x].DirectHitPct.length - 1)));
+            CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, (data[x].CritDirectHitPct.length - 1)));
+            datalength++;
+          }
+          DirectHitPct = parseFloat( DirectHitPct / datalength);
+          CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
+        } else {
+          DirectHitPct = self.DirectHitPct;
+          CritDirectHitPct = self.CritDirectHitPct;
         }
-
-        DirectHitPct = parseFloat( DirectHitPct / datalength);
-        CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
 
         return (
             <div className={`header ${this.state.expanded ? '' : 'collapsed'}`}>
@@ -186,18 +204,24 @@ class Header extends React.Component {
                     </div>
                 </div>
                 <div className="extra-details">
+
+                    <div className="data-set-view-switcher clearfix" onClick={this.handleToggleStats.bind(this)}>
+                      <span className={`data-set-option ${this.state.group ? 'active' : ''}`}>G</span>
+                      <span className={`data-set-option ${!this.state.group ? 'active' : ''}`}>I</span>
+                    </div>
+
                     <div className="extra-row damage">
                         <div className="cell">
                             <span className="label ff-header">Damage</span>
                             <span className="value ff-text">
-                                {`${formatNumber(encounter.damage)} (${formatNumber(encounter.encdps)})`}
+                                {`${formatNumber(DataSource.damage)} (${formatNumber(DataSource.encdps)})`}
                             </span>
                         </div>
 
                         <div className="cell">
                             <span className="label ff-header">Max</span>
                             <span className="value ff-text">
-                                {encounter.maxhit}
+                                {DataSource.maxhit}
                             </span>
                         </div>
                     </div>
@@ -206,7 +230,7 @@ class Header extends React.Component {
                       <div className="cell">
                           <span className="label ff-header">Crit%</span>
                           <span className="value ff-text">
-                            { formatNumber( parseFloat(encounter.crithits / encounter.hits * 100) ) + "%" }
+                            { formatNumber( parseFloat(DataSource.crithits / DataSource.hits * 100) ) + "%" }
                           </span>
                       </div>
                       <div className="cell">
@@ -234,22 +258,20 @@ class Header extends React.Component {
                         <div className="cell">
                             <span className="label ff-header">Heals</span>
                             <span className="value ff-text">
-                                {`${formatNumber(encounter.healed)} (${formatNumber(encounter.enchps)})`}
+                                {`${formatNumber(DataSource.healed)} (${formatNumber(DataSource.enchps)})`}
                             </span>
                         </div>
-                        {/* Overlay plugin is not returning correct heal values so hiding for now.  */}
-                        {/*
+                        {/* Overlay plugin is not returning correct heal values  */}
                         <div className="cell">
-                            <span className="label ff-header">Crits</span>
+                            <span className="label ff-header">Crit%</span>
                             <span className="value ff-text">
-                                {encounter['critheal%']}
+                                {DataSource['critheal%']}
                             </span>
                         </div>
-                        */}
                         <div className="cell">
                             <span className="label ff-header">Max</span>
                             <span className="value ff-text">
-                                {encounter.maxheal}
+                                {DataSource.maxheal}
                             </span>
                         </div>
                     </div>
@@ -530,7 +552,7 @@ class Debugger extends React.Component {
   render() {
     const css ={
       overflowY:'scroll',
-      maxHeight:'500px'
+      maxHeight:'250px'
     }
     return ( <pre style={css}>{JSON.stringify(this.props.data, null,2)}</pre>);
   }

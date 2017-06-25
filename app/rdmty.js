@@ -160,6 +160,7 @@ var Header = function (_React$Component3) {
 
         _this3.state = {
             expanded: false,
+            group: true,
             showEncountersList: false
         };
         return _this3;
@@ -196,33 +197,52 @@ var Header = function (_React$Component3) {
                 showEncountersList: !this.state.showEncountersList
             });
         }
+
+        /**
+         * Toggle between group and indidivual stats.
+         */
+
+    }, {
+        key: 'handleToggleStats',
+        value: function handleToggleStats(e) {
+            this.setState({
+                group: !this.state.group
+            });
+        }
     }, {
         key: 'render',
         value: function render() {
+            var data = this.props.data;
             var encounter = this.props.encounter;
+            var self = data['YOU'];
+
             var rdps = parseFloat(encounter.encdps);
             var rdps_max = 0;
-
             if (!isNaN(rdps) && rdps !== Infinity) {
                 rdps_max = Math.max(rdps_max, rdps);
             }
 
+            // This is the switcher for Toggling group info or self info
+            var DataSource = this.state.group ? encounter : self;
+
             // Calculate the drect hit % based off of the combatant list. This is not efficient and needs to be removed
             // Once the encounter object is fixed to properly include this info.
-            var data = this.props.data;
             var datalength = 0;
             var DirectHitPct = 0;
             var CritDirectHitPct = 0;
-
-            for (var x in data) {
-                if (!data.hasOwnProperty(x)) continue;
-                DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, data[x].DirectHitPct.length - 1));
-                CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, data[x].CritDirectHitPct.length - 1));
-                datalength++;
+            if (this.state.group) {
+                for (var x in data) {
+                    if (!data.hasOwnProperty(x)) continue;
+                    DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, data[x].DirectHitPct.length - 1));
+                    CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, data[x].CritDirectHitPct.length - 1));
+                    datalength++;
+                }
+                DirectHitPct = parseFloat(DirectHitPct / datalength);
+                CritDirectHitPct = parseFloat(CritDirectHitPct / datalength);
+            } else {
+                DirectHitPct = self.DirectHitPct;
+                CritDirectHitPct = self.CritDirectHitPct;
             }
-
-            DirectHitPct = parseFloat(DirectHitPct / datalength);
-            CritDirectHitPct = parseFloat(CritDirectHitPct / datalength);
 
             return React.createElement(
                 'div',
@@ -276,6 +296,20 @@ var Header = function (_React$Component3) {
                     { className: 'extra-details' },
                     React.createElement(
                         'div',
+                        { className: 'data-set-view-switcher clearfix', onClick: this.handleToggleStats.bind(this) },
+                        React.createElement(
+                            'span',
+                            { className: 'data-set-option ' + (this.state.group ? 'active' : '') },
+                            'G'
+                        ),
+                        React.createElement(
+                            'span',
+                            { className: 'data-set-option ' + (!this.state.group ? 'active' : '') },
+                            'I'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
                         { className: 'extra-row damage' },
                         React.createElement(
                             'div',
@@ -288,7 +322,7 @@ var Header = function (_React$Component3) {
                             React.createElement(
                                 'span',
                                 { className: 'value ff-text' },
-                                formatNumber(encounter.damage) + ' (' + formatNumber(encounter.encdps) + ')'
+                                formatNumber(DataSource.damage) + ' (' + formatNumber(DataSource.encdps) + ')'
                             )
                         ),
                         React.createElement(
@@ -302,7 +336,7 @@ var Header = function (_React$Component3) {
                             React.createElement(
                                 'span',
                                 { className: 'value ff-text' },
-                                encounter.maxhit
+                                DataSource.maxhit
                             )
                         )
                     ),
@@ -320,7 +354,7 @@ var Header = function (_React$Component3) {
                             React.createElement(
                                 'span',
                                 { className: 'value ff-text' },
-                                formatNumber(parseFloat(encounter.crithits / encounter.hits * 100)) + "%"
+                                formatNumber(parseFloat(DataSource.crithits / DataSource.hits * 100)) + "%"
                             )
                         ),
                         React.createElement(
@@ -380,7 +414,21 @@ var Header = function (_React$Component3) {
                             React.createElement(
                                 'span',
                                 { className: 'value ff-text' },
-                                formatNumber(encounter.healed) + ' (' + formatNumber(encounter.enchps) + ')'
+                                formatNumber(DataSource.healed) + ' (' + formatNumber(DataSource.enchps) + ')'
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'cell' },
+                            React.createElement(
+                                'span',
+                                { className: 'label ff-header' },
+                                'Crit%'
+                            ),
+                            React.createElement(
+                                'span',
+                                { className: 'value ff-text' },
+                                DataSource['critheal%']
                             )
                         ),
                         React.createElement(
@@ -394,7 +442,7 @@ var Header = function (_React$Component3) {
                             React.createElement(
                                 'span',
                                 { className: 'value ff-text' },
-                                encounter.maxheal
+                                DataSource.maxheal
                             )
                         )
                     )
@@ -698,7 +746,7 @@ var Debugger = function (_React$Component6) {
         value: function render() {
             var css = {
                 overflowY: 'scroll',
-                maxHeight: '500px'
+                maxHeight: '250px'
             };
             return React.createElement(
                 'pre',
