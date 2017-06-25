@@ -480,7 +480,7 @@ class DamageMeter extends React.Component {
     }
 
     render() {
-        const debug = true;
+        const debug = false;
         var data = this.props.parseData.Combatant;
         var encounterData = this.props.parseData.Encounter;
 
