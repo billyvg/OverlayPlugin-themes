@@ -161,21 +161,20 @@ class Header extends React.Component {
         var datalength = 0;
         var DirectHitPct = 0
         var CritDirectHitPct = 0;
-
         if (this.state.group){
-          if (data.length > 0){
+          if (data !== undefined){
             for (var x in data){
               if(!data.hasOwnProperty(x)) continue;
               DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, (data[x].DirectHitPct.length - 1)));
               CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, (data[x].CritDirectHitPct.length - 1)));
               datalength++;
             }
-          }
-          if ( DirectHitPct > 0 ){
-              DirectHitPct = parseFloat( DirectHitPct / datalength);
-          }
-          if (CritDirectHitPct > 0){
-            CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
+            if ( DirectHitPct > 0 ){
+                DirectHitPct = parseFloat( DirectHitPct / datalength);
+            }
+            if (CritDirectHitPct > 0){
+              CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
+            }
           }
         } else {
           if (self != undefined){
