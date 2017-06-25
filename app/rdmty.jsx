@@ -1,6 +1,6 @@
 // fiddle: http://jsfiddle.net/v1ddnsvh/8/
 /* global window */
-
+// If you need a handy tool to transpile your JSX: https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Creact%2Cstage-2&targets=&browsers=&builtIns=false&debug=false&code_lz=Q
 var IMAGE_PATH = 'images';
 var EncountersArray = [];
 
@@ -13,7 +13,7 @@ var formatNumber = (number) => {
         return (number / 1000).toFixed(2) + 'K';
     }
     else if (number >= 1000000) {
-        return (number / 1000000).toFixed(2) + 'K';
+        return (number / 1000000).toFixed(2) + 'M';
     }
 
     return number.toFixed(2);
@@ -103,10 +103,11 @@ class Header extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
+        // WIll need to add a null check here if we are swapping betwen self and group.
+        // Possibly more null checks as well.
         if (nextProps.encounter.encdps === '---') {
             return false;
         }
-
         return true;
     }
 
@@ -136,6 +137,24 @@ class Header extends React.Component {
             rdps_max = Math.max(rdps_max, rdps);
         }
 
+
+        // Calculate the drect hit % based off of the combatant list. This is not efficient and needs to be removed
+        // Once the encounter object is fixed to properly include this info.
+        var data = this.props.data;
+        var datalength = 0;
+        var DirectHitPct = 0
+        var CritDirectHitPct = 0;
+
+        for (var x in data){
+          if(!data.hasOwnProperty(x)) continue;
+          DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, (data[x].DirectHitPct.length - 1)));
+          CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, (data[x].CritDirectHitPct.length - 1)));
+          datalength++;
+        }
+
+        DirectHitPct = parseFloat( DirectHitPct / datalength);
+        CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
+
         return (
             <div className={`header ${this.state.expanded ? '' : 'collapsed'}`}>
                 <div className="encounter-header">
@@ -146,14 +165,12 @@ class Header extends React.Component {
                                 <div onClick={this.props.onSelectEncounter.bind(this, null)}>
                                     Current Fight
                                 </div>
-
                                 {EncountersArray.map(function(encounter, i) {
                                     return (
                                         <div key={i} onClick={this.props.onSelectEncounter.bind(this, i)}>
                                             {encounter.Encounter.title}
                                         </div>
                                     );
-
                                 }.bind(this))}
                             </div>
                         </span>
@@ -162,7 +179,6 @@ class Header extends React.Component {
                         </span>
                         <span className={`arrow ${this.state.expanded ? 'up' : 'down'}`} onClick={this.handleExtraDetails.bind(this)} />
                     </div>
-
                     <div
                         className="chart-view-switcher"
                         onClick={this.props.onViewChange}>
@@ -174,27 +190,10 @@ class Header extends React.Component {
                         <div className="cell">
                             <span className="label ff-header">Damage</span>
                             <span className="value ff-text">
-                                {formatNumber(encounter.damage)}
+                                {`${formatNumber(encounter.damage)} (${formatNumber(encounter.encdps)})`}
                             </span>
                         </div>
-                        <div className="cell">
-                            <span className="label ff-header">DPS</span>
-                            <span className="value ff-text">
-                                {formatNumber(encounter.encdps)}
-                            </span>
-                        </div>
-                        <div className="cell">
-                            <span className="label ff-header">Crits</span>
-                            <span className="value ff-text">
-                                {encounter['crithit%']}
-                            </span>
-                        </div>
-                        <div className="cell">
-                            <span className="label ff-header">Miss</span>
-                            <span className="value ff-text">
-                                {encounter['misses']}
-                            </span>
-                        </div>
+
                         <div className="cell">
                             <span className="label ff-header">Max</span>
                             <span className="value ff-text">
@@ -202,25 +201,51 @@ class Header extends React.Component {
                             </span>
                         </div>
                     </div>
+                    <div className="extra-row damage">
+                      {/* crithit is not being calculated properly in the Encounter object so instead we are calcing it on the fly*/}
+                      <div className="cell">
+                          <span className="label ff-header">Crit%</span>
+                          <span className="value ff-text">
+                            { formatNumber( parseFloat(encounter.crithits / encounter.hits * 100) ) + "%" }
+                          </span>
+                      </div>
+                      <div className="cell">
+                          <span className="label ff-header">Misses</span>
+                          <span className="value ff-text">
+                              {encounter.misses}
+                          </span>
+                      </div>
+                      {/* DirectHitPct coming from the Encounter object is missing so we are calcing above */}
+                      <div className="cell">
+                          <span className="label ff-header">Direct%</span>
+                          <span className="value ff-text">
+                              {formatNumber(DirectHitPct) + "%"}
+                          </span>
+                      </div>
+                      {/* CritDirectHitPct coming from the Encounter object is missing so we are calcing above */}
+                      <div className="cell">
+                          <span className="label ff-header">DirectCrit%</span>
+                          <span className="value ff-text">
+                              {formatNumber(CritDirectHitPct) + "%"}
+                          </span>
+                      </div>
+                    </div>
                     <div className="extra-row healing">
                         <div className="cell">
                             <span className="label ff-header">Heals</span>
                             <span className="value ff-text">
-                                {formatNumber(encounter.healed)}
+                                {`${formatNumber(encounter.healed)} (${formatNumber(encounter.enchps)})`}
                             </span>
                         </div>
-                        <div className="cell">
-                            <span className="label ff-header">HPS</span>
-                            <span className="value ff-text">
-                                {formatNumber(encounter.enchps)}
-                            </span>
-                        </div>
+                        {/* Overlay plugin is not returning correct heal values so hiding for now.  */}
+                        {/*
                         <div className="cell">
                             <span className="label ff-header">Crits</span>
                             <span className="value ff-text">
                                 {encounter['critheal%']}
                             </span>
                         </div>
+                        */}
                         <div className="cell">
                             <span className="label ff-header">Max</span>
                             <span className="value ff-text">
@@ -240,7 +265,6 @@ Header.defaultProps = {
     onSelectEncounter() {},
     onExtraDetailsClick() {}
 };
-
 
 class Combatants extends React.Component {
     shouldComponentUpdate(nextProps) {
@@ -345,7 +369,6 @@ class Combatants extends React.Component {
         );
     }
 }
-
 Combatants.defaultProps = {
     onClick() {}
 };
@@ -428,6 +451,7 @@ class DamageMeter extends React.Component {
     }
 
     render() {
+        const debug = false;
         var data = this.props.parseData.Combatant;
         var encounterData = this.props.parseData.Encounter;
 
@@ -465,6 +489,7 @@ class DamageMeter extends React.Component {
                 className={'damage-meter' + (!this.props.parseData.isActive ? ' inactive' : '') + (!this.props.noJobColors ? ' show-job-colors' : '')}>
                 <Header
                     encounter={encounterData}
+                    data={data}
                     onViewChange={this.handleViewChange.bind(this)}
                     onSelectEncounter={this.handleSelectEncounter.bind(this)}
                     currentView={this.props.chartViews[this.state.currentViewIndex]}
@@ -474,6 +499,13 @@ class DamageMeter extends React.Component {
                     onClick={this.handleCombatRowClick}
                     data={data}
                     encounterDamage={encounterData.damage} />
+                {
+                  !debug ? null :
+                  <div>
+                    <Debugger data={encounterData}/>
+                    <Debugger data={data}/>
+                  </div>
+                }
             </div>
         );
     }
@@ -488,3 +520,18 @@ DamageMeter.defaultProps = {
     parseData: {},
     noJobColors: false
 };
+
+
+class Debugger extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const css ={
+      overflowY:'scroll',
+      maxHeight:'500px'
+    }
+    return ( <pre style={css}>{JSON.stringify(this.props.data, null,2)}</pre>);
+  }
+}
