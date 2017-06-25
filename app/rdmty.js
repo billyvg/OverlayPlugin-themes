@@ -224,24 +224,31 @@ var Header = function (_React$Component3) {
 
             // This is the switcher for Toggling group info or self info
             var DataSource = this.state.group ? encounter : self;
-
+            if (self == undefined) {
+                DataSource = encounter;
+            }
             // Calculate the drect hit % based off of the combatant list. This is not efficient and needs to be removed
             // Once the encounter object is fixed to properly include this info.
             var datalength = 0;
             var DirectHitPct = 0;
             var CritDirectHitPct = 0;
+
             if (this.state.group) {
-                for (var x in data) {
-                    if (!data.hasOwnProperty(x)) continue;
-                    DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, data[x].DirectHitPct.length - 1));
-                    CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, data[x].CritDirectHitPct.length - 1));
-                    datalength++;
+                if (data.length > 0) {
+                    for (var x in data) {
+                        if (!data.hasOwnProperty(x)) continue;
+                        DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, data[x].DirectHitPct.length - 1));
+                        CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, data[x].CritDirectHitPct.length - 1));
+                        datalength++;
+                    }
                 }
                 DirectHitPct = parseFloat(DirectHitPct / datalength);
                 CritDirectHitPct = parseFloat(CritDirectHitPct / datalength);
             } else {
-                DirectHitPct = self.DirectHitPct;
-                CritDirectHitPct = self.CritDirectHitPct;
+                if (self != undefined) {
+                    DirectHitPct = self.DirectHitPct;
+                    CritDirectHitPct = self.CritDirectHitPct;
+                }
             }
 
             return React.createElement(
@@ -294,7 +301,7 @@ var Header = function (_React$Component3) {
                 React.createElement(
                     'div',
                     { className: 'extra-details' },
-                    React.createElement(
+                    this.props.currentView == "Damage" ? React.createElement(
                         'div',
                         { className: 'data-set-view-switcher clearfix', onClick: this.handleToggleStats.bind(this) },
                         React.createElement(
@@ -307,7 +314,7 @@ var Header = function (_React$Component3) {
                             { className: 'data-set-option ' + (!this.state.group ? 'active' : '') },
                             'I'
                         )
-                    ),
+                    ) : null,
                     React.createElement(
                         'div',
                         { className: 'extra-row damage' },
@@ -665,7 +672,7 @@ var DamageMeter = function (_React$Component5) {
         value: function render() {
             var _this6 = this;
 
-            var debug = false;
+            var debug = true;
             var data = this.props.parseData.Combatant;
             var encounterData = this.props.parseData.Encounter;
 
@@ -716,8 +723,7 @@ var DamageMeter = function (_React$Component5) {
                 !debug ? null : React.createElement(
                     'div',
                     null,
-                    React.createElement(Debugger, { data: encounterData }),
-                    React.createElement(Debugger, { data: data })
+                    React.createElement(Debugger, { data: this.props.parseData })
                 )
             );
         }

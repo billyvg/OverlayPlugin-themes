@@ -153,24 +153,31 @@ class Header extends React.Component {
 
         // This is the switcher for Toggling group info or self info
         var DataSource = this.state.group ? encounter : self;
-
+        if (self == undefined){
+          DataSource = encounter;
+        }
         // Calculate the drect hit % based off of the combatant list. This is not efficient and needs to be removed
         // Once the encounter object is fixed to properly include this info.
         var datalength = 0;
         var DirectHitPct = 0
         var CritDirectHitPct = 0;
+
         if (this.state.group){
-          for (var x in data){
-            if(!data.hasOwnProperty(x)) continue;
-            DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, (data[x].DirectHitPct.length - 1)));
-            CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, (data[x].CritDirectHitPct.length - 1)));
-            datalength++;
+          if (data.length > 0){
+            for (var x in data){
+              if(!data.hasOwnProperty(x)) continue;
+              DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, (data[x].DirectHitPct.length - 1)));
+              CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, (data[x].CritDirectHitPct.length - 1)));
+              datalength++;
+            }
           }
           DirectHitPct = parseFloat( DirectHitPct / datalength);
           CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
         } else {
-          DirectHitPct = self.DirectHitPct;
-          CritDirectHitPct = self.CritDirectHitPct;
+          if (self != undefined){
+            DirectHitPct = self.DirectHitPct;
+            CritDirectHitPct = self.CritDirectHitPct;
+          }
         }
 
         return (
@@ -204,12 +211,12 @@ class Header extends React.Component {
                     </div>
                 </div>
                 <div className="extra-details">
-
-                    <div className="data-set-view-switcher clearfix" onClick={this.handleToggleStats.bind(this)}>
-                      <span className={`data-set-option ${this.state.group ? 'active' : ''}`}>G</span>
-                      <span className={`data-set-option ${!this.state.group ? 'active' : ''}`}>I</span>
-                    </div>
-
+                    {this.props.currentView == "Damage" ?
+                      <div className="data-set-view-switcher clearfix" onClick={this.handleToggleStats.bind(this)}>
+                        <span className={`data-set-option ${this.state.group ? 'active' : ''}`}>G</span>
+                        <span className={`data-set-option ${!this.state.group ? 'active' : ''}`}>I</span>
+                      </div>
+                    : null}
                     <div className="extra-row damage">
                         <div className="cell">
                             <span className="label ff-header">Damage</span>
@@ -473,7 +480,7 @@ class DamageMeter extends React.Component {
     }
 
     render() {
-        const debug = false;
+        const debug = true;
         var data = this.props.parseData.Combatant;
         var encounterData = this.props.parseData.Encounter;
 
@@ -524,8 +531,7 @@ class DamageMeter extends React.Component {
                 {
                   !debug ? null :
                   <div>
-                    <Debugger data={encounterData}/>
-                    <Debugger data={data}/>
+                    <Debugger data={this.props.parseData}/>
                   </div>
                 }
             </div>
