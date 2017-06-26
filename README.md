@@ -1,5 +1,9 @@
 #OverlayPlugin Themes
 
+## Updated for 4.0 Stormblood
+rdmty_default.html
+rdmty_no_job_colors.html
+
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
 
