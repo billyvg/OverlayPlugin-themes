@@ -2,6 +2,7 @@
 
 ## Updated for 4.0 Stormblood
 rdmty_default.html
+
 rdmty_no_job_colors.html
 
 ## Usage
