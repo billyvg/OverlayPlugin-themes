@@ -52,7 +52,7 @@ Use a single CSS and JS file for all of your similar themes.
 
 ### Future
 In order to make it easier to maintain, as well as customize, let's try to standardize the layouts.
-Let's split the HTML file into separate CSS and JS files (use `rdmty_compact_dps.html` as an example for now).  In In the future, `React` will probably be dropped in favor of something a bit more familiar (probably just templates using `handlebars`).
+Let's split the HTML file into separate CSS and JS files (use `rdmty_compact_dps.html` as an example for now).  In In the future, `React` will probably be dropped in favor of something a bit more familiar (probably just templates using `handlebars`). If you want to build a bit complexity and want more than 1 app js file please create a folder for yourself under app/YOUR_OVERLAY/ This will help keep the repo as clean as possible. 
 
 ### Directory Structure
 * `app` - Your JS application files (not third party libraries)
