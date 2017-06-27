@@ -1,9 +1,20 @@
 #OverlayPlugin Themes
 
 ## Updated for 4.0 Stormblood
-rdmty_default.html
+#### Please be patient as we go through and update the overlays. Some overlays may be discontinued as their contribers may not be playing the game anymore. If you have a particular overlay you would like to see updated let us now. 
 
-rdmty_no_job_colors.html
+rdmty_default.html<br/>
+rdmty_no_job_colors.html<br/>
+miniparseGlowIcon.html<br/>
+miniparseGlowIconBG.html<br/>
+miniparseGlowIconGraph.html<br/>
+miniparseGlowIconGraphBG.html<br/>
+miniparseNoIcon.html<br/>
+miniparseNoIconBG.html<br/>
+miniparseStdIcon.html<br/>
+miniparseStdIconBG.html<br/>
+miniparseStdIconGraph.html<br/>
+miniparseStdIconGraphBG.html<br/>
 
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
