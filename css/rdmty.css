@@ -113,6 +113,31 @@ ul {
     text-shadow: 0 -1px 1px #2361a4;
 }
 
+.data-set-view-switcher{
+  float:right;
+  background:rgba(0,0,0,.35);
+}
+.data-set-option{
+  display: inline-block;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 2px 8px;
+  text-align: center;
+  //width: 50px;
+  color: #eee;
+  font-size: 10px;
+  font-weight: normal;
+}
+.data-set-option.active{
+  background-color: #2a81d7;
+  box-shadow: inset 0 1px 0 0 #62b1e9;
+  border-top: 1px solid #2a73a6;
+  border-right: 1px solid #165899;
+  border-bottom: 1px solid #07428f;
+  border-left: 1px solid #165899;
+  text-shadow: 0 -1px 1px #1d62ab;
+}
+
 .target-name {
     cursor: pointer;
     font-weight: 400;
@@ -227,9 +252,6 @@ li:last-child {
 .show-job-colors .mrd .bar, .show-job-colors .war .bar {
     background-color: #a91a16;
 }
-.show-job-colors .mrd .bar, .show-job-colors .war .bar {
-    background-color: #a91a16;
-}
 .show-job-colors .drk .bar {
     background-color: #4a2829;
 }
@@ -238,6 +260,12 @@ li:last-child {
 }
 .show-job-colors .mch .bar {
     background-color: #6bcec2;
+}
+.show-job-colors .sam .bar {
+    background-color: #184B4D;
+}
+.show-job-colors .rdm .bar {
+    background-color: #E1907E;
 }
 
 
@@ -309,4 +337,13 @@ li:last-child {
     left: 0px;
     padding: 2px 4px;
     z-index: 100;
+}
+
+.clearfix:before,
+.clearfix:after{
+  display:table;
+  content:'';
+}
+.clearfix:after{
+  clear:both;
 }
