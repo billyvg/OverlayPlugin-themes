@@ -165,21 +165,28 @@ class Header extends React.Component {
           if (data !== undefined){
             for (var x in data){
               if(!data.hasOwnProperty(x)) continue;
-              DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, (data[x].DirectHitPct.length - 1)));
-              CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, (data[x].CritDirectHitPct.length - 1)));
+              if (data[x].DirectHitCount > 0){
+                DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, (data[x].DirectHitPct.length -1)))
+                //DirectHitPct += parseFloat( data[x].DirectHitCount / data[x].hits );
+              }
+              if (data[x].CritDirectHitCount > 0){
+                CritDirectHitPct += parseFloat(data[x].CritDirectHitCount / data[x].hits);
+              }
               datalength++;
             }
-            if ( DirectHitPct > 0 ){
-                DirectHitPct = parseFloat( DirectHitPct / datalength);
+
+            if ( DirectHitPct > 0 && datalength > 0){
+              DirectHitPct = parseFloat( DirectHitPct / datalength);
+              // DirectHitPct = parseFloat( DirectHitPct / datalength) * 100;
             }
-            if (CritDirectHitPct > 0){
-              CritDirectHitPct = parseFloat( CritDirectHitPct / datalength);
+            if (CritDirectHitPct > 0 && datalength > 0){
+              CritDirectHitPct = parseFloat( CritDirectHitPct / datalength) * 100;
             }
           }
         } else {
           if (self != undefined){
-            DirectHitPct = self.DirectHitPct;
-            CritDirectHitPct = self.CritDirectHitPct;
+            DirectHitPct = self.DirectHitCount / self.hits * 100;
+            CritDirectHitPct = self.CritDirectHitCount / self.hits * 100;
           }
         }
 
