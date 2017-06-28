@@ -125,7 +125,9 @@ td:last-child {
 #combatantTableBody .Smn td,
 #combatantTableBody .Thm td,
 #combatantTableBody .Blm td,
-#combatantTableBody .Mch td, #combatantTableBody .Sam td, #combatantTableBody .Rdm td, {
+#combatantTableBody .Mch td,
+#combatantTableBody .Sam td, 
+#combatantTableBody .Rdm td, {
 
 	color: #ffffff;
 	background-color: rgba(200,3,8,0.2);
@@ -357,10 +359,10 @@ td:last-child {
                 		else if (combatant.JobOrName.indexOf(" (") != -1) {
                     		combatant.JobOrName = "choco";
                 		}
-                			
+
                 			var tableRow = newTableBody.insertRow(newTableBody.rows.length);
                 			for (var i = 0; i < bodyDefine.length; i++)
-				
+
 
 
 
@@ -453,7 +455,7 @@ td:last-child {
 
 <div id="container">
 
-	
+
 	<div id="encounter">
 		No data to show.
 		<!-- ここにエンカウント情報が入る -->
