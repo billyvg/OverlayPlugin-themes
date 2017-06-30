@@ -1,5 +1,5 @@
 ;(function() {
-	
+
 angular.module('enilia.overlay.dbmanager', ['enilia.overlay.tpls',
 											'ngStorage'])
 
@@ -16,7 +16,7 @@ angular.module('enilia.overlay.dbmanager', ['enilia.overlay.tpls',
 				}
 			  , isLoading
 			  ;
-			
+
 			return {
 				get: function get(key) {
 					return $storage[key];
@@ -104,12 +104,13 @@ angular.module('enilia.overlay.dbmanager', ['enilia.overlay.tpls',
 	.run(['$localStorage', 'VERSION',
 		function update($storage, VERSION) {
 			if($storage.VERSION) {
-				var version = $storage.VERSION.match(/(\d+).(\d+).(\d+)(?:-(.+))/)
-				  , major = version[1]
-				  , minor = version[2]
-				  , patch = version[3]
-				  , build = version[4]
-				  ;
+				// Need to debug this. WHy is this returning null?
+				var version = $storage.VERSION.match(/(\d+).(\d+).(\d+)(?:-(.+))/);
+				// console.log($storage);
+				//  major = version[1]
+				//	minor = version[2]
+				// patch = version[3]
+				// build = version[4]
 
 				/* Placeholder for future db patchs */
 			} else {

@@ -121,7 +121,9 @@ td:last-child {
 #combatantTableBody .Smn td,
 #combatantTableBody .Thm td,
 #combatantTableBody .Blm td,
-#combatantTableBody .Mch td {
+#combatantTableBody .Mch td,
+#combatantTableBody .Sam td,
+#combatantTableBody .Rdm td, {
 	color: #ffffff;
 	background-color: rgba(200,3,8,0.2);
 	background-blend-mode: soft-light;
@@ -232,7 +234,7 @@ td:last-child {
 
 		function dpsBarEffect(cell, combatant, index) {
     		var tank = ["Gld", "Gla", "Pld", "Mrd", "War", "Drk"]
-   		var dps = ["Pgl", "Mnk", "Lnc", "Drg", "Arc", "Brd", "Rog", "Nin", "Acn", "Smn", "Thm", "Blm", "Mch"]
+   			var dps = ["Pgl", "Mnk", "Lnc", "Drg", "Arc", "Brd", "Rog", "Nin", "Acn", "Smn", "Thm", "Blm", "Mch", "Rdm", "Sam"]
     		var healer = ["Cnj", "Whm", "Sch", "Ast"]
 
     		if (index == 0 || typeof dpsBarEffect.topdeeps == 'undefined') {
@@ -251,7 +253,7 @@ td:last-child {
     		} else {
     		    var color = "rgba(128,0,255,0.3)";
     		}
-    
+
     		var tableRow = cell.parentNode;
     		tableRow.style.background = "-webkit-gradient(linear, left top,right top, color-stop(0.95,"+ color + "), to(rgba(24,24,24,0.0)))";
     		tableRow.style.backgroundSize = (parseInt(deeps) * 100 / parseInt(dpsBarEffect.topdeeps)) + "% 100%";
@@ -380,10 +382,10 @@ td:last-child {
                 		else if (combatant.JobOrName.indexOf(" (") != -1) {
                     		combatant.JobOrName = "choco";
                 		}
-                			
+
                 			var tableRow = newTableBody.insertRow(newTableBody.rows.length);
                 			for (var i = 0; i < bodyDefine.length; i++)
-				
+
 
 
 
@@ -476,7 +478,7 @@ td:last-child {
 
 <div id="container">
 
-	
+
 	<div id="encounter">
 		No data to show.
 		<!-- ここにエンカウント情報が入る -->

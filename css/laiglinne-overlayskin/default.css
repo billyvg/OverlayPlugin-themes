@@ -26,7 +26,7 @@ html {
     left:4px;
     right:0px;
 }
-.setting_border 
+.setting_border
 {
     border: 1px solid rgba(255, 255, 255, .25);
     padding: 3px;
@@ -34,7 +34,7 @@ html {
     font-size: 12px;
     border-radius: 5px;
 }
-.setting_border input 
+.setting_border input
 {
     background: rgba(255, 255, 255, .5);
     border: 0px;
@@ -55,7 +55,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#686568', end
     border-radius:10px;
     padding-left:20px;
     padding-right:19px;
-    
+
     box-shadow:0px 1px 1px rgba(0,0,0,.5), inset 0px 1px 0px rgba(255,255,255,.25), inset 0px -1px 0px rgba(0,0,0,0.25);
     float:left;
 }
@@ -92,7 +92,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#686568', end
     float:left;
     height:21px;
     border-left:1px solid rgba(255,255,255,.1);
-    
+
 }
 
 .handlecont_in:hover
@@ -143,7 +143,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#686568', end
     filter:blur(3px);
     -ms-filter:blur(3px);
     -moz-filter:blur(3px);
-    -webkit-filter:blur(3px); 
+    -webkit-filter:blur(3px);
     background-color: rgba(0,0,0,0.5);
     border-radius:8px;
     z-index:-1;
@@ -319,7 +319,7 @@ li:last-child {
     top: 0;
     color: rgba(255, 255, 255, 1);
     text-shadow: -1px 0 2px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.6), 1px 0 2px rgba(0, 0, 0, 0.6), 0 -1px 2px rgba(0, 0, 0, 0.6);
-    
+
     left: 0;
     right: 0px;
     padding-right:5px;
@@ -327,9 +327,9 @@ li:last-child {
     z-index: 10;
     line-height: 20px;
     overflow: hidden;
-    
+
     border-radius:3px;
-    background: -webkit-linear-gradient(left, 
+    background: -webkit-linear-gradient(left,
     rgba(0,0,0,.5) 0%,
     rgba(0,0,0,.5) 5%,
     rgba(0,0,0,.25) 15%,
@@ -370,13 +370,13 @@ li:last-child {
 .show-job-colors .이프리트 .bar-back,
 .show-job-colors .카벙클 .bar-back
 {
-background: -webkit-linear-gradient(top,  #2D9600 0%,#2D9600 80%,#E0A030 80%,#f6da6a 100%);
+  background: -webkit-linear-gradient(top,  #2D9600 0%,#2D9600 80%,#E0A030 80%,#f6da6a 100%);
 }
 
 .show-job-colors .셀레네 .bar-back,
 .show-job-colors .에오스 .bar-back
 {
-background: -webkit-linear-gradient(top,  #4442a8 0%,#4442a8 80%,#E0A030 80%,#f6da6a 100%);
+  background: -webkit-linear-gradient(top,  #4442a8 0%,#4442a8 80%,#E0A030 80%,#f6da6a 100%);
 }
 
 .show-job-colors .리미트 .bar-back
@@ -406,41 +406,41 @@ background: -webkit-linear-gradient(top,  #4442a8 0%,#4442a8 80%,#E0A030 80%,#f6
 }
 
 .show-job-colors .격투사 .bar, .show-job-colors .몽크 .bar {
-background: -webkit-linear-gradient(top,  #b38915 0%,#b38915 80%,#720000 80%,#C00000 100%);
+  background: -webkit-linear-gradient(top,  #b38915 0%,#b38915 80%,#720000 80%,#C00000 100%);
 }
 
 .show-job-colors .비술사 .bar, .show-job-colors .소환사 .bar {
-background: -webkit-linear-gradient(top,  #2D9600 0%,#2D9600 80%,#720000 80%,#C00000 100%);
+  background: -webkit-linear-gradient(top,  #2D9600 0%,#2D9600 80%,#720000 80%,#C00000 100%);
 }
 
 .show-job-colors .창술사 .bar, .show-job-colors .용기사 .bar {
-background: -webkit-linear-gradient(top,  #3752d8 0%,#3752d8 80%,#720000 80%,#C00000 100%);
+  background: -webkit-linear-gradient(top,  #3752d8 0%,#3752d8 80%,#720000 80%,#C00000 100%);
 }
 
 .show-job-colors .환술사 .bar, .show-job-colors .백마도사 .bar {
-background: -webkit-linear-gradient(top,  #767676 0%,#767676 80%,#007200 80%,#00C000 100%);
+  background: -webkit-linear-gradient(top,  #767676 0%,#767676 80%,#007200 80%,#00C000 100%);
 }
 
 .show-job-colors .주술사 .bar, .show-job-colors .흑마도사 .bar {
 background: -webkit-linear-gradient(top,  #674598 0%,#674598 80%,#720000 80%,#C00000 100%);
 }
-
+// Ninja, Pair test
 .show-job-colors .닌자 .bar, .show-job-colors .쌍검사 .bar {
 background: -webkit-linear-gradient(top,  #ee2e48 0%,#ee2e48 80%,#720000 80%,#C00000 100%);
 }
-
+// Scholar
 .show-job-colors .학자 .bar {
 background: -webkit-linear-gradient(top,  #4442a8 0%,#4442a8 80%,#007200 80%,#00C000 100%);
 }
-
+// Archery, Bard
 .show-job-colors .궁술사 .bar, .show-job-colors .음유시인 .bar {
 background: -webkit-linear-gradient(top,  #adc551 0%,#adc551 80%,#720000 80%,#C00000 100%);
 }
-
+// A swordsman, Night
 .show-job-colors .검술사 .bar, .show-job-colors .나이트 .bar {
 background: -webkit-linear-gradient(top,  #7b9aa2 0%,#7b9aa2 80%,#000072 80%,#0000C0 100%);
 }
-
+// Axmer, Warrior
 .show-job-colors .도끼술사 .bar, .show-job-colors .전사 .bar {
 background: -webkit-linear-gradient(top,  #a91a16 0%,#a91a16 80%,#000072 80%,#0000C0 100%);
 }
@@ -455,17 +455,21 @@ background: -webkit-linear-gradient(top,  #a91a16 0%,#a91a16 80%,#000072 80%,#00
 .show-job-colors .에오스 .bar {
     background-color: #998842;
 }
+// astrologian
 .show-job-colors .점성술사 .bar {
-background: -webkit-linear-gradient(top,  #DB8043 0%,#DB8043 80%,#007200 80%,#00C000 100%);
+  background: -webkit-linear-gradient(top,  #DB8043 0%,#DB8043 80%,#007200 80%,#00C000 100%);
 }
+// Engineer Machinist?
 .show-job-colors .기공사 .bar {
-background: -webkit-linear-gradient(top,  #6bcec2 0%,#6bcec2 80%,#720000 80%,#C00000 100%);
+  background: -webkit-linear-gradient(top,  #6bcec2 0%,#6bcec2 80%,#720000 80%,#C00000 100%);
 }
+// Turret
 .show-job-colors .포탑 .bar {
-background: -webkit-linear-gradient(top,  #6bcec2 0%,#6bcec2 80%,#E0A030 80%,#f6da6a 100%);
+  background: -webkit-linear-gradient(top,  #6bcec2 0%,#6bcec2 80%,#E0A030 80%,#f6da6a 100%);
 }
+// Dark knight
 .show-job-colors .암흑기사 .bar {
-background: -webkit-linear-gradient(top,  #4a2829 0%,#4a2829 80%,#000072 80%,#0000C0 100%);
+  background: -webkit-linear-gradient(top,  #4a2829 0%,#4a2829 80%,#000072 80%,#0000C0 100%);
 }
 
 
@@ -488,7 +492,7 @@ background: -webkit-linear-gradient(top,  #4a2829 0%,#4a2829 80%,#000072 80%,#00
 .character-name {
     float: left;
     padding-left: 2px;
-	padding-right: 3px;	
+	   padding-right: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
