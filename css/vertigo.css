@@ -53,8 +53,6 @@ ol {
 li {
 	margin: 0px;
 	padding: 0px;
-	//background-color: purple;
-	//width: 100%;
 }
 
 li .encountertitle {
@@ -96,13 +94,13 @@ li .raiddps {
 li .dps {
 	display: inline-block;
 	color: #ded7be;
-	width: 28%;
+	width: 10%;
 	max-width: 70px;
 	vertical-align: middle;
 	text-align: right;
-	font-size: 14px;
+	font-size: 16px;
 	position: relative;
-	top: 3px;
+	//right: 10px;
 	text-shadow: -1px 0 3px #996633, 0 1px 3px #996633, 1px 0 3px #996633, 0 -1px 3px #996633;
 }
 
@@ -147,7 +145,6 @@ li .detail {
 	font-size: 12px;
 	width: 75%;
 	min-width: 250px;
-	//background-color: purple;
 }
 
 li .detail .name {
@@ -168,20 +165,20 @@ li .detail .besthit {
 li .bar {
 	position: relative;
 	display: block;
-	height: 10px;
+	height: 20px;
 	background: rgba(168, 0, 0, .75);
 	top: -5px;
+	margin-top: 3px;
 	text-shadow: -1px 0 2px #996633, 0 1px 2px #996633, 1px 0 2px #996633, 0 -1px 2px #996633;
 }
 
 .inactive li .bar {
-	//background: rgba(216, 216, 216, .75);
 	background: rgba(126, 148, 166, .75);
-	//color: #FFCC66;
+	margin-top: 3px;
 	text-shadow: -1px 0 2px #680000, 0 1px 2px #680000, 1px 0 2px #680000, 0 -1px 2px #680000;
 }
 
-.inactive li .bar  .damageperc, .inactive li .bar  .critperc{
+.inactive li .bar  .damageperc, .inactive li .bar .critperc, li .bar .directperc {
 	color: #FFCC66;
 	text-shadow: -1px 0 2px #680000, 0 1px 2px #680000, 1px 0 2px #680000, 0 -1px 2px #680000;
 }
@@ -192,13 +189,13 @@ li .bar .damageperc {
 	color: #ded7be;
 	float: right;
 	right: 5px;
-	top: -2px;
-	font-size: 9px;
+	top: 3px;
+	font-size: 14px;
 	vertical-align: middle;
 	text-shadow: -1px 0 2px #996633, 0 1px 2px #996633, 1px 0 2px #996633, 0 -1px 2px #996633;
 }
 
-li .bar .number, li .bar .critperc {
+li .bar .number, li .bar .critperc, li .bar .directperc {
 	display: inline-block;
 	font-size: 9px;
 	vertical-align: middle;
@@ -209,9 +206,9 @@ li .bar .number, li .bar .critperc {
 	position: absolute;
 }
 
-li .critperc {
+li .critperc, li .directperc {
 	display: inline-block;
-	align: middle;
+	text-align: middle;
 	text-align: center;
 	vertical-align: middle;
 	width: 8%;
@@ -220,4 +217,8 @@ li .critperc {
 
 li .you {
 	//background-color: #5d5125;
+}
+
+li .directperc {
+	margin-top: 10px;
 }
