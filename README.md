@@ -3,7 +3,7 @@
 ## Updated for 4.0 Stormblood
 #### Please be patient as we go through and update the overlays. Some overlays may be discontinued as their contribers may not be playing the game anymore. If you have a particular overlay you would like to see updated let us now. 
 
-## Moving to Cloud Hosted Overlways
+## Moving to Cloud Hosted Overlays
 
 We are in the process of moving all of these overlays to be hosted so that users can always have hte most recent version of the overlways without the hastle of downloading new files every time. 
 
