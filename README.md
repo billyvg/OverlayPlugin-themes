@@ -1,12 +1,5 @@
 #OverlayPlugin Themes
 
-## Moving to Cloud Hosted Overlays
-
-We are in the process of moving all of these overlays to be hosted so that users can always have hte most recent version of the overlways without the hastle of downloading new files every time. 
-
-This will mean that any customization that you have made to downloaded plugins themes will no longer work as you will be using the most recent version directly from this repo. 
-
-More info to come. 
 
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
