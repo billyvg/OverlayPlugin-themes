@@ -6,12 +6,7 @@ We are in the process of moving all of these overlays to be hosted so that users
 
 This will mean that any customization that you have made to downloaded plugins themes will no longer work as you will be using the most recent version directly from this repo. 
 
-For now. `http://ffxiv.evileeyore.com` will be hosting the files in teh exact format as this repo.
-
-For now to Load RDMTY set your URL in Overlayplugin to: `http://ffxiv.evileeyore.com/rdmty_default.html`
-
-this might change in the future to use folders instead of direct html file locations. IE: `http://ffxiv.evileeyore.com/rdmty/`
-
+More info to come. 
 
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
