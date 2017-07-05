@@ -3,18 +3,18 @@
 ## Updated for 4.0 Stormblood
 #### Please be patient as we go through and update the overlays. Some overlays may be discontinued as their contribers may not be playing the game anymore. If you have a particular overlay you would like to see updated let us now. 
 
-rdmty_default.html<br/>
-rdmty_no_job_colors.html<br/>
-miniparseGlowIcon.html<br/>
-miniparseGlowIconBG.html<br/>
-miniparseGlowIconGraph.html<br/>
-miniparseGlowIconGraphBG.html<br/>
-miniparseNoIcon.html<br/>
-miniparseNoIconBG.html<br/>
-miniparseStdIcon.html<br/>
-miniparseStdIconBG.html<br/>
-miniparseStdIconGraph.html<br/>
-miniparseStdIconGraphBG.html<br/>
+## Moving to Cloud Hosted Overlways
+
+We are in the process of moving all of these overlays to be hosted so that users can always have hte most recent version of the overlways without the hastle of downloading new files every time. 
+
+This will mean that any customization that you have made to downloaded plugins themes will no longer work as you will be using the most recent version directly from this repo. 
+
+For now. `http://ffxiv.evileeyore.com` will be hosting the files in teh exact format as this repo.
+
+For now to Load RDMTY set your URL in Overlayplugin to: `http://ffxiv.evileeyore.com/rdmty_default.html`
+
+this might change in the future to use folders instead of direct html file locations. IE: `http://ffxiv.evileeyore.com/rdmty/`
+
 
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
