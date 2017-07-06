@@ -9,8 +9,6 @@ If you want to use RDMTY then you would put in `http://ffxiv.evileeyore.com/rdmt
 
 Updates in the future will make this simpler and allow things like `http://ffxiv.evileeyore.com/rdmty`
 
-I am also debating on a Menu URL where you can choose your overlay style by loading. `http://ffxiv.evileeyore.com/` directly
-
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
 
