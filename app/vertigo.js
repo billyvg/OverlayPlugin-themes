@@ -104,16 +104,17 @@ function update(e) {
 		}
 		
 		row.find('.name').text(combatant.name);
-		row.find('.acc').text(combatant.tohit + "% ACC");
 		row.find('.bar').css('width', dps_width + '%');
 		row.find('.besthit').text(combatant.maxhit);
 		if ( dps_width > 12 )
 		{
 			row.find('.critperc').text(combatant["crithit%"]+"CRIT");
+			row.find('.directperc').text(combatant["DirectHitPct"]+"DRCT");
 		}
 		else
 		{
 			row.find('.critperc').text("");
+			row.find('.directperc').text("");
 		}
 
 		container.append(row);

@@ -1,20 +1,15 @@
 #OverlayPlugin Themes
 
-## Updated for 4.0 Stormblood
-#### Please be patient as we go through and update the overlays. Some overlays may be discontinued as their contribers may not be playing the game anymore. If you have a particular overlay you would like to see updated let us now. 
+# Hosting on the web
+Hey guys i decided to start pushing all of the udpates to a web hosted solution so by pointing at the Hosted Docs we can keep everyone up to date without having to have you guys download the files every time. 
 
-rdmty_default.html<br/>
-rdmty_no_job_colors.html<br/>
-miniparseGlowIcon.html<br/>
-miniparseGlowIconBG.html<br/>
-miniparseGlowIconGraph.html<br/>
-miniparseGlowIconGraphBG.html<br/>
-miniparseNoIcon.html<br/>
-miniparseNoIconBG.html<br/>
-miniparseStdIcon.html<br/>
-miniparseStdIconBG.html<br/>
-miniparseStdIconGraph.html<br/>
-miniparseStdIconGraphBG.html<br/>
+The Base URL is `http://ffxiv.evileeyore.com/`
+
+If you want to use RDMTY then you would put in `http://ffxiv.evileeyore.com/rdmty_default.html`
+
+Updates in the future will make this simpler and allow things like `http://ffxiv.evileeyore.com/rdmty`
+
+I am also debating on a Menu URL where you can choose your overlay style by loading. `http://ffxiv.evileeyore.com/` directly
 
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
