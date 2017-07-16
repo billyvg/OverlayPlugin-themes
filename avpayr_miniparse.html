@@ -31,11 +31,11 @@
 
             /* 外枠 */
             border: 1px solid #464646; /*Left, top, right edge frame borders. Doing it this way fixed most issues with the frame border.*/
-            
+
             /* はみ出た内容はスクロールバーを表示させずに隠す
              * 今のところ、ブラウザへの入力はできないので表示させても無意味 */
             overflow: hidden;
-            
+
             /* 背景色 */
             background-color: rgba(24,24,24,0.85); /*rgba is used to create the semitransparent background.*/
         }
@@ -45,7 +45,7 @@
             table-layout: fixed;
             border-collapse: collapse;
         }
-		
+
 		#combatantWrapper {
 			padding-left: 0px;
 			padding-right: 0px;
@@ -65,7 +65,7 @@
             white-space: nowrap;
             text-overflow: ellipsis;
         }
-		
+
 		#combatantTableBody img {
 			height: 20px;
 			display: block;
@@ -102,7 +102,7 @@
         // };
         //
         // データの更新は 1 秒毎。
-        // 
+        //
         // プラグインから onOverlayDataUpdate イベントが発行されるので、それを受信することもできる
         // イベントハンドラの第一引数の detail プロパティ内に上記のオブジェクトが入る
         //
@@ -139,14 +139,14 @@
         // 引数:
         //  combatant : キャラクターのデータ。combatant["..."]でデータを取得できる。
         //  index : キャラクターの並び順。一番上は 0 で、その後は 1 ずつ増える。
-        // 戻り値: 
+        // 戻り値:
         //  表示するテキスト。
         //  ACT のタグは展開されないので、展開したい場合は parseActFormat 関数を使用してください。
         function rankingText(combatant, index) {
             // 1 から始まる番号を返す
             return (index + 1).toString();
         }
-        
+
         // 死亡奴を赤くする（effect の例）
         // 引数:
         //  cell : セルの DOM 要素
@@ -163,7 +163,7 @@
                 cell.style.textShadow = "-1px 0 3px #802020, 0 1px 3px #802020, 1px 0 3px #802020, 0 -1px 3px #802020";
             }
         }
-		
+
         //
         // 以下表示用スクリプト
         //
@@ -328,7 +328,7 @@
                     }
                 }
             } while (currentIndex < str.length);
-            
+
             return result;
         }
 

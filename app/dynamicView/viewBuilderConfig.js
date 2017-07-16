@@ -12,7 +12,7 @@
 
     You can also add entirely new views. Just follow the structure of the ones given. The view builder will pick up the changes and add it as an option.
 
-    To change how each view is ranked, you can edit sortDef. Just specify the field you wish to sort by. Currently, sortDef only supports numeric values, and DESC sorting. 
+    To change how each view is ranked, you can edit sortDef. Just specify the field you wish to sort by. Currently, sortDef only supports numeric values, and DESC sorting.
 
 */
 
@@ -30,7 +30,7 @@ var enableDynamicSort = true,
             { text: "Name", width: "3%", align: "left" }
         ],
         bodyDef: [
-            { html: "<img src='./images/default/{0}.png' style='width=1.5%;height:auto;' />", options: [combatantOptions.JOB_OR_NAME], align: "center" },
+            { html: "<img src='./images/default/{0}.png' style='width=1.5%;height:auto;' />", options: [combatantOptions.JOB_OR_NAME.toLowerCase()], align: "center" },
             { text: "{0}", options: [combatantOptions.NAME], width: "3%",  align: "left" }
         ]
     },
