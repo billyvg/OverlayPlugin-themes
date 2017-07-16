@@ -149,7 +149,7 @@ td:last-child {
             white-space: nowrap;
             text-overflow: ellipsis;
         }
-         
+
 
 
 
@@ -367,7 +367,7 @@ td:last-child {
                    			if (combatantName.search(/\)$/) != -1) {
                    			var combatantName = 'Chocobo';
                    			}
-                			combatant.JobOrName = combatant.Job || combatantName;
+                			combatant.JobOrName = combatant.Job.toLowerCase() || combatantName;
                 			var tableRow = newTableBody.insertRow(newTableBody.rows.length);
                 			for (var i = 0; i < bodyDefine.length; i++)
 
@@ -463,7 +463,7 @@ td:last-child {
 
 <div id="container">
 
-	
+
 	<div id="encounter">
 		No data to show.
 		<!-- ここにエンカウント情報が入る -->

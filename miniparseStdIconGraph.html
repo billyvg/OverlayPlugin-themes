@@ -243,7 +243,7 @@ function dpsBarEffect(cell, combatant, index) {
     } else {
         var color = "rgba(128,0,255,0.3)";
     }
-    
+
     var tableRow = cell.parentNode;
     tableRow.style.background = "-webkit-gradient(linear, left top,right top, color-stop(0.95,"+ color + "), to(rgba(24,24,24,0.0)))";
     tableRow.style.backgroundSize = (parseInt(deeps) * 100 / parseInt(dpsBarEffect.topdeeps)) + "% 100%";
@@ -393,7 +393,7 @@ function dpsBarEffect(cell, combatant, index) {
                    		if (combatantName.search(/\)$/) != -1) {
                    		var combatantName = 'Chocobo';
                    		}
-                			combatant.JobOrName = combatant.Job || combatantName;
+                			combatant.JobOrName = combatant.Job.toLowerCase() || combatantName;
                 			var tableRow = newTableBody.insertRow(newTableBody.rows.length);
                 			for (var i = 0; i < bodyDefine.length; i++)
                 			{

@@ -141,7 +141,7 @@ td:last-child {
             white-space: nowrap;
             text-overflow: ellipsis;
         }
-         
+
 
 
 
@@ -364,7 +364,7 @@ td:last-child {
                    			if (combatantName.search(/\)$/) != -1) {
                    			var combatantName = 'Chocobo';
                    			}
-                			combatant.JobOrName = combatant.Job || combatantName;
+                			combatant.JobOrName = combatant.Job.toLowerCase() || combatantName;
                 			var tableRow = newTableBody.insertRow(newTableBody.rows.length);
                 			for (var i = 0; i < bodyDefine.length; i++)
 
