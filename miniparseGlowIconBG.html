@@ -126,7 +126,7 @@ td:last-child {
 #combatantTableBody .Thm td,
 #combatantTableBody .Blm td,
 #combatantTableBody .Mch td,
-#combatantTableBody .Sam td, 
+#combatantTableBody .Sam td,
 #combatantTableBody .Rdm td, {
 
 	color: #ffffff;
@@ -342,7 +342,7 @@ td:last-child {
 			var combatantIndex = 0;
 			for (var combatantName in data.Combatant) {
 				var combatant = data.Combatant[combatantName];
-				 combatant.JobOrName = combatant.Job || combatantName;
+				 combatant.JobOrName = combatant.Job.toLowerCase() || combatantName;
                 		var egiSearch = combatant.JobOrName.indexOf("-Egi (");
                 		if (egiSearch != -1) {
                     		combatant.JobOrName = combatant.JobOrName.substring(0, egiSearch);

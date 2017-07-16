@@ -154,7 +154,7 @@
                             bar.className += "bar";
                         } else {
                             bar.className += "hide";
-                        }                        
+                        }
                         break;
                     }
 
@@ -252,7 +252,7 @@
                                 }
 
                                 if ( icon ) {
-                                    result += '<img src="images/glow/' + icon + '.png" onerror="$(this).attr(\"src\", \"images/error.png\");" />';
+                                    result += '<img src="images/glow/' + icon.toLowerCase() + '.png" onerror="$(this).attr(\"src\", \"images/error.png\");" />';
                                 }
                                 break;
                             case 'name':
@@ -277,7 +277,7 @@
                                 if ( dictionary[tag] !== '' ) {
                                     result += parseInt(dictionary[tag].substr(dictionary[tag].lastIndexOf('-') + 1)) || '---';
                                 } else {
-                                    result += '---';                                
+                                    result += '---';
                                 }
                                 break;
                             case 'misses':
@@ -290,7 +290,7 @@
                                     result += dictionary[tag];
                                 } else {
                                     console.log("parseActFormat: Unknown tag: " + tag);
-                                    result += "ERROR";                                    
+                                    result += "ERROR";
                                 }
 
                         }

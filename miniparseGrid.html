@@ -26,11 +26,11 @@
 
             /* 外枠 */
             /*border: 1px solid rgba(222,215,190,0.5);*/
-            
+
             /* はみ出た内容はスクロールバーを表示させずに隠す
              * 今のところ、ブラウザへの入力はできないので表示させても無意味 */
             overflow: hidden;
-            
+
             /* 背景色 */
             background-color: transparent;
         }
@@ -40,7 +40,7 @@
             table-layout: fixed;
             border-collapse: collapse;
         }
-        
+
         #combatantWrapper {
         	/*padding-left: 50px;
         	padding-right: 50px;*/
@@ -93,7 +93,7 @@
             /* PTリストの一番最後の下線 */
             border-bottom: 1px solid #DED7BE;
         }
-        
+
         #combatantTableBody img {
 			height: 20px;
 			display: block;
@@ -110,7 +110,7 @@
             /*padding: 3px;*/
             border-right: 1px solid rgba(222,215,190,0.5);
         }
-        
+
         .enc{
             color: #E2EBF5;
             text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
@@ -121,7 +121,7 @@
             white-space: nowrap;
             text-overflow: ellipsis;
         }
-                   
+
 
     </style>
     <script>
@@ -139,7 +139,7 @@
         // };
         //
         // データの更新は 1 秒毎。
-        // 
+        //
         // プラグインから onOverlayDataUpdate イベントが発行されるので、それを受信することもできる
         // イベントハンドラの第一引数の detail プロパティ内に上記のオブジェクトが入る
         //
@@ -179,7 +179,7 @@
 	    { text: "{crithit%}", width: "1.5", align: "center" },
         ];
 
-        
+
         // ミスがあれば赤くする
         function missEffect(cell, combatant, index) {
             var misses = parseInt(combatant["misses"]);
@@ -305,7 +305,7 @@
                    if (combatantName.search(/\)$/) != -1) {
                    var combatantName = 'Chocobo';
                    }
-                combatant.JobOrName = combatant.Job || combatantName;
+                combatant.JobOrName = combatant.Job.toLowerCase() || combatantName;
                 var tableRow = newTableBody.insertRow(newTableBody.rows.length);
                 for (var i = 0; i < bodyDefine.length; i++)
                 {
@@ -419,7 +419,7 @@
                     }
                 }
             } while (currentIndex < str.length);
-            
+
             return result;
         }
 
