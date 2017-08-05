@@ -163,6 +163,7 @@ var Header = function (_React$Component3) {
             group: true,
             showEncountersList: false
         };
+        _this3.handleEndEncounter = _this3.handleEndEncounter.bind(_this3);
         return _this3;
     }
 
@@ -210,6 +211,13 @@ var Header = function (_React$Component3) {
             });
         }
     }, {
+        key: 'handleEndEncounter',
+        value: function handleEndEncounter() {
+            if (OverlayPluginApi != undefined) {
+                OverlayPluginApi.endEncounter();
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             var data = this.props.data;
@@ -236,29 +244,21 @@ var Header = function (_React$Component3) {
                 if (data !== undefined) {
                     for (var x in data) {
                         if (!data.hasOwnProperty(x)) continue;
-                        if (data[x].DirectHitCount > 0) {
-                            DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, data[x].DirectHitPct.length - 1)
-                            //DirectHitPct += parseFloat( data[x].DirectHitCount / data[x].hits );
-                            );
-                        }
-                        if (data[x].CritDirectHitCount > 0) {
-                            CritDirectHitPct += parseFloat(data[x].CritDirectHitCount / data[x].hits);
-                        }
+                        DirectHitPct += parseFloat(data[x].DirectHitPct.substring(0, data[x].DirectHitPct.length - 1));
+                        CritDirectHitPct += parseFloat(data[x].CritDirectHitPct.substring(0, data[x].CritDirectHitPct.length - 1));
                         datalength++;
                     }
-
-                    if (DirectHitPct > 0 && datalength > 0) {
+                    if (DirectHitPct > 0) {
                         DirectHitPct = parseFloat(DirectHitPct / datalength);
-                        // DirectHitPct = parseFloat( DirectHitPct / datalength) * 100;
                     }
-                    if (CritDirectHitPct > 0 && datalength > 0) {
-                        CritDirectHitPct = parseFloat(CritDirectHitPct / datalength) * 100;
+                    if (CritDirectHitPct > 0) {
+                        CritDirectHitPct = parseFloat(CritDirectHitPct / datalength);
                     }
                 }
             } else {
                 if (self != undefined) {
-                    DirectHitPct = self.DirectHitCount / self.hits * 100;
-                    CritDirectHitPct = self.CritDirectHitCount / self.hits * 100;
+                    DirectHitPct = self.DirectHitPct;
+                    CritDirectHitPct = self.CritDirectHitPct;
                 }
             }
 
@@ -305,8 +305,17 @@ var Header = function (_React$Component3) {
                         'div',
                         {
                             className: 'chart-view-switcher',
-                            onClick: this.props.onViewChange },
+                            onClick: this.props.onViewChange,
+                            style: { float: 'right' } },
                         this.props.currentView
+                    ),
+                    React.createElement(
+                        'div',
+                        {
+                            className: 'ff-header',
+                            onClick: this.handleEndEncounter,
+                            style: { float: 'right' } },
+                        'End Encounter'
                     )
                 ),
                 React.createElement(
