@@ -1,0 +1,408 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+
+        /*
+            表示設定 (1)
+			modified by Ruma Ruma @Cerberus. roumor@gmail.com
+				•removed decimals so dps&hps numbers are rounded up and displayed as 3497 and not as 3497.41
+				•added class icons(images/colorbg/)
+				•removed decimals from the procented values so you get 55% instead of 55.44%. Who needs decimals, seriously?
+				•made dps indicators to visually stand out
+				•removed resizeability(i hope) because it brought nothing but butthurt. Made the whole thing of a fixed size.
+        */
+
+        * {
+            
+            font-family: "Meiryo";
+            font-size: 12px;
+        }
+
+		
+        body, html {
+            margin: 0px;
+			padding: 0px;
+			width: 350px;
+        }
+
+        html {
+            height: 100%;				
+            background-color: transparent;
+        }
+
+		#wrapper{
+			width:100%;
+			margin: 0px;
+			padding 0px;
+		}
+
+        #combatantTable {
+            width: 100%;		
+            table-layout: fixed;
+            border-collapse: collapse;
+			padding: 0px;
+			margin: 0px;
+			box-sizing: border-box;
+        }
+
+        /* キャラクターデータのテキストの設定 */
+        #combatantTableBody * {
+            color: #E2EBF5;
+            text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+            font-weight: 300;
+
+            /* はみ出たテキストを「…」で省略する */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+			
+        }
+
+        /* エンカウント情報とテーブルヘッダ内のテキストの設定 */
+        #encounter,
+        #combatantTableHeader * {
+			
+            color: #DED7BE;
+            text-shadow: -1px 0 2px #795516, 0 1px 2px #795516, 1px 0 2px #795516, 0 -1px 2px #795516;
+            font-weight: 300;
+            white-space: nowrap;
+			min-width: 334px;
+			box-sizing: border-box;
+			width: 500px;
+        }
+
+        /* テーブルヘッダの下線の設定 */
+        #combatantTableHeader tr {
+            border-bottom: 1px solid #DED7BE;
+        }
+
+    </style>
+    <script>
+
+        //
+        // プラグイン側から以下のような ActXiv オブジェクトとしてデータが提供される
+        //
+        // var ActXiv = {
+        //    "Encounter": {...},
+        //    "Combatant": {
+        //        "PlayerName1": {...},
+        //        "PlayerName2": {...},
+        //        ...
+        //    }
+        // };
+        //
+        // データの更新は 1 秒毎。
+        // 
+        // プラグインから onOverlayDataUpdate イベントが発行されるので、それを受信することもできる
+        // イベントハンドラの第一引数の detail プロパティ内に上記のオブジェクトが入る
+        //
+
+        //
+        // 表示設定 (2)
+        //
+
+        // エンカウント情報の定義
+        var encounterDefine = "{title} / Time: {duration} / DPS: {ENCDPS}";
+
+        // 上記のエンカウント情報を HTML として扱うなら true
+        var useHTMLEncounterDefine = false;
+
+        // ヘッダの定義
+        var headerDefine =
+        [
+            { text: "Name", width: "25%", align: "left"},
+            { text: "", width: "8%", align: "center"},
+            { text: "Dps", width: "15%", align: "center"},
+			{ text: "(%)", width: "10%", align: "center"},
+            { text: "Hps", width: "15%", align: "center"},
+			{ text: "(%)", width: "10%", align: "center"},
+            { text: "Crit", width: "10%", align: "right"},
+            //{ text: "Acc(%)", width: "7%", align: "right" },
+        ];
+
+        // 表示するデータの定義
+        var bodyDefine =
+        [
+            //{ text: rankingText, width: "5%", align: "center", effect: deadYatsuEffect },
+            { text: "{name}", width: "25%" },
+            { text: "{Job}", width: "8%", align: "center"},
+            { text: "{encdps}", width: "24%", align: "center" },
+            { text: "{damage%}", width: "5%", align: "center" },
+            { text: "{enchps}", width: "16%", align: "center" },
+            { text: "{healed%}", width: "5%", align: "center" },
+            { text: "{crithit%}", width: "14%", align: "right" },
+            //{ text: "{tohit}%", width: "7%", align: "right" },
+        ];
+
+        // 順位を表示する（text に関数を指定する例）
+        // 引数:
+        //  combatant : キャラクターのデータ。combatant["..."]でデータを取得できる。
+        //  index : キャラクターの並び順。一番上は 0 で、その後は 1 ずつ増える。
+        // 戻り値: 
+        //  表示するテキスト。
+        //  ACT のタグは展開されないので、展開したい場合は parseActFormat 関数を使用してください。
+        function rankingText(combatant, index) {
+            // 1 から始まる番号を返す
+            return (index + 1).toString();
+        }
+        
+        // 死亡奴を赤くする（effect の例）
+        // 引数:
+        //  cell : セルの DOM 要素
+        //  combatant : キャラクターのデータ。combatant["..."]でデータを取得できる。
+        //  index: キャラクターの並び順。一番上は 0 で、その後は 1 ずつ増える。
+        // 戻り値: なし
+        function deadYatsuEffect(cell, combatant, index) {
+            // デス数を整数値に変換
+            var deaths = parseInt(combatant["deaths"]);
+            // デス数が 0 よりも大きいなら
+            if (deaths > 0) {
+                // 赤くする
+                cell.style.color = "#FFA0A0";
+                cell.style.textShadow = "-1px 0 3px #802020, 0 1px 3px #802020, 1px 0 3px #802020, 0 -1px 3px #802020";
+            }
+        }
+
+        //
+        // 以下表示用スクリプト
+        //
+
+        // onOverlayStateUpdate イベントを購読
+        document.addEventListener("onOverlayStateUpdate", function (e) {
+            if (!e.detail.isLocked) {
+                displayResizeHandle();
+            } else {
+                hideResizeHandle();
+            }
+        });
+
+        function displayResizeHandle() {
+            document.documentElement.classList.add("resizeHandle");
+        }
+
+        function hideResizeHandle() {
+            document.documentElement.classList.remove("resizeHandle");
+        }
+
+        // onOverlayDataUpdate イベントを購読
+        document.addEventListener("onOverlayDataUpdate", function (e) {
+            update(e.detail);
+        });
+
+        // 表示要素の更新
+        function update(data) {
+            updateEncounter(data);
+            if (document.getElementById("combatantTableHeader") == null) {
+                updateCombatantListHeader();
+            }
+            updateCombatantList(data);
+        }
+
+        // エンカウント情報を更新する
+        function updateEncounter(data) {
+            // 要素取得
+            var encounterElem = document.getElementById('encounter');
+
+            // テキスト取得
+            var elementText;
+            if (typeof encounterDefine === 'function') {
+                elementText = encounterDefine(data.Encounter);
+                if (typeof elementText !== 'string') {
+                    console.log("updateEncounter: 'encounterDefine' is declared as function but not returns a value as string.");
+                    return;
+                }
+            } else if (typeof encounterDefine === 'string') {
+                elementText = parseActFormat(encounterDefine, data.Encounter);
+            } else {
+                console.log("updateEncounter: 'encounterDefine' should be string or function that returns string.");
+                return;
+            }
+
+            // テキスト設定
+            if (!useHTMLEncounterDefine) {
+                encounterElem.innerText = parseActFormat(elementText, data.Encounter);
+            } else {
+                encounterElem.innerHTML = parseActFormat(elementText, data.Encounter);
+            }
+        }
+
+        // ヘッダを更新する
+        function updateCombatantListHeader() {
+            var table = document.getElementById('combatantTable');
+            var tableHeader = document.createElement("thead");
+            tableHeader.id = "combatantTableHeader";
+            var headerRow = tableHeader.insertRow();
+
+            for (var i = 0; i < headerDefine.length; i++) {
+                var cell = document.createElement("th");
+                // テキスト設定
+                if (typeof headerDefine[i].text !== 'undefined') {
+                    cell.innerText = headerDefine[i].text;
+                } else if (typeof headerDefine[i].html !== 'undefined') {
+                    cell.innerHTML = headerDefine[i].html;
+                }
+                // 幅設定
+                cell.style.width = headerDefine[i].width;
+                cell.style.maxWidth = headerDefine[i].width;
+                // 横結合数設定
+                if (typeof headerDefine[i].span !== 'undefined') {
+                    cell.colSpan = headerDefine[i].span;
+                }
+                // 行揃え設定
+                if (typeof headerDefine[i].align !== 'undefined') {
+                    cell.style["textAlign"] = headerDefine[i].align;
+                }
+                headerRow.appendChild(cell);
+            }
+
+            table.tHead = tableHeader;
+        }
+
+        // プレイヤーリストを更新する
+        function updateCombatantList(data) {
+            // 要素取得＆作成
+            var table = document.getElementById('combatantTable');
+            var oldTableBody = table.tBodies.namedItem('combatantTableBody');
+            var newTableBody = document.createElement("tbody");
+            newTableBody.id = "combatantTableBody";
+
+            // tbody の内容を作成
+            var combatantIndex = 0;
+            for (var combatantName in data.Combatant) {
+                var combatant = data.Combatant[combatantName];
+                var tableRow = newTableBody.insertRow(newTableBody.rows.length);
+                for (var i = 0; i < bodyDefine.length; i++)
+                {
+                    var cell = tableRow.insertCell(i);
+                    // テキスト設定
+                    if (typeof bodyDefine[i].text !== 'undefined') {
+                        var cellText;
+                        if (typeof bodyDefine[i].text === 'function') {
+                            cellText = bodyDefine[i].text(combatant, combatantIndex);
+                        } else {
+                            cellText = parseActFormat(bodyDefine[i].text, combatant);
+							// Код для округления всех числовых значений до целого.
+							//тк стринговые ячейки могут содержать, что угодно, а мне нужны только числа, то я проверяю сначала, если ячейка содержит знак процента и обрабатываю ее, если не содержит, то проверяю на точки, как признак флоат и обрабатываю их. Все остальное похую.
+							//но для начала заменяем символ делителя десятичной дроби с ебанутой запятой на точку, тк жава-функции в рот ебали культурные особенности россии.
+							cellText = cellText.replace(",",".");
+							if(cellText.indexOf("%") > -1){
+								// и да, я ебусь прямо в ячейку без временных переменных. LGBTJVSCRPT
+								cellText = cellText.substring(0,cellText.indexOf("%"));			
+								cellText = Math.round(cellText).toString() + "%";
+							}
+							else if(cellText.indexOf(".") > -1){
+								cellText = Math.round(cellText).toString();
+							}// конец кода для округления
+                        }
+						cell.innerText = cellText;
+						//обрезаем слишком длинные имена
+						if(i==0){
+							if(cell.innerText.length >=11) cell.innerText = cell.innerText.substring(0,11);						
+						};
+						
+						//Начало кода для замены имен классов на иконки.
+						if (i==1){						
+							cell.style.backgroundImage="url('images/colorbg/"+cell.innerText+".png')";	cell.style.backgroundSize = "20px";cell.style.backgroundRepeat = "no-repeat";
+							cell.innerText="";							
+						}//конец
+						
+						
+						// меняем оформление столбика с дпсом, чтобы он выделялся.                        
+						if (i==2){
+							cell.style.fontSize = "14px";
+							cell.style.fontWeight = "bold";
+							cell.style.textShadow = "1px 1px 2px #000000,-1px -1px 2px #000000";
+							cell.style.backgroundColor =  'rgba(0,0,0, 0.3)';;
+						}
+						//
+						
+                    } else if (typeof bodyDefine[i].html !== 'undefined') {
+                        var cellHTML;
+                        if (typeof bodyDefine[i].html === 'function') {
+                            cellHTML = bodyDefine[i].html(combatant, combatantIndex);
+                        } else {
+                            cellHTML = parseActFormat(bodyDefine[i].html, combatant);
+							
+                        }
+                        cell.innerHTML = cellHTML;
+                    }
+                    // 幅設定
+                    cell.style.width = bodyDefine[i].width;
+					
+                    cell.style.maxWidth = bodyDefine[i].width;
+                    // 行構え設定
+                    if (typeof(bodyDefine[i].align) !== 'undefined') {
+                        cell.style.textAlign = bodyDefine[i].align;
+                    }
+                    // エフェクト実行
+                    if (typeof bodyDefine[i].effect === 'function') {
+                        bodyDefine[i].effect(cell, combatant, combatantIndex);
+                    }
+                }
+                combatantIndex++;
+            }
+
+            // tbody が既に存在していたら置換、そうでないならテーブルに追加
+            if (oldTableBody != void(0)) {
+                table.replaceChild(newTableBody, oldTableBody);
+            }
+            else {
+                table.appendChild(newTableBody);
+            }
+        }
+
+        // Miniparse フォーマット文字列を解析し、表示文字列を取得する
+        function parseActFormat(str, dictionary)
+        {
+            var result = "";
+
+            var currentIndex = 0;
+            do {
+                var openBraceIndex = str.indexOf('{', currentIndex);
+                if (openBraceIndex < 0) {
+                    result += str.slice(currentIndex);
+                    break;
+                }
+                else {
+                    result += str.slice(currentIndex, openBraceIndex);
+                    var closeBraceIndex = str.indexOf('}', openBraceIndex);
+                    if (closeBraceIndex < 0) {
+                        // parse error!
+                        console.log("parseActFormat: Parse error: missing close-brace for " + openBraceIndex.toString() + ".");
+                        return "ERROR";
+                    }
+                    else {
+                        var tag = str.slice(openBraceIndex + 1, closeBraceIndex);
+                        if (typeof dictionary[tag] !== 'undefined') {
+                            result += dictionary[tag];
+                        } else {
+                            console.log("parseActFormat: Unknown tag: " + tag);
+                            result += "ERROR";
+                        }
+                        currentIndex = closeBraceIndex + 1;
+                    }
+                }
+            } while (currentIndex < str.length);
+            
+            return result;
+        }
+
+    </script>
+</head>
+<body>
+	<div id="wrapper">
+    <div id="encounter">
+        No data to show.
+        <!-- ここにエンカウント情報が入る -->
+    </div>
+	
+    <table id="combatantTable">
+	        <!-- ここにヘッダが入る -->
+        <!-- ここに各キャラの情報が入る -->
+    </table>
+	</div>
+
+</body>
+</html>
