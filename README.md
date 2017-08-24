@@ -50,6 +50,9 @@ Tanking")
 ### Vertigo
 ![miniparseVertigo](/screenshots/miniparseVertigo.jpg?raw=true "miniparseVertigo")
 
+### RumaRuma
+![RumaRuma](/screenshots/rumaruma_miniparse.png?raw=true "RumaRuma")
+
 ## Contributing Your Own Layouts
 
 ### Naming
