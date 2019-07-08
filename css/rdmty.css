@@ -254,7 +254,7 @@ li:last-child {
     background-color: #a91a16;
 }
 .show-job-colors .drk .bar {
-    background-color: #4a2829;
+    background-color: #541165;
 }
 .show-job-colors .ast .bar {
     background-color: #f6da6a;
@@ -267,6 +267,12 @@ li:last-child {
 }
 .show-job-colors .rdm .bar {
     background-color: #E1907E;
+}
+.show-job-colors .gnb .bar {
+    background-color: #3b4292;
+}
+.show-job-colors .dnc .bar {
+    background-color: #df2871;
 }
 
 
