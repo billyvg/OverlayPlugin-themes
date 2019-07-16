@@ -1,13 +1,11 @@
-#OverlayPlugin Themes
+# OverlayPlugin Themes
 
-# Hosting on the web
+## Hosting on the web
 Hey guys i decided to start pushing all of the udpates to a web hosted solution so by pointing at the Hosted Docs we can keep everyone up to date without having to have you guys download the files every time. 
 
-The Base URL is `http://ffxiv.evileeyore.com/`
+The Base URL is `https://billyvg.github.io/OverlayPlugin-themes/`
 
-If you want to use RDMTY then you would put in `http://ffxiv.evileeyore.com/rdmty_default.html`
-
-Updates in the future will make this simpler and allow things like `http://ffxiv.evileeyore.com/rdmty`
+If you want to use RDMTY then you would put in `https://billyvg.github.io/OverlayPlugin-themes/rdmty_default.html`
 
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
