@@ -1,11 +1,9 @@
 # OverlayPlugin Themes
 
 ## Hosting on the web
-Hey guys i decided to start pushing all of the udpates to a web hosted solution so by pointing at the Hosted Docs we can keep everyone up to date without having to have you guys download the files every time. 
+You can keep up to date without having to download the files every time by using the GitHub Pages URL at https://billyvg.github.io/OverlayPlugin-themes/`
 
-The Base URL is `https://billyvg.github.io/OverlayPlugin-themes/`
-
-If you want to use RDMTY then you would put in `https://billyvg.github.io/OverlayPlugin-themes/rdmty_default.html`
+e.g. If you want to use `rdmty_default` then you would put in `https://billyvg.github.io/OverlayPlugin-themes/rdmty_default.html`
 
 ## Usage
 `git clone` or download the ZIP package to a directory (i.e. your ACT directory)
