@@ -289,7 +289,8 @@ tr.Gld,
 tr.Pld,
 tr.Mrd,
 tr.War,
-tr.Drk {
+tr.Drk, 
+tr.Gnb {
     /*background-color: rgba(41,112,243,0.2);*/
     background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(41,112,243,0.2)), to(rgba(24,24,24,0.0))),
                 linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
@@ -322,7 +323,10 @@ tr.Acn,
 tr.Smn,
 tr.Thm,
 tr.Blm,
-tr.Mch {
+tr.Rdm,
+tr.Sam,
+tr.Mch, 
+tr.Dnc {
     /*background-color: rgba(200,3,8,0.2);*/
     background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(200,3,8,0.2)), to(rgba(24,24,24,0.0))),
                 linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
@@ -347,7 +351,6 @@ tr.Choco {
     background-blend-mode: soft-light;
 }
 
-
 tr.Titan,
 tr.Eos,
 tr.Selene,
@@ -360,3 +363,19 @@ tr.Ifrit {
     background-repeat: no-repeat, repeat;
     background-blend-mode: soft-light;
 }
+
+tr.Alc,
+tr.Bsm,
+tr.Btn,
+tr.Crp,
+tr.Fsh,
+tr.Gsm,
+tr.Ltw,
+tr.Min,
+tr.Cul,
+tr.Wvr {
+    background: -webkit-gradient(linear, left top,right top, color-stop(0.95,rgba(161, 161, 161,0.3)), to(rgba(24,24,24,0.0))),
+                linear-gradient(to top, rgba(0,0,0,0.25) 0%,rgba(255,255,255,0.1) 40%);
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: soft-light;
