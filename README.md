@@ -1,7 +1,7 @@
 # OverlayPlugin Themes
 
 ## Hosting on the web
-You can keep up to date without having to download the files every time by using the GitHub Pages URL at https://billyvg.github.io/OverlayPlugin-themes/`
+You can keep up to date without having to download the files every time by using the GitHub Pages URL at https://billyvg.github.io/OverlayPlugin-themes/
 
 e.g. If you want to use `rdmty_default` then you would put in `https://billyvg.github.io/OverlayPlugin-themes/rdmty_default.html`
 
